@@ -1,0 +1,87 @@
+<div class="anki-card-container">
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div id="top-bar-pos-front" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+        {{#PartOfSpeech}}
+        <span class="pos-chip">{{PartOfSpeech}}</span>
+        {{/PartOfSpeech}}
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <span class="top-badge cefr-badge-{{CEFRLevel}}">{{CEFRLevel}}</span>
+    </div>
+  </div>
+  <div class="card-content-front">
+    <div class="word-front">{{Word}}</div>
+  </div>
+</div>
+
+<!-- Hidden raw inputs for JavaScript -->
+<div style="display:none;">
+  <div id="raw-pos-front">{{PartOfSpeech}}</div>
+  <div id="raw-tags-front">{{Tags}}</div>
+</div>
+
+<script>
+(function() {
+  function trim(str) {
+    if (!str) return "";
+    return str.replace(/^\s+|\s+$/g, '');
+  }
+
+  function getRawText(id) {
+    var el = document.getElementById(id);
+    return el ? trim(el.textContent || el.innerText) : "";
+  }
+
+  // 1. Render POS chips in top-bar
+  var rawPos = getRawText("raw-pos-front");
+  var posContainer = document.getElementById("top-bar-pos-front");
+  if (posContainer && rawPos) {
+    var parts = rawPos.split(/[,/]/);
+    var cleanParts = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = trim(parts[i]);
+      if (p) cleanParts.push(p);
+    }
+    if (cleanParts.length > 1) {
+      var html = "";
+      for (var j = 0; j < cleanParts.length; j++) {
+        html += '<span class="pos-chip"><span class="pos-chip-num">' + (j + 1) + '</span>' + cleanParts[j] + '</span>';
+      }
+      posContainer.innerHTML = html;
+    }
+  }
+
+  // 2. Render Corpus Badges in top-bar-left
+  var rawTags = getRawText("raw-tags-front");
+  var topBarLeft = posContainer ? posContainer.parentNode : null;
+  if (topBarLeft && rawTags) {
+    var tags = rawTags.split(/\s+/);
+    for (var k = 0; k < tags.length; k++) {
+      var tag = trim(tags[k]);
+      if (!tag) continue;
+      
+      var badge = null;
+      if (tag === "Oxford_3000") {
+        badge = ["corpus-badge corpus-oxf", "Oxford 3000"];
+      } else if (tag === "Oxford_5000") {
+        badge = ["corpus-badge corpus-oxf", "Oxford 5000"];
+      } else if (tag === "OPAL_W") {
+        badge = ["corpus-badge corpus-opal", "OPAL W"];
+      } else if (tag === "OPAL_S") {
+        badge = ["corpus-badge corpus-opal", "OPAL S"];
+      } else if (tag === "AWL") {
+        badge = ["corpus-badge corpus-awl", "AWL"];
+      }
+      
+      if (badge) {
+        var span = document.createElement("span");
+        span.className = badge[0];
+        span.textContent = badge[1];
+        topBarLeft.appendChild(span);
+      }
+    }
+  }
+})();
+</script>

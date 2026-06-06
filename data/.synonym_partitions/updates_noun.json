@@ -1,0 +1,379 @@
+{
+  "total_scanned": 3927,
+  "already_has_synonym": 3095,
+  "scraped": 832,
+  "scraped_not_found": 791,
+  "synonym_applied": 41,
+  "skipped_no_url": 791,
+  "operations": [
+    {
+      "row_idx": 68,
+      "sense_idx": 0,
+      "old_ex": "She felt a sudden surge of anger.",
+      "new_ex": "She felt a sudden surge (rush) of anger.",
+      "synonym": "rush",
+      "word": "surge",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 125,
+      "sense_idx": 0,
+      "old_ex": "A disastrous business venture lost him thousands of dollars.",
+      "new_ex": "A disastrous business venture (undertaking) lost him thousands of dollars.",
+      "synonym": "undertaking",
+      "word": "venture",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 300,
+      "sense_idx": 0,
+      "old_ex": "Not speaking the language proved to be a bigger handicap than I'd imagined.",
+      "new_ex": "Not speaking the language proved to be a bigger handicap (obstacle) than I'd imagined.",
+      "synonym": "obstacle",
+      "word": "handicap",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 567,
+      "sense_idx": 5,
+      "old_ex": "Even when he became a star he didn’t have any airs and graces.",
+      "new_ex": "Even when he became a star he didn’t have any airs and graces. (airs)",
+      "synonym": "airs",
+      "word": "grace",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 573,
+      "sense_idx": 0,
+      "old_ex": "When the reservoir becomes blocked, the only remedy lies in cleaning the entire system.",
+      "new_ex": "When the reservoir becomes blocked, the only remedy (solution) lies in cleaning the entire system.",
+      "synonym": "solution",
+      "word": "remedy",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 573,
+      "sense_idx": 2,
+      "old_ex": "Holding copyright provides the only legal remedy against unauthorized copying.",
+      "new_ex": "Holding copyright provides the only legal remedy (redress) against unauthorized copying.",
+      "synonym": "redress",
+      "word": "remedy",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 598,
+      "sense_idx": 2,
+      "old_ex": "I don't know how you have the nerve to show your face after what you said!",
+      "new_ex": "I don't know how you have the nerve (cheek) to show your face after what you said!",
+      "synonym": "cheek",
+      "word": "nerve",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 599,
+      "sense_idx": 0,
+      "old_ex": "It took a lot of nerve to take the company to court.",
+      "new_ex": "It took a lot of nerve (guts) to take the company to court.",
+      "synonym": "guts",
+      "word": "nerve",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 608,
+      "sense_idx": 1,
+      "old_ex": "The house was reduced to a pile of rubble.",
+      "new_ex": "The house was reduced to a pile (heap) of rubble.",
+      "synonym": "heap",
+      "word": "pile",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 670,
+      "sense_idx": 3,
+      "old_ex": "people living on the margins of society",
+      "new_ex": "people living on the margins of society (fringe)",
+      "synonym": "fringe",
+      "word": "margin",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 795,
+      "sense_idx": 1,
+      "old_ex": "There has been a head-on clash between the two candidates over education policy.",
+      "new_ex": "There has been a head-on clash (conflict) between the two candidates over education policy.",
+      "synonym": "conflict",
+      "word": "clash",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 795,
+      "sense_idx": 2,
+      "old_ex": "a personality clash with the boss",
+      "new_ex": "a personality clash (conflict) with the boss",
+      "synonym": "conflict",
+      "word": "clash",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 869,
+      "sense_idx": 4,
+      "old_ex": "She showed her pedigree on her face and in her carriage.",
+      "new_ex": "She showed her pedigree on her face and in her carriage (bearing).",
+      "synonym": "bearing",
+      "word": "carriage",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 910,
+      "sense_idx": 0,
+      "old_ex": "Dried fruits are especially high in fibre.",
+      "new_ex": "Dried fruits are especially high in fibre (roughage).",
+      "synonym": "roughage",
+      "word": "fibre",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 958,
+      "sense_idx": 2,
+      "old_ex": "I couldn't get a grip on what was going on.",
+      "new_ex": "I couldn't get a grip (grasp) on what was going on.",
+      "synonym": "grasp",
+      "word": "grip",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 973,
+      "sense_idx": 2,
+      "old_ex": "He had a bit of a gut on him, but otherwise he was quite skinny.",
+      "new_ex": "He had a bit of a gut (belly) on him, but otherwise he was quite skinny.",
+      "synonym": "belly",
+      "word": "gut",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 994,
+      "sense_idx": 1,
+      "old_ex": "At the first hint of trouble, they left.",
+      "new_ex": "At the first hint (sign) of trouble, they left.",
+      "synonym": "sign",
+      "word": "hint",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 994,
+      "sense_idx": 2,
+      "old_ex": "There was more than a hint of sadness in his voice.",
+      "new_ex": "There was more than a hint (suggestion) of sadness in his voice.",
+      "synonym": "suggestion",
+      "word": "hint",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 994,
+      "sense_idx": 3,
+      "old_ex": "The teacher’s book gives useful hints on how to develop reading skills.",
+      "new_ex": "The teacher’s book gives useful hints on how to develop reading skills. (tip)",
+      "synonym": "tip",
+      "word": "hint",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 1172,
+      "sense_idx": 3,
+      "old_ex": "Well, at least you weren't hurt.",
+      "new_ex": "Well, at least you weren't hurt. (humanity)",
+      "synonym": "humanity",
+      "word": "mercy",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1250,
+      "sense_idx": 1,
+      "old_ex": "The outlook for jobs is bleak.",
+      "new_ex": "The outlook (prospect) for jobs is bleak.",
+      "synonym": "prospect",
+      "word": "outlook",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1253,
+      "sense_idx": 1,
+      "old_ex": "No one has yet claimed responsibility for this latest terrorist outrage.",
+      "new_ex": "No one has yet claimed responsibility for this latest terrorist outrage (atrocity).",
+      "synonym": "atrocity",
+      "word": "outrage",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 1321,
+      "sense_idx": 0,
+      "old_ex": "Will the government honour its election pledge not to raise taxes?",
+      "new_ex": "Will the government honour its election pledge (commitment) not to raise taxes?",
+      "synonym": "commitment",
+      "word": "pledge",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 1340,
+      "sense_idx": 2,
+      "old_ex": "I hope to have the privilege of working with them again.",
+      "new_ex": "I hope to have the privilege (honour) of working with them again.",
+      "synonym": "honour",
+      "word": "privilege",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1348,
+      "sense_idx": 1,
+      "old_ex": "She chopped the vegetables quickly using a food processor.",
+      "new_ex": "She chopped the vegetables quickly using a food processor (central processing unit).",
+      "synonym": "central processing unit",
+      "word": "processor",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1360,
+      "sense_idx": 1,
+      "old_ex": "Getting a work permit in the UK is not always a simple proposition.",
+      "new_ex": "Getting a work permit in the UK is not always a simple proposition (matter).",
+      "synonym": "matter",
+      "word": "proposition",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1378,
+      "sense_idx": 2,
+      "old_ex": "After a furious late rally, they finally scored.",
+      "new_ex": "After a furious late rally (recovery), they finally scored.",
+      "synonym": "recovery",
+      "word": "rally",
+      "pos": "noun, verb"
+    },
+    {
+      "row_idx": 1386,
+      "sense_idx": 1,
+      "old_ex": "It was the realization of his greatest ambition.",
+      "new_ex": "It was the realization (achievement) of his greatest ambition.",
+      "synonym": "achievement",
+      "word": "realization",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1439,
+      "sense_idx": 2,
+      "old_ex": "The police appealed to the crowd for restraint.",
+      "new_ex": "The police appealed to the crowd for restraint (self-control).",
+      "synonym": "self-control",
+      "word": "restraint",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1469,
+      "sense_idx": 1,
+      "old_ex": "The ultimate sanction will be the closure of the restaurant.",
+      "new_ex": "The ultimate sanction (penalty) will be the closure of the restaurant.",
+      "synonym": "penalty",
+      "word": "sanction",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1470,
+      "sense_idx": 0,
+      "old_ex": "These changes will require the sanction of the court.",
+      "new_ex": "These changes will require the sanction (authorization) of the court.",
+      "synonym": "authorization",
+      "word": "sanction",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1487,
+      "sense_idx": 1,
+      "old_ex": "She seemed to have lost all sensation in her arms.",
+      "new_ex": "She seemed to have lost all sensation (feeling) in her arms.",
+      "synonym": "feeling",
+      "word": "sensation",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1537,
+      "sense_idx": 0,
+      "old_ex": "Astronauts have brought back specimens of rock from the moon.",
+      "new_ex": "Astronauts have brought back specimens of rock from the moon. (sample)",
+      "synonym": "sample",
+      "word": "specimen",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1548,
+      "sense_idx": 2,
+      "old_ex": "The wizard recited a spell.",
+      "new_ex": "The wizard recited a spell (enchantment).",
+      "synonym": "enchantment",
+      "word": "spell",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1548,
+      "sense_idx": 3,
+      "old_ex": "I completely fell under her spell.",
+      "new_ex": "I completely fell under her spell (charm).",
+      "synonym": "charm",
+      "word": "spell",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1711,
+      "sense_idx": 1,
+      "old_ex": "This information is of the highest utility to a historian.",
+      "new_ex": "This information is of the highest utility (usefulness) to a historian.",
+      "synonym": "usefulness",
+      "word": "utility",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1723,
+      "sense_idx": 3,
+      "old_ex": "a vein of gold",
+      "new_ex": "a vein (seam) of gold",
+      "synonym": "seam",
+      "word": "vein",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1730,
+      "sense_idx": 2,
+      "old_ex": "The plan has the virtue of simplicity.",
+      "new_ex": "The plan has the virtue (advantage) of simplicity.",
+      "synonym": "advantage",
+      "word": "virtue",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1761,
+      "sense_idx": 4,
+      "old_ex": "The newspaper published a withdrawal the next day.",
+      "new_ex": "The newspaper published a withdrawal (retraction) the next day.",
+      "synonym": "retraction",
+      "word": "withdrawal",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1773,
+      "sense_idx": 1,
+      "old_ex": "How do you express 25% as a fraction?",
+      "new_ex": "How do you express 25% as a fraction (rational number)?",
+      "synonym": "rational number",
+      "word": "fraction",
+      "pos": "noun"
+    },
+    {
+      "row_idx": 1821,
+      "sense_idx": 5,
+      "old_ex": "His work simply isn't up to scratch.",
+      "new_ex": "His work simply isn't up to scratch (satisfactory).",
+      "synonym": "satisfactory",
+      "word": "scratch",
+      "pos": "noun, verb"
+    }
+  ]
+}

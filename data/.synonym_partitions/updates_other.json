@@ -1,0 +1,199 @@
+{
+  "total_scanned": 1451,
+  "already_has_synonym": 1227,
+  "scraped": 224,
+  "scraped_not_found": 203,
+  "synonym_applied": 21,
+  "skipped_no_url": 203,
+  "operations": [
+    {
+      "row_idx": 222,
+      "sense_idx": 2,
+      "old_ex": "The economy is poised for recovery.",
+      "new_ex": "The economy is poised (set) for recovery.",
+      "synonym": "set",
+      "word": "poised",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 590,
+      "sense_idx": 1,
+      "old_ex": "Industry leaders are working together to address this critical issue.",
+      "new_ex": "Industry leaders are working together to address this critical (crucial) issue.",
+      "synonym": "crucial",
+      "word": "critical",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 902,
+      "sense_idx": 3,
+      "old_ex": "An area with a favourable climate will inevitably be richer than one without.",
+      "new_ex": "An area with a favourable (advantageous) climate will inevitably be richer than one without.",
+      "synonym": "advantageous",
+      "word": "favourable",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 962,
+      "sense_idx": 2,
+      "old_ex": "‘He ate it with mustard.’ ‘Oh, gross!’",
+      "new_ex": "‘He ate it with mustard.’ ‘Oh, gross (disgusting)!’",
+      "synonym": "disgusting",
+      "word": "gross",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 962,
+      "sense_idx": 3,
+      "old_ex": "gross behaviour",
+      "new_ex": "gross (crude) behaviour",
+      "synonym": "crude",
+      "word": "gross",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 996,
+      "sense_idx": 2,
+      "old_ex": "The latest trade figures are a hopeful sign.",
+      "new_ex": "The latest trade figures are a hopeful (promising) sign.",
+      "synonym": "promising",
+      "word": "hopeful",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1107,
+      "sense_idx": 4,
+      "old_ex": "She is very liberal with her money.",
+      "new_ex": "She is very liberal (lavish) with her money.",
+      "synonym": "lavish",
+      "word": "liberal",
+      "pos": "adjective, noun"
+    },
+    {
+      "row_idx": 1107,
+      "sense_idx": 6,
+      "old_ex": "a liberal translation of the text",
+      "new_ex": "a liberal (free) translation of the text",
+      "synonym": "free",
+      "word": "liberal",
+      "pos": "adjective, noun"
+    },
+    {
+      "row_idx": 1141,
+      "sense_idx": 1,
+      "old_ex": "We spent a magical week in Paris.",
+      "new_ex": "We spent a magical (enchanting) week in Paris.",
+      "synonym": "enchanting",
+      "word": "magical",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1216,
+      "sense_idx": 1,
+      "old_ex": "He was a young man of noble birth.",
+      "new_ex": "He was a young man of noble (aristocratic) birth.",
+      "synonym": "aristocratic",
+      "word": "noble",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1216,
+      "sense_idx": 2,
+      "old_ex": "a noble building",
+      "new_ex": "a noble (splendid) building",
+      "synonym": "splendid",
+      "word": "noble",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1272,
+      "sense_idx": 1,
+      "old_ex": "The resulting assessment is necessarily partial and subjective.",
+      "new_ex": "The resulting assessment is necessarily partial (biased) and subjective.",
+      "synonym": "biased",
+      "word": "partial",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1353,
+      "sense_idx": 1,
+      "old_ex": "The church tower was a prominent feature in the landscape.",
+      "new_ex": "The church tower was a prominent (noticeable) feature in the landscape.",
+      "synonym": "noticeable",
+      "word": "prominent",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1503,
+      "sense_idx": 1,
+      "old_ex": "The concert was sheer delight.",
+      "new_ex": "The concert was sheer (utter) delight.",
+      "synonym": "utter",
+      "word": "sheer",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1552,
+      "sense_idx": 1,
+      "old_ex": "Social divisions in the city are stark.",
+      "new_ex": "Social divisions in the city are stark (clear).",
+      "synonym": "clear",
+      "word": "stark",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1552,
+      "sense_idx": 3,
+      "old_ex": "The children watched in stark terror.",
+      "new_ex": "The children watched in stark (utter) terror.",
+      "synonym": "utter",
+      "word": "stark",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1605,
+      "sense_idx": 2,
+      "old_ex": "He always looks so superior.",
+      "new_ex": "He always looks so superior (arrogant).",
+      "synonym": "arrogant",
+      "word": "superior",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1622,
+      "sense_idx": 2,
+      "old_ex": "I was suspicious of his motives.",
+      "new_ex": "I was suspicious (sceptical) of his motives.",
+      "synonym": "sceptical",
+      "word": "suspicious",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1658,
+      "sense_idx": 1,
+      "old_ex": "The hotel manager was very kind and thoughtful.",
+      "new_ex": "The hotel manager was very kind and thoughtful (considerate).",
+      "synonym": "considerate",
+      "word": "thoughtful",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1763,
+      "sense_idx": 1,
+      "old_ex": "The money we raise will be going to a very worthy cause.",
+      "new_ex": "The money we raise will be going to a very worthy (deserving) cause.",
+      "synonym": "deserving",
+      "word": "worthy",
+      "pos": "adjective"
+    },
+    {
+      "row_idx": 1798,
+      "sense_idx": 1,
+      "old_ex": "She waved a fond farewell to her parents and sister.",
+      "new_ex": "She waved a fond (affectionate) farewell to her parents and sister.",
+      "synonym": "affectionate",
+      "word": "fond",
+      "pos": "adjective"
+    }
+  ]
+}

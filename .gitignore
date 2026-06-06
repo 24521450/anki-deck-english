@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Unit test / coverage reports
+.pytest_cache/
+.cache/
+.hypothesis/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# VS Code / IDE settings
+.vscode/
+.idea/
+
+# Local/temporary folders
+scratch/
+temp_extracted/
+tmp_extracted/
+
+# Anki package output (binary, 22MB — rebuilt from sources)
+*.apkg
+
+# Runtime / IDE cache (tooling artefacts that should never be committed)
+.mavis/
+.opencode/
+
+# Data directory — caches, scratch databases, and backup snapshots
+data/.cache_html/
+data/anki_vocab.db
+data/missing_audio.json
+data/*.bak
+data/card_synonyms.json.bak

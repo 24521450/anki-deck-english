@@ -1,0 +1,29 @@
+# ============================================================
+# IELTS Deck — Python Dependencies
+# ============================================================
+# Install:  pip install -r requirements.txt
+# After install, also run:
+#   python -c "import nltk; nltk.download('wordnet'); nltk.download('omw-1.4')"
+# ============================================================
+
+# ── Core scraping ────────────────────────────────────────────
+requests>=2.32.3          # HTTP requests (Oxford, Cambridge scraping)
+beautifulsoup4>=4.12.3    # HTML parsing
+lxml>=5.2.2               # Fast parser backend for BeautifulSoup
+
+# ── NLP / synonym fallback ───────────────────────────────────
+nltk>=3.9.4               # WordNet synonym fallback in generate_synonyms_json.py
+
+# ── Audio ────────────────────────────────────────────────────
+edge-tts>=7.2.8           # TTS audio generation (Microsoft Edge TTS)
+
+# ── Async / performance (future use) ─────────────────────────
+aiohttp>=3.13.3           # Async HTTP (drop-in upgrade for high-volume scraping)
+tqdm>=4.66.5              # Progress bars for long-running scripts
+
+# ── File watching ─────────────────────────────────────────────
+watchdog>=6.0.0           # Filesystem events (watch_sync.py uses polling, but
+                          # watchdog is available if we switch to event-driven)
+
+# ── Testing ──────────────────────────────────────────────────
+pytest>=9.0.3             # Test suite (tests/test_extraction.py)

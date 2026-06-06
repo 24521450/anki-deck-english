@@ -1,0 +1,1010 @@
+# AWL vs Oxford Comparison Report
+
+Analyzed Source: `AWL.json` (contains 570 headwords)
+Compared against: Oxford 3000 & 5000 Lists (total 4954 words)
+
+## 1. Headwords NOT in Oxford (Exact Match)
+Count: 59
+
+- **administrate**
+- **aggregate**
+- **ambiguous**
+- **append**
+- **approximate**
+- **automate**
+- **coherent**
+- **compatible**
+- **concurrent**
+- **conform**
+- **consequent**
+- **constrain**
+- **contradict**
+- **convene**
+- **converse**
+- **criteria**
+- **deduce**
+- **denote**
+- **depress**
+- **deviate**
+- **discrete**
+- **discriminate**
+- **equate**
+- **erode**
+- **eventual**
+- **finite**
+- **fluctuate**
+- **ignorant**
+- **immigrate**
+- **implicate**
+- **implicit**
+- **incline**
+- **innovate**
+- **intrinsic**
+- **legislate**
+- **levy**
+- **manual**
+- **maximise**
+- **mediate**
+- **migrate**
+- **minimise**
+- **negate**
+- **notwithstanding**
+- **offset**
+- **orient**
+- **overlap**
+- **paradigm**
+- **percent**
+- **predominant**
+- **qualitative**
+- **refine**
+- **reluctance**
+- **restrain**
+- **rigid**
+- **so‑called**
+- **subordinate**
+- **tense**
+- **underlie**
+- **utilise**
+
+## 2. Headwords NOT in Oxford (Base Form Lemmatized Match)
+Count: 59
+
+This list excludes words where their base form (e.g. singular noun, base verb) is found in Oxford.
+
+- **administrate**
+- **aggregate**
+- **ambiguous**
+- **append**
+- **approximate**
+- **automate**
+- **coherent**
+- **compatible**
+- **concurrent**
+- **conform**
+- **consequent**
+- **constrain**
+- **contradict**
+- **convene**
+- **converse**
+- **criteria**
+- **deduce**
+- **denote**
+- **depress**
+- **deviate**
+- **discrete**
+- **discriminate**
+- **equate**
+- **erode**
+- **eventual**
+- **finite**
+- **fluctuate**
+- **ignorant**
+- **immigrate**
+- **implicate**
+- **implicit**
+- **incline**
+- **innovate**
+- **intrinsic**
+- **legislate**
+- **levy**
+- **manual**
+- **maximise**
+- **mediate**
+- **migrate**
+- **minimise**
+- **negate**
+- **notwithstanding**
+- **offset**
+- **orient**
+- **overlap**
+- **paradigm**
+- **percent**
+- **predominant**
+- **qualitative**
+- **refine**
+- **reluctance**
+- **restrain**
+- **rigid**
+- **so‑called**
+- **subordinate**
+- **tense**
+- **underlie**
+- **utilise**
+
+## 3. Family Words NOT in Oxford (Exact Match)
+Count: 2189 words across 516 families
+
+- **abandon**: abandoned, abandoning, abandonment, abandons
+- **abstract**: abstraction, abstractions, abstractly, abstracts
+- **academy**: academia, academically, academics, academies
+- **access**: accessed, accesses, accessibility, accessing, inaccessible
+- **accommodate**: accommodated, accommodates, accommodating
+- **accompany**: accompanied, accompanies, accompaniment, accompanying, unaccompanied
+- **accumulate**: accumulated, accumulating, accumulates
+- **accurate**: inaccuracy, inaccuracies, inaccurate
+- **achieve**: achievable, achieved, achievements, achieves, achieving
+- **acknowledge**: acknowledged, acknowledges, acknowledging, acknowledgement, acknowledgemens
+- **acquire**: acquired, acquires, acquiring, acquisitions
+- **adapt**: adaptability, adaptable, adaptations, adapted, adapting, adaptive, adapts
+- **adequate**: adequacy, inadequacies, inadequacy, inadequately
+- **adjust**: adjusted, adjusting, adjustments, adjusts, readjust, readjusted, readjusting, readjustment, readjustments, readjusts
+- **administrate**: administrates, administrations, administratively, administrators
+- **adult**: adulthood, adults
+- **advocate**: advocacy, advocated, advocates, advocating
+- **affect**: affected, affecting, affective, affectively, affects, unaffected
+- **aggregate**: aggregated, aggregates, aggregating, aggregation
+- **aid**: aided, aiding, unaided
+- **allocate**: allocated, allocates, allocating, allocations
+- **alter**: alterable, alteration, alterations, altered, altering, alternate, alternating, alters, unalterable, unaltered
+- **alternative**: alternatively, alternatives
+- **ambiguous**: ambiguities, ambiguity, unambiguous, unambiguously
+- **amend**: amended, amending, amendments, amends
+- **analogy**: analogies, analogous
+- **analyse**: analysed, analyser, analysing, analytic, analytical, analytically, analyze, analyzed, analyzing
+- **anticipate**: anticipated, anticipates, anticipating, anticipation, unanticipated
+- **append**: appendix, appended, appends, appending, appendices, appendixes
+- **appreciate**: appreciable, appreciably, appreciated, appreciates, appreciating, unappreciated
+- **approach**: approachable, approached, approaches, approaching, unapproachable
+- **appropriate**: appropriacy, appropriateness, inappropriacy, inappropriately
+- **approximate**: approximated, approximates, approximating, approximation, approximations
+- **arbitrary**: arbitrariness, arbitrarily
+- **area**: areas
+- **aspect**: aspects
+- **assemble**: assembled, assembles, assemblies, assembling
+- **assess**: assessable, assessed, assesses, assessing, assessments, reassess, reassessed, reassessing, reassessment, unassessed
+- **assign**: assigned, assigning, assignments, assigns, reassign, reassigned, reassigning, reassigns, unassigned
+- **assist**: assistants, assisted, assisting, assists, unassisted
+- **assume**: assumed, assumes, assuming, assumptions
+- **assure**: assurances, assured, assuredly, assures, assuring
+- **attach**: attached, attaches, attaching, attachments, unattached
+- **attain**: attainable, attained, attaining, attainment, attainments, attains, unattainable
+- **attitude**: attitudes
+- **attribute**: attributable, attributed, attributes, attributing, attribution
+- **author**: authored, authoring, authors, authorship
+- **authority**: authoritative, authorities
+- **automate**: automated, automates, automating, automation
+- **available**: unavailable
+- **aware**: unaware
+- **benefit**: beneficiaries, benefited, benefiting, benefits
+- **bias**: biased, biases, biasing, unbiased
+- **bond**: bonded, bonding, bonds
+- **brief**: brevity, briefed, briefing, briefs
+- **bulk**: bulky
+- **capable**: capabilities, incapable
+- **capacity**: capacities, incapacitate, incapacitated
+- **category**: categories, categorisation, categorise, categorised, categorises, categorising, categorization, categorized, categorizes, categorizing
+- **cease**: ceased, ceaseless, ceases, ceasing
+- **challenge**: challenged, challenger, challengers, challenges
+- **channel**: channelled, channelling, channels
+- **chapter**: chapters
+- **chart**: charted, charting, charts, uncharted
+- **chemical**: chemically, chemicals
+- **circumstance**: circumstances
+- **cite**: citation, citations, cited, citing, cites
+- **clarify**: clarification, clarified, clarifies, clarifying
+- **classic**: classics
+- **clause**: clauses
+- **code**: coded, codes, coding
+- **coherent**: coherence, coherently, incoherent, incoherently
+- **coincide**: coincided, coincides, coinciding, coincidences, coincident, coincidental
+- **collapse**: collapsed, collapses, collapsible, collapsing
+- **colleague**: colleagues
+- **commence**: commenced, commences, commencement, commencing, recommences, recommenced, recommencing
+- **comment**: commentaries, commentators, commented, commenting, comments
+- **commission**: commissioned, commissioners, commissioning, commissions
+- **commit**: commitments, commits, committed, committing
+- **commodity**: commodities
+- **communicate**: communicable, communicated, communicates, communicating, communications, communicative, communicatively, uncommunicative
+- **community**: communities
+- **compatible**: compatibility, incompatibility, incompatible
+- **compensate**: compensated, compensates, compensating, compensations, compensatory
+- **compile**: compilation, compilations, compiled, compiles, compiling
+- **complement**: complementary, complemented, complementing, complements
+- **complex**: complexities
+- **component**: componentry, components
+- **compound**: compounded, compounding, compounds
+- **comprehensive**: comprehensively
+- **comprise**: comprised, comprises, comprising
+- **compute**: computation, computational, computations, computable, computed, computerised, computers, computing
+- **conceive**: conceivable, conceivably, conceived, conceives, conceiving, inconceivable, inconceivably
+- **concentrate**: concentrated, concentrates, concentrating
+- **concept**: concepts, conceptual, conceptualisation, conceptualise, conceptualised, conceptualises, conceptualising, conceptually
+- **conclude**: concluded, concludes, concluding, conclusions, conclusive, conclusively, inconclusive, inconclusively
+- **concurrent**: concurrently
+- **conduct**: conducted, conducting, conducts
+- **confer**: conferences, conferred, conferring, confers
+- **confine**: confined, confines, confining, unconfined
+- **confirm**: confirmed, confirming, confirms
+- **conflict**: conflicted, conflicting, conflicts
+- **conform**: conformable, conformability, conformance, conformation, conformed, conforming, conformist, conformists, conformity, conforms, nonconformist, nonconformists, nonconformity, non-conformist, non-conformists, non-conformity
+- **consent**: consented, consenting, consents
+- **consequent**: consequences
+- **consist**: consisted, consisting, consists, inconsistencies, inconsistency, inconsistent
+- **constant**: constancy, constants, inconstancy, inconstantly
+- **constitute**: constituencies, constituent, constituents, constituted, constitutes, constituting, constitutions, constitutionally, constitutive, unconstitutional
+- **constrain**: constrained, constraining, constrains, constraints, unconstrained
+- **construct**: constructed, constructing, constructions, constructive, constructs, reconstruct, reconstructed, reconstructing, reconstructs
+- **consult**: consultancy, consultants, consultations, consultative, consulted, consults, consulting
+- **consume**: consumed, consumers, consumes, consuming
+- **contact**: contactable, contacted, contacting, contacts
+- **contemporary**: contemporaries
+- **context**: contexts, contextual, contextualise, contextualised, contextualising, uncontextualised, contextualize, contextualized, contextualizing, uncontextualized
+- **contract**: contracted, contracting, contractors, contracts
+- **contradict**: contradicted, contradicting, contradictions, contradictory, contradicts
+- **contrary**: contrarily
+- **contrast**: contrasted, contrasting, contrastive, contrasts
+- **contribute**: contributed, contributes, contributing, contributions, contributors
+- **controversy**: controversies, controversially, uncontroversial
+- **convene**: convenes, convened, convening, conventionally, conventions, unconventional
+- **converse**: conversely
+- **convert**: conversions, converted, convertible, converting, converts
+- **convince**: convinces, convincingly, unconvinced
+- **cooperate**: cooperated, cooperates, cooperating, cooperation, cooperatively, co-operate, co‑operated, co‑operates, co‑operation, co‑operative, co‑operatively
+- **coordinate**: coordinated, coordinates, coordinating, coordinators, co-ordinate, co‑ordinated, co‑ordinates, co‑ordinating, co‑ordination, co‑ordinator, co‑ordinators
+- **core**: cores, coring, cored
+- **corporate**: corporates, corporations
+- **correspond**: corresponded, correspondingly, corresponds
+- **couple**: coupled, coupling, couples
+- **create**: created, creates, creating, creations, creatively, creators, recreate, recreated, recreates, recreating
+- **credit**: credited, crediting, creditor, creditors, credits
+- **crucial**: crucially
+- **culture**: culturally, cultured, cultures, uncultured
+- **currency**: currencies
+- **cycle**: cycled, cycles, cyclic, cyclical, cycling
+- **debate**: debatable, debated, debates, debating
+- **decade**: decades
+- **decline**: declined, declines, declining
+- **deduce**: deduced, deduces, deducing, deduction, deductions
+- **define**: definable, defined, defines, defining, definitions, redefine, redefined, redefines, redefining, undefined
+- **definite**: definitive, indefinite, indefinitely
+- **demonstrate**: demonstrable, demonstrably, demonstrated, demonstrates, demonstrating, demonstrations, demonstrative, demonstratively, demonstrator, demonstrators
+- **denote**: denotation, denotations, denoted, denotes, denoting
+- **deny**: deniable, denials, denied, denies, denying, undeniable
+- **depress**: depresses
+- **derive**: derivation, derivations, derivative, derivatives, derived, derives, deriving
+- **design**: designed, designers, designing, designs
+- **detect**: detectable, detected, detecting, detectives, detector, detectors, detects
+- **deviate**: deviated, deviates, deviating, deviation, deviations
+- **device**: devices
+- **devote**: devoted, devotedly, devotes, devoting, devotion, devotions
+- **differentiate**: differentiated, differentiates, differentiating, differentiation
+- **dimension**: dimensional, dimensions, multidimensional
+- **diminish**: diminished, diminishes, diminishing, diminution, undiminished
+- **discrete**: discretely, discretionary, indiscrete, indiscretion
+- **discriminate**: discriminated, discriminates, discriminating
+- **displace**: displaced, displacement, displaces, displacing
+- **display**: displayed, displaying, displays
+- **dispose**: disposable, disposed, disposes, disposing
+- **distinct**: distinctions, distinctively, distinctly, indistinct, indistinctly
+- **distort**: distorted, distorting, distortion, distortions, distorts
+- **distribute**: distributed, distributing, distributional, distributions, distributive, distributor, distributors, redistribute, redistributed, redistributes, redistributing, redistribution
+- **diverse**: diversely, diversification, diversified, diversifies, diversify, diversifying
+- **document**: documented, documenting, documents
+- **domain**: domains
+- **domestic**: domestically, domesticate, domesticated, domesticating, domestics
+- **dominate**: dominated, dominates, dominating, domination
+- **draft**: drafted, drafting, drafts, redraft, redrafted, redrafting, redrafts
+- **drama**: dramas, dramatise, dramatised, dramatising, dramatises, dramatisation, dramatisations, dramatist, dramatists, dramatization, dramatizations, dramatize, dramatized, dramatizes, dramatizing
+- **dynamic**: dynamically, dynamics
+- **economy**: economical, economically, economies, economists, uneconomical
+- **edit**: edited, editing, editions, editorials, editors, edits
+- **element**: elements
+- **eliminate**: eliminated, eliminates, eliminating, elimination
+- **emerge**: emerged, emergent, emerges, emerging
+- **emphasis**: emphasise, emphasised, emphasising, emphasized, emphasizes, emphasizing, emphatic, emphatically
+- **empirical**: empirically, empiricism
+- **enable**: enabled, enables, enabling
+- **encounter**: encountered, encountering, encounters
+- **energy**: energetic, energetically, energies
+- **enforce**: enforced, enforces, enforcing
+- **enhance**: enhanced, enhancement, enhances, enhancing
+- **enormous**: enormity, enormously
+- **ensure**: ensured, ensures, ensuring
+- **entity**: entities
+- **environment**: environmentalist, environmentalists, environmentally, environments
+- **equate**: equated, equates, equating, equations
+- **equip**: equipped, equipping, equips
+- **equivalent**: equivalence
+- **erode**: eroded, erodes, eroding, erosion
+- **error**: erroneous, erroneously, errors
+- **establish**: disestablish, disestablished, disestablishes, disestablishing, disestablishment, established, establishes, establishing, establishments
+- **estate**: estates
+- **estimate**: estimated, estimates, estimating, estimation, estimations, over‑estimate, overestimate, overestimated, overestimates, overestimating, underestimate, underestimated, underestimates, underestimating
+- **ethic**: ethically, ethics, unethical
+- **ethnic**: ethnicity
+- **evaluate**: evaluated, evaluates, evaluating, evaluations, evaluative, re-evaluate, re-evaluated, re-evaluates, re-evaluating, re-evaluation
+- **eventual**: eventuality
+- **evident**: evidenced, evidential, evidently
+- **evolve**: evolved, evolving, evolves, evolutionist, evolutionists
+- **exceed**: exceeded, exceeding, exceeds
+- **exclude**: excluded, excludes, excluding, exclusionary, exclusionist, exclusions
+- **exhibit**: exhibited, exhibiting, exhibitions, exhibits
+- **expand**: expanded, expanding, expands, expansionism, expansive
+- **expert**: expertly, experts
+- **exploit**: exploited, exploiting, exploits
+- **export**: exported, exporter, exporters, exporting, exports
+- **expose**: exposed, exposes, exposing, exposures
+- **external**: externalisation, externalise, externalised, externalises, externalising, externality, externalization, externalize, externalized, externalizes, externalizing, externally
+- **extract**: extracted, extracting, extraction, extracts
+- **facilitate**: facilitated, facilitates, facilities, facilitating, facilitation, facilitator, facilitators
+- **factor**: factored, factoring, factors
+- **feature**: featured, features, featuring
+- **federal**: federation, federations
+- **fee**: fees
+- **file**: filed, files, filing
+- **final**: finalise, finalised, finalises, finalising, finalize, finalized, finalizes, finalizing, finality, finals
+- **finance**: financed, finances, financially, financier, financiers, financing
+- **finite**: infinite, infinitely
+- **flexible**: inflexible, inflexibility
+- **fluctuate**: fluctuated, fluctuates, fluctuating, fluctuation, fluctuations
+- **focus**: focused, focuses, focusing, focussed, focussing, refocus, refocused, refocuses, refocusing, refocussed, refocusses, refocussing
+- **format**: formatted, formatting, formats
+- **formula**: formulae, formulas, formulated, formulating, formulation, formulations, reformulate, reformulated, reformulating, reformulation, reformulations
+- **found**: founded, founders, founding, unfounded
+- **foundation**: foundations
+- **framework**: frameworks
+- **function**: functionally, functioned, functioning, functions
+- **fund**: funded, funder, funders, funds
+- **gender**: genders
+- **generate**: generated, generates, generating
+- **generation**: generations
+- **globe**: globally, globalisation
+- **goal**: goals
+- **grade**: graded, grades, grading
+- **grant**: granted, granting, grants
+- **guarantee**: guaranteed, guaranteeing, guarantees
+- **guideline**: guidelines
+- **hierarchy**: hierarchical, hierarchies
+- **highlight**: highlighted, highlighting, highlights
+- **hypothesis**: hypotheses, hypothesise, hypothesised, hypothesises, hypothesising, hypothesize, hypothesized, hypothesizes, hypothesizing, hypothetical, hypothetically
+- **identical**: identically
+- **identify**: identifiable, identified, identifies, identifying, identities, unidentifiable
+- **ideology**: ideologically, ideologies
+- **ignorant**: ignored, ignores, ignoring
+- **illustrate**: illustrated, illustrates, illustrating, illustrations, illustrative
+- **image**: images
+- **immigrate**: immigrants, immigrated, immigrates, immigrating
+- **impact**: impacted, impacting, impacts
+- **implement**: implemented, implementing, implements
+- **implicate**: implicated, implicates, implicating, implications
+- **implicit**: implicitly
+- **imply**: implied, implies, implying
+- **impose**: imposed, imposes, imposing, imposition
+- **incentive**: incentives
+- **incidence**: incidentally, incidents
+- **incline**: inclination, inclinations, inclines, inclining
+- **income**: incomes
+- **incorporate**: incorporated, incorporates, incorporating, incorporation
+- **index**: indexed, indexes, indexing
+- **indicate**: indicated, indicates, indicating, indications, indicative, indicators
+- **individual**: individualised, individuality, individualism, individualist, individualists, individualistic, individually, individuals
+- **induce**: induced, induces, inducing, induction
+- **inevitable**: inevitability
+- **infer**: inference, inferences, inferred, inferring, infers
+- **infrastructure**: infrastructures
+- **inherent**: inherently
+- **inhibit**: inhibited, inhibiting, inhibition, inhibitions, inhibits
+- **initiate**: initiated, initiates, initiating, initiation, initiations, initiatives, initiator, initiators
+- **injure**: injures, injuries, injuring, uninjured
+- **innovate**: innovated, innovates, innovating, innovations, innovator, innovators
+- **input**: inputs
+- **insert**: inserted, inserting, inserts
+- **insight**: insightful, insights
+- **inspect**: inspected, inspecting, inspections, inspectors, inspects
+- **instance**: instances
+- **institute**: instituted, institutes, instituting, institutionalise, institutionalised, institutionalises, institutionalising, institutionalized, institutionalizes, institutionalizing, institutionally, institutions
+- **instruct**: instructed, instructing, instructions, instructive, instructors, instructs
+- **integrate**: integrates, integrating
+- **intelligent**: intelligently, unintelligent
+- **intense**: intensely, intenseness, intensification, intensified, intensifies, intensifying, intension, intensively
+- **interact**: interacted, interacting, interactions, interactively, interacts
+- **internal**: internalise, internalised, internalises, internalising, internalize, internalized, internalizes, internalizing, internally
+- **interpret**: interpretations, interpretative, interpreted, interpreting, interpretive, interprets, misinterpret, misinterpretation, misinterpretations, misinterpreted, misinterpreting, misinterprets, reinterpret, reinterpreted, reinterprets, reinterpreting, reinterpretation, reinterpretations
+- **interval**: intervals
+- **intervene**: intervened, intervenes, intervening, interventions
+- **intrinsic**: intrinsically
+- **invest**: invested, investing, investments, investors, invests, reinvest, reinvested, reinvesting, reinvestment, reinvests
+- **investigate**: investigated, investigates, investigating, investigations, investigative, investigators
+- **invoke**: invoked, invokes, invoking
+- **involve**: involves, involving, uninvolved
+- **isolate**: isolates, isolating, isolationism
+- **issue**: issued, issues, issuing
+- **item**: itemisation, itemise, itemised, itemises, itemising, items
+- **job**: jobs
+- **journal**: journals
+- **justify**: justifiable, justifiably, justifications, justified, justifies, justifying, unjustified
+- **label**: labeled, labeling, labelled, labelling, labels
+- **labour**: labor, labored, labors, laboured, labouring, labours
+- **layer**: layered, layering, layers
+- **lecture**: lectured, lecturer, lecturers, lectures, lecturing
+- **legal**: illegality, illegally, legality, legally
+- **legislate**: legislated, legislates, legislating, legislator, legislators
+- **levy**: levies
+- **liberal**: liberalise, liberalism, liberalisation, liberalised, liberalises, liberalising, liberalization, liberalize, liberalized, liberalizes, liberalizing, liberate, liberated, liberates, liberations, liberating, liberator, liberators, liberally, liberals
+- **licence**: licences, licensed, licensing, licenses, unlicensed
+- **link**: linkage, linkages, linked, linking, links
+- **locate**: locating, locations, relocate, relocated, relocates, relocating, relocation
+- **logic**: illogical, illogically, logically, logician, logicians
+- **maintain**: maintained, maintaining, maintains
+- **major**: majorities
+- **manipulate**: manipulated, manipulates, manipulating, manipulations, manipulative
+- **manual**: manually, manuals
+- **margin**: marginally, margins
+- **mature**: immature, immaturity, maturation, maturational, matured, matures, maturing, maturity
+- **maximise**: max, maximised, maximises, maximising, maximisation, maximized, maximizes, maximizing, maximization
+- **mechanism**: mechanisms
+- **mediate**: mediated, mediates, mediating, mediation
+- **medical**: medically
+- **mental**: mentality, mentally
+- **method**: methodical, methodological, methodologies, methods
+- **migrate**: migrant, migrants, migrated, migrates, migrating, migrations, migratory
+- **minimal**: minimalisation, minimalise, minimalises, minimalised, minimalising, minimalist, minimalists, minimalistic, minimalization, minimalize, minimalized, minimalizes, minimalizing, minimally
+- **minimise**: minimised, minimises, minimising, minimized, minimizes, minimizing
+- **ministry**: ministered, ministering, ministerial, ministries
+- **minor**: minorities, minors
+- **mode**: modes
+- **modify**: modifications, modified, modifies, modifying, unmodified
+- **monitor**: monitored, monitoring, monitors, unmonitored
+- **motive**: motivated, motivates, motivating, motivations, motives, unmotivated
+- **mutual**: mutually
+- **negate**: negated, negates, negating, negatively, negatives
+- **network**: networked, networking, networks
+- **neutral**: neutralisation, neutralise, neutralised, neutralises, neutralising, neutrality, neutralization, neutralize, neutralized, neutralizes, neutralizing
+- **norm**: norms
+- **normal**: abnormal, abnormally, normalisation, normalise, normalised, normalises, normalising, normalization, normalize, normalized, normalizes, normalizing, normality
+- **notion**: notions
+- **objective**: objectively, objectivity
+- **obtain**: obtainable, obtained, obtaining, obtains, unobtainable
+- **occupy**: occupancy, occupant, occupants, occupational, occupations, occupied, occupier, occupiers, occupies, occupying
+- **occur**: occurred, occurrences, occurring, occurs, reoccur, reoccurred, reoccurring, reoccurs
+- **offset**: offsets, offsetting
+- **option**: optional, options
+- **orient**: orientate, orientated, orientates, orientating, oriented, orienting, orients, reorient, reorientation
+- **outcome**: outcomes
+- **output**: outputs
+- **overlap**: overlapped, overlapping, overlaps
+- **panel**: panelled, panelling, panels
+- **paradigm**: paradigms
+- **paragraph**: paragraphing, paragraphs
+- **parallel**: paralleled, parallelled, parallelling, parallels, unparalleled
+- **parameter**: parameters
+- **participate**: participants, participated, participates, participating, participatory
+- **partner**: partners, partnerships
+- **passive**: passively, passivity
+- **perceive**: perceived, perceives, perceiving, perceptions
+- **percent**: percentages
+- **period**: periodic, periodical, periodically, periodicals, periods
+- **persist**: persisted, persistence, persistently, persisting, persists
+- **perspective**: perspectives
+- **phase**: phased, phases, phasing
+- **phenomenon**: phenomena, phenomenal
+- **philosophy**: philosophers, philosophically, philosophies, philosophise, philosophised, philosophises, philosophising, philosophize, philosophized, philosophizes, philosophizing
+- **physical**: physically
+- **plus**: pluses
+- **policy**: policies
+- **portion**: portions
+- **pose**: posed, poses, posing
+- **positive**: positively
+- **practitioner**: practitioners
+- **precede**: preceded, precedence, precedes, preceding
+- **precise**: imprecise
+- **predict**: predictability, predictably, predicted, predicting, predictions, predicts, unpredictability, unpredictable
+- **predominant**: predominance, predominate, predominated, predominates, predominating
+- **preliminary**: preliminaries
+- **presume**: presumed, presumes, presuming, presumption, presumptions, presumptuous
+- **prime**: primacy
+- **principal**: principally
+- **principle**: principled, principles, unprincipled
+- **priority**: priorities, prioritisation, prioritise, prioritised, prioritises, prioritising, prioritization, prioritize, prioritized, prioritizes, prioritizing
+- **proceed**: procedural, procedures, proceeded, proceeding
+- **process**: processed, processes
+- **professional**: professionally, professionals, professionalism
+- **prohibit**: prohibited, prohibiting, prohibition, prohibitions, prohibitive, prohibits
+- **project**: projected, projecting, projections, projects
+- **promote**: promoted, promoter, promoters, promotes, promoting, promotions
+- **proportion**: disproportion, disproportionate, disproportionately, proportional, proportionally, proportionate, proportionately, proportions
+- **prospect**: prospects
+- **protocol**: protocols
+- **psychology**: psychologically, psychologists
+- **publication**: publications
+- **publish**: published, publisher, publishers, publishes, unpublished
+- **purchase**: purchased, purchaser, purchasers, purchases, purchasing
+- **pursue**: pursued, pursues, pursuing, pursuits
+- **qualitative**: qualitatively
+- **quote**: quotations, quoted, quotes, quoting
+- **radical**: radically, radicals
+- **random**: randomly, randomness
+- **range**: ranged, ranges, ranging
+- **ratio**: ratios
+- **rational**: irrational, rationalisation, rationalisations, rationalise, rationalised, rationalises, rationalising, rationalism, rationality, rationalization, rationalizations, rationalize, rationalized, rationalizes, rationally
+- **react**: reacted, reacts, reacting, reactionaries, reactionary, reactions, reactive, reactivate, reactivation, reactor, reactors
+- **recover**: recoverable, recovered, recovering, recovers
+- **refine**: refined, refinement, refinements, refines, refining
+- **regime**: regimes
+- **region**: regionally, regions
+- **register**: deregister, deregistered, deregistering, deregisters, deregistration, registered, registering, registers
+- **regulate**: deregulated, deregulates, deregulating, deregulation, regulated, regulates, regulating, regulations, regulators, unregulated
+- **reinforce**: reinforced, reinforcement, reinforcements, reinforces, reinforcing
+- **reject**: rejected, rejecting, rejects, rejections
+- **relax**: relaxation, relaxes
+- **release**: released, releases, releasing
+- **relevant**: irrelevance
+- **reluctance**: reluctantly
+- **rely**: reliably, reliance, reliant, relied, relies, relying, unreliable
+- **remove**: removable, removals, removed, removes, removing
+- **require**: required, requirements, requires, requiring
+- **research**: researched, researchers, researches, researching
+- **reside**: resided, residents, resides, residing
+- **resolve**: resolved, resolves, resolving, unresolved
+- **resource**: resourced, resourceful, resources, resourcing, unresourceful, under-resourced
+- **respond**: responded, respondent, respondents, responding, responds, responses, responsive, responsiveness, unresponsive
+- **restore**: restored, restores, restoring
+- **restrain**: restrained, restraining, restrains, restraints, unrestrained
+- **restrict**: restricted, restricting, restrictions, restrictive, restrictively, restricts, unrestricted, unrestrictive
+- **retain**: retained, retaining, retainer, retainers, retains, retention, retentive
+- **reveal**: revealed, revealing, reveals, revelations
+- **revenue**: revenues
+- **reverse**: reversal, reversed, reverses, reversible, reversing, reversals, irreversible
+- **revise**: revised, revises, revising, revisions
+- **revolution**: revolutionaries, revolutionise, revolutionised, revolutionises, revolutionising, revolutionist, revolutionists, revolutionize, revolutionized, revolutionizes, revolutionizing, revolutions
+- **rigid**: rigidities, rigidity, rigidly
+- **role**: roles
+- **route**: routed, routes, routing
+- **scenario**: scenarios
+- **schedule**: reschedule, rescheduled, reschedules, rescheduling, scheduled, schedules, scheduling, unscheduled
+- **scheme**: schematic, schematically, schemed, schemes, scheming
+- **section**: sectioned, sectioning, sections
+- **sector**: sectors
+- **secure**: insecure, insecurities, insecurity, secured, securely, secures, securing, securities
+- **seek**: seeking, seeks, sought
+- **select**: selected, selecting, selections, selectively, selector, selectors, selects
+- **sequence**: sequenced, sequences, sequencing, sequential, sequentially
+- **sex**: sexes, sexism, sexually
+- **shift**: shifted, shifting, shifts
+- **significant**: insignificant, insignificantly, signified, signifies, signify, signifying
+- **similar**: dissimilar, similarities
+- **simulate**: simulated, simulates, simulating
+- **site**: sites
+- **source**: sourced, sources, sourcing
+- **specific**: specifications, specificity, specifics
+- **specify**: specifiable, specified, specifies, specifying, unspecified
+- **sphere**: spheres, spherical, spherically
+- **stable**: instability, stabilisation, stabilise, stabilised, stabilises, stabilising, stabilization, stabilized, stabilizes, stabilizing, unstable
+- **statistic**: statistician, statisticians, statistically, statistics
+- **strategy**: strategies, strategically, strategist, strategists
+- **stress**: stressed, stresses, stressful, stressing, unstressed
+- **structure**: restructure, restructured, restructures, restructuring, structurally, structured, structures, structuring, unstructured
+- **style**: styled, styles, styling, stylish, stylise, stylised, stylises, stylising, stylize, stylized, stylizes, stylizing
+- **submit**: submissions, submits, submitted, submitting
+- **subordinate**: subordinates, subordination
+- **subsidy**: subsidiary, subsidies, subsidise, subsidised, subsidises, subsidising, subsidize, subsidized, subsidizes, subsidizing
+- **substitute**: substituted, substitutes, substituting
+- **successor**: successions, successively, successors
+- **sufficient**: sufficiency, insufficiently
+- **sum**: summation, summed, summing, sums
+- **summary**: summaries, summarise, summarised, summarises, summarising, summarisation, summarisations, summarization, summarizations, summarized, summarizes, summarizing
+- **supplement**: supplementary, supplemented, supplementing, supplements
+- **survey**: surveyed, surveying, surveys
+- **survive**: survived, survives, surviving, survivors
+- **suspend**: suspended, suspending, suspends
+- **sustain**: sustainability, sustained, sustaining, sustains, sustenance, unsustainable
+- **symbol**: symbolically, symbolise, symbolises, symbolised, symbolising, symbolism, symbolize, symbolized, symbolizes, symbolizing, symbols
+- **tape**: taped, tapes, taping
+- **target**: targeted, targeting, targets
+- **task**: tasks
+- **team**: teamed, teaming, teams
+- **technical**: technically
+- **technique**: techniques
+- **technology**: technologically
+- **tense**: tensely, tenser, tensest, tensions
+- **terminate**: terminals, terminated, terminates, terminating, termination, terminations
+- **text**: texts, textual
+- **theme**: themes, thematic, thematically
+- **theory**: theoretically, theories, theorist, theorists
+- **thesis**: theses
+- **topic**: topical, topics
+- **trace**: traceable, traced, traces, tracing
+- **tradition**: non-traditional, traditionalist, traditionally, traditions
+- **transfer**: transferable, transference, transferred, transferring, transfers
+- **transform**: transformations, transformed, transforming, transforms
+- **transit**: transited, transiting, transitional, transitions, transitory, transits
+- **transmit**: transmissions, transmitted, transmitting, transmits
+- **transport**: transported, transporter, transporters, transporting, transports
+- **trend**: trends
+- **trigger**: triggered, triggering, triggers
+- **undergo**: undergoes, undergoing, undergone, underwent
+- **underlie**: underlay, underlies
+- **undertake**: undertaken, undertakes, undertaking, undertook
+- **uniform**: uniformity, uniformly
+- **unify**: unification, unified, unifies, unifying
+- **unique**: uniquely, uniqueness
+- **utilise**: utilisation, utilised, utilises, utilising, utiliser, utilisers, utilities, utilization, utilized, utilizes, utilizing
+- **valid**: invalidate, invalidity, validate, validated, validating, validation, validly
+- **vary**: invariable, invariably, variability, variables, variably, variance, variant, variants, variations, varies, varying
+- **vehicle**: vehicles
+- **version**: versions
+- **violate**: violated, violates, violating, violations
+- **virtual**: virtually
+- **visible**: visibility, visibly, invisibility
+- **vision**: visions
+- **visual**: visualise, visualised, visualised, visualising, visualisation, visualize, visualized, visualizing, visualization, visually
+- **volume**: volumes, vol
+- **voluntary**: voluntarily, volunteering, volunteered, volunteers
+
+## 4. Family Words NOT in Oxford (Base Form Match)
+Count: 1128 words across 354 families
+
+- **abandon**: abandonment
+- **abstract**: abstraction, abstractions, abstractly
+- **academy**: academia, academically
+- **access**: accessibility, inaccessible
+- **accompany**: accompaniment, unaccompanied
+- **accurate**: inaccuracy, inaccuracies, inaccurate
+- **achieve**: achievable
+- **acknowledge**: acknowledgement, acknowledgemens
+- **adapt**: adaptability, adaptable, adaptive
+- **adequate**: adequacy, inadequacies, inadequacy, inadequately
+- **adjust**: readjust, readjusted, readjusting, readjustment, readjustments, readjusts
+- **administrate**: administrates, administratively
+- **adult**: adulthood
+- **advocate**: advocacy
+- **affect**: affective, affectively, unaffected
+- **aggregate**: aggregated, aggregates, aggregating, aggregation
+- **aid**: unaided
+- **alter**: alterable, alteration, alterations, alternate, alternating, unalterable, unaltered
+- **alternative**: alternatively
+- **ambiguous**: ambiguities, ambiguity, unambiguous, unambiguously
+- **analogy**: analogous
+- **analyse**: analyser, analytic, analytical, analytically, analyze, analyzed, analyzing
+- **anticipate**: anticipation, unanticipated
+- **append**: appendix, appended, appends, appending, appendices, appendixes
+- **appreciate**: appreciable, appreciably, unappreciated
+- **approach**: approachable, unapproachable
+- **appropriate**: appropriacy, appropriateness, inappropriacy, inappropriately
+- **approximate**: approximated, approximates, approximating, approximation, approximations
+- **arbitrary**: arbitrariness, arbitrarily
+- **area**: areas
+- **assess**: assessable, reassess, reassessed, reassessing, reassessment, unassessed
+- **assign**: reassign, reassigned, reassigning, reassigns, unassigned
+- **assist**: unassisted
+- **assure**: assuredly
+- **attach**: unattached
+- **attain**: attainable, attainment, attainments, unattainable
+- **attribute**: attributable, attribution
+- **author**: authorship
+- **authority**: authoritative
+- **automate**: automated, automates, automating, automation
+- **available**: unavailable
+- **aware**: unaware
+- **bias**: unbiased
+- **brief**: brevity
+- **bulk**: bulky
+- **capable**: incapable
+- **capacity**: incapacitate, incapacitated
+- **category**: categorisation, categorise, categorised, categorises, categorising, categorization, categorized, categorizes, categorizing
+- **cease**: ceaseless, ceases
+- **challenge**: challenger, challengers
+- **chart**: uncharted
+- **chemical**: chemically
+- **cite**: citation, citations
+- **clarify**: clarification
+- **clause**: clauses
+- **coherent**: coherence, coherently, incoherent, incoherently
+- **coincide**: coincident, coincidental
+- **collapse**: collapses, collapsible
+- **commence**: commencement, recommences, recommenced, recommencing
+- **communicate**: communicable, communicative, communicatively, uncommunicative
+- **compatible**: compatibility, incompatibility, incompatible
+- **compensate**: compensatory
+- **compile**: compilation, compilations
+- **complement**: complementary
+- **component**: componentry
+- **comprehensive**: comprehensively
+- **comprise**: comprises
+- **compute**: computation, computational, computations, computable, computerised
+- **conceive**: conceivable, conceivably, inconceivable, inconceivably
+- **concept**: conceptual, conceptualisation, conceptualise, conceptualised, conceptualises, conceptualising, conceptually
+- **conclude**: conclusive, conclusively, inconclusive, inconclusively
+- **concurrent**: concurrently
+- **confine**: unconfined
+- **conform**: conformable, conformability, conformance, conformation, conformed, conforming, conformist, conformists, conformity, conforms, nonconformist, nonconformists, nonconformity, non-conformist, non-conformists, non-conformity
+- **consist**: inconsistencies, inconsistency, inconsistent
+- **constant**: constancy, inconstancy, inconstantly
+- **constitute**: constituent, constituents, constitutionally, constitutive, unconstitutional
+- **constrain**: constrained, constraining, constrains, unconstrained
+- **construct**: constructive, reconstruct, reconstructed, reconstructing, reconstructs
+- **consult**: consultancy, consultative
+- **contact**: contactable
+- **context**: contextual, contextualise, contextualised, contextualising, uncontextualised, contextualize, contextualized, contextualizing, uncontextualized
+- **contradict**: contradicted, contradicting, contradictory, contradicts
+- **contrary**: contrarily
+- **contrast**: contrastive
+- **controversy**: controversially, uncontroversial
+- **convene**: convenes, convened, convening, conventionally, unconventional
+- **converse**: conversely
+- **convert**: convertible
+- **convince**: convincingly, unconvinced
+- **cooperate**: cooperation, cooperatively, co-operate, co‑operated, co‑operates, co‑operation, co‑operative, co‑operatively
+- **coordinate**: co-ordinate, co‑ordinated, co‑ordinates, co‑ordinating, co‑ordination, co‑ordinator, co‑ordinators
+- **correspond**: correspondingly
+- **create**: creatively, recreate, recreated, recreates, recreating
+- **credit**: creditor, creditors
+- **crucial**: crucially
+- **culture**: culturally, uncultured
+- **cycle**: cyclic, cyclical
+- **debate**: debatable
+- **deduce**: deduced, deduces, deducing, deduction, deductions
+- **define**: definable, redefine, redefined, redefines, redefining, undefined
+- **definite**: definitive, indefinite, indefinitely
+- **demonstrate**: demonstrable, demonstrably, demonstrative, demonstratively, demonstrator, demonstrators
+- **denote**: denotation, denotations, denoted, denotes, denoting
+- **deny**: deniable, undeniable
+- **depress**: depresses
+- **derive**: derivation, derivations, derivative, derivatives
+- **detect**: detectable, detector, detectors
+- **deviate**: deviated, deviates, deviating, deviation, deviations
+- **devote**: devotedly, devotion, devotions
+- **differentiate**: differentiation
+- **dimension**: dimensional, multidimensional
+- **diminish**: diminution, undiminished
+- **discrete**: discretely, discretionary, indiscrete, indiscretion
+- **discriminate**: discriminated, discriminates, discriminating
+- **displace**: displacement
+- **dispose**: disposable, disposes
+- **distinct**: distinctively, distinctly, indistinct, indistinctly
+- **distort**: distortion, distortions
+- **distribute**: distributional, distributive, distributor, distributors, redistribute, redistributed, redistributes, redistributing, redistribution
+- **diverse**: diversely, diversification, diversified, diversifies, diversify, diversifying
+- **domestic**: domestically, domesticate, domesticated, domesticating
+- **dominate**: domination
+- **draft**: redraft, redrafted, redrafting, redrafts
+- **drama**: dramas, dramatise, dramatised, dramatising, dramatises, dramatisation, dramatisations, dramatist, dramatists, dramatization, dramatizations, dramatize, dramatized, dramatizes, dramatizing
+- **dynamic**: dynamically
+- **economy**: economical, economically, uneconomical
+- **eliminate**: elimination
+- **emerge**: emergent
+- **emphasis**: emphasise, emphasizes, emphatic, emphatically
+- **empirical**: empirically, empiricism
+- **energy**: energetic, energetically
+- **enhance**: enhancement
+- **enormous**: enormity, enormously
+- **environment**: environmentalist, environmentalists, environmentally
+- **equate**: equated, equates, equating
+- **equivalent**: equivalence
+- **erode**: eroded, erodes, eroding, erosion
+- **error**: erroneous, erroneously
+- **establish**: disestablish, disestablished, disestablishes, disestablishing, disestablishment
+- **estimate**: estimation, estimations, over‑estimate, overestimate, overestimated, overestimates, overestimating, underestimate, underestimated, underestimates, underestimating
+- **ethic**: ethically, unethical
+- **ethnic**: ethnicity
+- **evaluate**: evaluative, re-evaluate, re-evaluated, re-evaluates, re-evaluating, re-evaluation
+- **eventual**: eventuality
+- **evident**: evidential, evidently
+- **evolve**: evolutionist, evolutionists
+- **exclude**: exclusionary, exclusionist
+- **expand**: expansionism, expansive
+- **expert**: expertly
+- **export**: exporter, exporters
+- **expose**: exposes
+- **external**: externalisation, externalise, externalised, externalises, externalising, externality, externalization, externalize, externalized, externalizes, externalizing, externally
+- **extract**: extraction
+- **facilitate**: facilitation, facilitator, facilitators
+- **federal**: federation, federations
+- **final**: finalise, finalised, finalises, finalising, finalize, finalized, finalizes, finalizing, finality
+- **finance**: financially, financier, financiers
+- **finite**: infinite, infinitely
+- **flexible**: inflexible, inflexibility
+- **fluctuate**: fluctuated, fluctuates, fluctuating, fluctuation, fluctuations
+- **focus**: refocus, refocused, refocuses, refocusing, refocussed, refocusses, refocussing
+- **formula**: formulae, formulas, formulation, formulations, reformulate, reformulated, reformulating, reformulation, reformulations
+- **found**: unfounded
+- **function**: functionally
+- **fund**: funder, funders
+- **globe**: globally, globalisation
+- **hierarchy**: hierarchical
+- **hypothesis**: hypotheses, hypothesise, hypothesize, hypothesized, hypothesizes, hypothesizing, hypothetical, hypothetically
+- **identical**: identically
+- **identify**: identifiable, unidentifiable
+- **ideology**: ideologically
+- **illustrate**: illustrative
+- **immigrate**: immigrated, immigrates, immigrating
+- **implicate**: implicated, implicates, implicating
+- **implicit**: implicitly
+- **impose**: imposes, imposition
+- **incidence**: incidentally
+- **incline**: inclination, inclinations, inclines, inclining
+- **incorporate**: incorporation
+- **indicate**: indicative
+- **individual**: individualised, individuality, individualism, individualist, individualists, individualistic, individually
+- **induce**: induction
+- **inevitable**: inevitability
+- **infer**: inference, inferences
+- **inherent**: inherently
+- **inhibit**: inhibition, inhibitions
+- **initiate**: initiation, initiations, initiator, initiators
+- **injure**: uninjured
+- **innovate**: innovated, innovates, innovating, innovator, innovators
+- **insight**: insightful
+- **institute**: institutionalise, institutionalised, institutionalises, institutionalising, institutionalized, institutionalizes, institutionalizing, institutionally
+- **instruct**: instructive
+- **intelligent**: intelligently, unintelligent
+- **intense**: intensely, intenseness, intensification, intension, intensively
+- **interact**: interactively
+- **internal**: internalise, internalised, internalises, internalising, internalize, internalized, internalizes, internalizing, internally
+- **interpret**: interpretative, interpretive, misinterpret, misinterpretation, misinterpretations, misinterpreted, misinterpreting, misinterprets, reinterpret, reinterpreted, reinterprets, reinterpreting, reinterpretation, reinterpretations
+- **intrinsic**: intrinsically
+- **invest**: reinvest, reinvested, reinvesting, reinvestment, reinvests
+- **investigate**: investigative
+- **involve**: uninvolved
+- **isolate**: isolationism
+- **item**: itemisation, itemise, itemised, itemises, itemising
+- **justify**: justifiable, justifiably, unjustified
+- **labour**: labor, labored, labors
+- **lecture**: lecturer, lecturers
+- **legal**: illegality, illegally, legality, legally
+- **legislate**: legislated, legislates, legislating, legislator, legislators
+- **levy**: levies
+- **liberal**: liberalise, liberalism, liberalisation, liberalised, liberalises, liberalising, liberalization, liberalize, liberalized, liberalizes, liberalizing, liberate, liberated, liberates, liberating, liberator, liberators, liberally
+- **licence**: licenses, unlicensed
+- **link**: linkage, linkages
+- **locate**: relocate, relocated, relocates, relocating, relocation
+- **logic**: illogical, illogically, logically, logician, logicians
+- **manipulate**: manipulative
+- **manual**: manually, manuals
+- **margin**: marginally
+- **mature**: immature, immaturity, maturation, maturational, maturity
+- **maximise**: max, maximised, maximises, maximising, maximisation, maximizes, maximization
+- **mediate**: mediated, mediates, mediating, mediation
+- **medical**: medically
+- **mental**: mentality, mentally
+- **method**: methodical, methodological
+- **migrate**: migrant, migrants, migrated, migrates, migrating, migratory
+- **minimal**: minimalisation, minimalise, minimalises, minimalised, minimalising, minimalist, minimalists, minimalistic, minimalization, minimalize, minimalized, minimalizes, minimalizing, minimally
+- **minimise**: minimised, minimises, minimising, minimizes
+- **ministry**: ministerial
+- **modify**: unmodified
+- **monitor**: unmonitored
+- **motive**: unmotivated
+- **mutual**: mutually
+- **negate**: negated, negates, negating, negatively
+- **neutral**: neutralisation, neutralise, neutralised, neutralises, neutralising, neutrality, neutralization, neutralize, neutralized, neutralizes, neutralizing
+- **normal**: abnormal, abnormally, normalisation, normalise, normalised, normalises, normalising, normalization, normalize, normalized, normalizes, normalizing, normality
+- **objective**: objectively, objectivity
+- **obtain**: obtainable, unobtainable
+- **occupy**: occupancy, occupant, occupants, occupational, occupier, occupiers
+- **occur**: reoccur, reoccurred, reoccurring, reoccurs
+- **offset**: offsets, offsetting
+- **option**: optional
+- **orient**: orientate, orientated, orientates, orientating, oriented, orienting, orients, reorient, reorientation
+- **overlap**: overlapped, overlapping, overlaps
+- **paradigm**: paradigms
+- **parallel**: unparalleled
+- **participate**: participatory
+- **passive**: passively, passivity
+- **period**: periodic, periodical, periodically, periodicals
+- **persist**: persistence, persistently
+- **phase**: phases
+- **phenomenon**: phenomena, phenomenal
+- **philosophy**: philosophically, philosophise, philosophised, philosophises, philosophising, philosophize, philosophized, philosophizes, philosophizing
+- **physical**: physically
+- **pose**: poses
+- **positive**: positively
+- **precede**: precedence
+- **precise**: imprecise
+- **predict**: predictability, predictably, unpredictability, unpredictable
+- **predominant**: predominance, predominate, predominated, predominates, predominating
+- **presume**: presumption, presumptions, presumptuous
+- **prime**: primacy
+- **principal**: principally
+- **principle**: unprincipled
+- **priority**: prioritisation, prioritise, prioritised, prioritises, prioritising, prioritization, prioritize, prioritized, prioritizes, prioritizing
+- **proceed**: procedural
+- **professional**: professionally, professionalism
+- **prohibit**: prohibition, prohibitions, prohibitive
+- **promote**: promoter, promoters
+- **proportion**: disproportion, disproportionate, disproportionately, proportional, proportionally, proportionate, proportionately
+- **psychology**: psychologically
+- **publish**: publisher, publishers, unpublished
+- **purchase**: purchaser, purchasers, purchases
+- **qualitative**: qualitatively
+- **radical**: radically
+- **random**: randomly, randomness
+- **rational**: irrational, rationalisation, rationalisations, rationalise, rationalised, rationalises, rationalising, rationalism, rationality, rationalization, rationalizations, rationalize, rationalized, rationalizes, rationally
+- **react**: reactionaries, reactionary, reactive, reactivate, reactivation, reactor, reactors
+- **recover**: recoverable
+- **refine**: refined, refinement, refinements, refines, refining
+- **region**: regionally
+- **register**: deregister, deregistered, deregistering, deregisters, deregistration
+- **regulate**: deregulated, deregulates, deregulating, deregulation, unregulated
+- **reinforce**: reinforcement, reinforcements
+- **relax**: relaxation
+- **release**: releases
+- **relevant**: irrelevance
+- **reluctance**: reluctantly
+- **rely**: reliably, reliance, reliant, unreliable
+- **remove**: removable
+- **resolve**: unresolved
+- **resource**: resourceful, unresourceful, under-resourced
+- **respond**: respondent, respondents, responses, responsive, responsiveness, unresponsive
+- **restrain**: restrained, restraining, restrains, unrestrained
+- **restrict**: restrictive, restrictively, unrestricted, unrestrictive
+- **retain**: retainer, retainers, retention, retentive
+- **reverse**: reversal, reverses, reversible, reversals, irreversible
+- **revise**: revises
+- **revolution**: revolutionise, revolutionised, revolutionises, revolutionising, revolutionist, revolutionists, revolutionize, revolutionized, revolutionizes, revolutionizing
+- **rigid**: rigidities, rigidity, rigidly
+- **schedule**: reschedule, rescheduled, reschedules, rescheduling, unscheduled
+- **scheme**: schematic, schematically
+- **secure**: insecure, insecurities, insecurity, securely
+- **seek**: sought
+- **select**: selectively, selector, selectors
+- **sequence**: sequential, sequentially
+- **sex**: sexism, sexually
+- **significant**: insignificant, insignificantly, signified, signifies, signify, signifying
+- **similar**: dissimilar
+- **specific**: specificity
+- **specify**: specifiable, unspecified
+- **sphere**: spherical, spherically
+- **stable**: instability, stabilisation, stabilise, stabilised, stabilises, stabilising, stabilization, stabilizes, unstable
+- **statistic**: statistician, statisticians, statistically
+- **strategy**: strategically, strategist, strategists
+- **stress**: stressful, unstressed
+- **structure**: restructure, restructured, restructures, restructuring, structurally, unstructured
+- **style**: stylish, stylise, stylised, stylises, stylising, stylize, stylized, stylizes, stylizing
+- **subordinate**: subordinates, subordination
+- **subsidy**: subsidiary, subsidise, subsidised, subsidises, subsidising, subsidize, subsidized, subsidizes, subsidizing
+- **successor**: successively
+- **sufficient**: sufficiency, insufficiently
+- **sum**: summation
+- **summary**: summarise, summarised, summarises, summarising, summarisation, summarisations, summarization, summarizations, summarizes
+- **supplement**: supplementary
+- **sustain**: sustainability, sustenance, unsustainable
+- **symbol**: symbolically, symbolise, symbolises, symbolised, symbolising, symbolism, symbolize, symbolized, symbolizes, symbolizing
+- **technical**: technically
+- **technology**: technologically
+- **tense**: tensely, tenser, tensest
+- **terminate**: termination, terminations
+- **text**: textual
+- **theme**: thematic, thematically
+- **theory**: theoretically, theorist, theorists
+- **thesis**: theses
+- **topic**: topical
+- **trace**: traceable
+- **tradition**: non-traditional, traditionalist, traditionally
+- **transfer**: transferable, transference
+- **transit**: transitional, transitory
+- **transport**: transporter, transporters
+- **undergo**: undergone, underwent
+- **underlie**: underlay, underlies
+- **undertake**: undertaken, undertook
+- **uniform**: uniformity, uniformly
+- **unify**: unification
+- **unique**: uniquely, uniqueness
+- **utilise**: utilisation, utilised, utilises, utilising, utiliser, utilisers, utilization, utilizes
+- **valid**: invalidate, invalidity, validate, validated, validating, validation, validly
+- **vary**: invariable, invariably, variability, variably, variance, variant, variants
+- **virtual**: virtually
+- **visible**: visibility, visibly, invisibility
+- **visual**: visualise, visualised, visualised, visualising, visualisation, visualize, visualized, visualizing, visualization, visually
+- **volume**: vol
+- **voluntary**: voluntarily

@@ -1,0 +1,289 @@
+{
+  "total_scanned": 1386,
+  "already_has_synonym": 1072,
+  "scraped": 314,
+  "scraped_not_found": 283,
+  "synonym_applied": 31,
+  "skipped_no_url": 0,
+  "operations": [
+    {
+      "row_idx": 116,
+      "sense_idx": 1,
+      "old_ex": "She managed to sustain everyone's interest until the end of her speech.",
+      "new_ex": "She managed to sustain everyone's interest until the end of her speech. (maintain)",
+      "synonym": "maintain",
+      "word": "sustain",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 116,
+      "sense_idx": 2,
+      "old_ex": "The ice will not sustain your weight.",
+      "new_ex": "The ice will not sustain your weight. (suffer)",
+      "synonym": "suffer",
+      "word": "sustain",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 116,
+      "sense_idx": 3,
+      "old_ex": "The court sustained his claim that the contract was illegal.",
+      "new_ex": "The court sustained his claim that the contract was illegal. (uphold)",
+      "synonym": "uphold",
+      "word": "sustain",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 136,
+      "sense_idx": 1,
+      "old_ex": "The country acknowledged his claim to the throne.",
+      "new_ex": "The country acknowledged his claim to the throne. (recognize)",
+      "synonym": "recognize",
+      "word": "acknowledge",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 153,
+      "sense_idx": 0,
+      "old_ex": "Each student's progress is closely monitored.",
+      "new_ex": "Each student's progress is closely monitored. (track)",
+      "synonym": "track",
+      "word": "monitors",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 154,
+      "sense_idx": 0,
+      "old_ex": "A police helicopter will be used to monitor crime hotspots.",
+      "new_ex": "A police helicopter will be used to monitor crime hotspots. (track)",
+      "synonym": "track",
+      "word": "monitors",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 327,
+      "sense_idx": 0,
+      "old_ex": "The rebellion was brutally suppressed.",
+      "new_ex": "The rebellion was brutally suppressed. (quash)",
+      "synonym": "quash",
+      "word": "suppress",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 388,
+      "sense_idx": 1,
+      "old_ex": "The people cultivate mainly rice and beans.",
+      "new_ex": "The people cultivate mainly rice and beans. (grow)",
+      "synonym": "grow",
+      "word": "cultivate",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 404,
+      "sense_idx": 1,
+      "old_ex": "Don't tread ash into the carpet!",
+      "new_ex": "Don't tread ash into the carpet! (trample)",
+      "synonym": "trample",
+      "word": "tread",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 408,
+      "sense_idx": 1,
+      "old_ex": "You must learn how to construct a logical argument.",
+      "new_ex": "You must learn how to construct a logical argument. (put together)",
+      "synonym": "put together",
+      "word": "construct",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 690,
+      "sense_idx": 1,
+      "old_ex": "He outlined his plans and then proceeded to explain them in more detail.",
+      "new_ex": "He outlined his plans and then proceeded to explain them in more detail. (go on)",
+      "synonym": "go on",
+      "word": "proceed",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 771,
+      "sense_idx": 3,
+      "old_ex": "His voice betrayed the worry he was trying to hide.",
+      "new_ex": "His voice betrayed the worry he was trying to hide. (give away)",
+      "synonym": "give away",
+      "word": "betray",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1072,
+      "sense_idx": 4,
+      "old_ex": "The opening paragraph invokes a vision of England in the early Middle Ages.",
+      "new_ex": "The opening paragraph invokes a vision of England in the early Middle Ages. (evoke)",
+      "synonym": "evoke",
+      "word": "invoke",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1256,
+      "sense_idx": 3,
+      "old_ex": "The wave broke through the wall and overwhelmed the town.",
+      "new_ex": "The wave broke through the wall and overwhelmed the town. (flood)",
+      "synonym": "flood",
+      "word": "overwhelm",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1260,
+      "sense_idx": 3,
+      "old_ex": "She's been overlooked for promotion several times.",
+      "new_ex": "She's been overlooked for promotion several times. (pass over)",
+      "synonym": "pass over",
+      "word": "overlook",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1296,
+      "sense_idx": 0,
+      "old_ex": "She pleaded with him not to go.",
+      "new_ex": "She pleaded with him not to go. (beg)",
+      "synonym": "beg",
+      "word": "plead",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1297,
+      "sense_idx": 0,
+      "old_ex": "They hired a top lawyer to plead their case.",
+      "new_ex": "They hired a top lawyer to plead their case. (beg)",
+      "synonym": "beg",
+      "word": "plead",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1324,
+      "sense_idx": 1,
+      "old_ex": "The prescribed form must be completed and returned to this office.",
+      "new_ex": "The prescribed form must be completed and returned to this office. (stipulate)",
+      "synonym": "stipulate",
+      "word": "prescribe",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1337,
+      "sense_idx": 1,
+      "old_ex": "Justice will prevail over tyranny.",
+      "new_ex": "Justice will prevail over tyranny. (triumph)",
+      "synonym": "triumph",
+      "word": "prevail",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1421,
+      "sense_idx": 2,
+      "old_ex": "Community leaders have renewed calls for a peaceful settlement.",
+      "new_ex": "Community leaders have renewed calls for a peaceful settlement. (reiterate)",
+      "synonym": "reiterate",
+      "word": "renew",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1425,
+      "sense_idx": 2,
+      "old_ex": "The committee was asked to render a report on the housing situation.",
+      "new_ex": "The committee was asked to render a report on the housing situation. (furnish)",
+      "synonym": "furnish",
+      "word": "render",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1425,
+      "sense_idx": 4,
+      "old_ex": "The Italian phrase can be rendered as ‘I did my best’.",
+      "new_ex": "The Italian phrase can be rendered as ‘I did my best’. (translate)",
+      "synonym": "translate",
+      "word": "render",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1509,
+      "sense_idx": 2,
+      "old_ex": "I tried to simulate surprise at the news.",
+      "new_ex": "I tried to simulate surprise at the news. (feign)",
+      "synonym": "feign",
+      "word": "simulate",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1520,
+      "sense_idx": 3,
+      "old_ex": "He smashed the ball into the goal.",
+      "new_ex": "He smashed the ball into the goal. (slam)",
+      "synonym": "slam",
+      "word": "smash",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1524,
+      "sense_idx": 1,
+      "old_ex": "A sudden shower of rain soaked the spectators.",
+      "new_ex": "A sudden shower of rain soaked the spectators. (drench)",
+      "synonym": "drench",
+      "word": "soak",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1667,
+      "sense_idx": 1,
+      "old_ex": "There's only one ticket left—I'll toss you for it.",
+      "new_ex": "There's only one ticket left—I'll toss you for it. (flip)",
+      "synonym": "flip",
+      "word": "toss",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1705,
+      "sense_idx": 1,
+      "old_ex": "They will be unveiling their new models at the Motor Show.",
+      "new_ex": "They will be unveiling their new models at the Motor Show. (reveal)",
+      "synonym": "reveal",
+      "word": "unveil",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1755,
+      "sense_idx": 2,
+      "old_ex": "You must have wiped off that programme I recorded.",
+      "new_ex": "You must have wiped off that programme I recorded. (erase)",
+      "synonym": "erase",
+      "word": "wipe",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1755,
+      "sense_idx": 3,
+      "old_ex": "I tried to wipe the whole episode from my mind.",
+      "new_ex": "I tried to wipe the whole episode from my mind. (erase)",
+      "synonym": "erase",
+      "word": "wipe",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1770,
+      "sense_idx": 1,
+      "old_ex": "Lack of space forbids further treatment of the topic here.",
+      "new_ex": "Lack of space forbids further treatment of the topic here. (prohibit)",
+      "synonym": "prohibit",
+      "word": "forbid",
+      "pos": "verb"
+    },
+    {
+      "row_idx": 1898,
+      "sense_idx": 1,
+      "old_ex": "He tackled a masked intruder at his home.",
+      "new_ex": "He tackled a masked intruder at his home. (confront)",
+      "synonym": "confront",
+      "word": "tackle",
+      "pos": "verb"
+    }
+  ]
+}

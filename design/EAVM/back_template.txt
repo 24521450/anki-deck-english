@@ -1,0 +1,368 @@
+<div class="anki-card-container">
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div id="top-bar-pos-back" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+        {{#PartOfSpeech}}
+        <span class="pos-chip">{{PartOfSpeech}}</span>
+        {{/PartOfSpeech}}
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <span class="top-badge cefr-badge-{{CEFRLevel}}">{{CEFRLevel}}</span>
+    </div>
+  </div>
+
+  <!-- Content Back -->
+  <div class="card-content-back">
+    <div class="word-header-back">
+      <div class="word-back">{{Word}}</div>
+      <hr class="divider divider-{{CEFRLevel}}">
+      {{#IPA}}
+      <div class="meta-row">
+        <span class="ipa-text" id="ipa-block">IPA: <span id="ipa-val">{{IPA}}</span></span>
+      </div>
+      {{/IPA}}
+    </div>
+
+    <!-- Audio row -->
+    <div class="audio-row" id="audio-row-container">
+      {{#AudioUK}}
+      <span class="audio-btn-wrapper" id="audio-uk-wrapper">UK: <span id="audio-uk-val">{{AudioUK}}</span></span>
+      {{/AudioUK}}
+      {{#AudioUS}}
+      <span class="audio-btn-wrapper" id="audio-us-wrapper">US: <span id="audio-us-val">{{AudioUS}}</span></span>
+      {{/AudioUS}}
+    </div>
+
+    <!-- Definition -->
+    <div class="section-box">
+      <div class="section-title">
+        📖 DEFINITION
+      </div>
+      <div class="section-content-def" id="definition-container">{{Definition}}</div>
+    </div>
+
+    <!-- Example -->
+    {{#Example}}
+    <div class="section-box" id="example-section">
+      <div class="section-title">
+        💬 EXAMPLE
+      </div>
+      <div class="section-content-ex" id="example-container">"{{Example}}"</div>
+    </div>
+    {{/Example}}
+
+    <!-- Collocations -->
+    {{#Collocations}}
+    <div class="section-box" id="collocations-section">
+      <div class="section-title">
+        🔗 COLLOCATIONS
+      </div>
+      <div class="collocations-list" id="collocations-container">
+        {{Collocations}}
+      </div>
+    </div>
+    {{/Collocations}}
+
+    <!-- Word Family -->
+    {{#WordFamily}}
+    <div class="section-box word-family-box" id="word-family-section">
+      <div class="section-title">
+        🌿 WORD FAMILY
+      </div>
+      <div class="word-family-content" id="word-family-container">
+        {{WordFamily}}
+      </div>
+    </div>
+    {{/WordFamily}}
+
+    <!-- Footer badges -->
+    <div class="footer-badges" id="footer-badges-container">
+      <span class="footer-badge">{{Source}}</span>
+      <span class="footer-badge">{{AudioSource}}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden raw inputs for JavaScript -->
+<div style="display:none;">
+  <div id="raw-pos-back">{{PartOfSpeech}}</div>
+  <div id="raw-ipa-back">{{IPA}}</div>
+  <div id="raw-definition-back">{{Definition}}</div>
+  <div id="raw-example-back">{{Example}}</div>
+  <div id="raw-collocations-back">{{Collocations}}</div>
+  <div id="raw-word-family-back">{{WordFamily}}</div>
+  <div id="raw-tags-back">{{Tags}}</div>
+</div>
+
+<script>
+(function() {
+  function trim(str) {
+    if (!str) return "";
+    return str.replace(/^\s+|\s+$/g, '');
+  }
+
+  function getRawText(id) {
+    var el = document.getElementById(id);
+    return el ? trim(el.textContent || el.innerText) : "";
+  }
+
+  // Registers classes lookup
+  var registers = {
+    "informal": "rt-amber",
+    "formal": "rt-amber",
+    "literary": "rt-amber",
+    "humorous": "rt-amber",
+    "ironic": "rt-amber",
+    "figurative": "rt-amber",
+    "approving": "rt-amber",
+    "disapproving": "rt-amber",
+    "slang": "rt-warm",
+    "specialist": "rt-warm",
+    "offensive": "rt-red",
+    "taboo": "rt-red"
+  };
+
+  // Subjects lookup
+  var subjects = {
+    "biology": true,
+    "computing": true,
+    "economics": true,
+    "law": true,
+    "linguistics": true,
+    "mathematics": true,
+    "medical": true,
+    "physics": true,
+    "psychology": true,
+    "architecture": true,
+    "art": true,
+    "business": true,
+    "chemistry": true,
+    "finance": true,
+    "history": true,
+    "literature": true,
+    "military": true,
+    "music": true,
+    "politics": true,
+    "religion": true,
+    "science": true,
+    "sociology": true
+  };
+
+  // Parser for definition tags: e.g. [computing, informal] Text...
+  function parseDefinitionText(defText) {
+    var match = defText.match(/^\[([^\]]+)\]/);
+    if (!match) {
+      return defText;
+    }
+    
+    var tagsStr = match[1];
+    var remainingText = trim(defText.substring(match[0].length));
+    
+    var tags = tagsStr.split(",");
+    var tempBadges = [];
+    var allValid = true;
+    
+    for (var i = 0; i < tags.length; i++) {
+      var tag = trim(tags[i]);
+      if (registers.hasOwnProperty(tag)) {
+        var cls = registers[tag];
+        tempBadges.push('<span class="register-tag ' + cls + '">' + tag + '</span>');
+      } else if (subjects.hasOwnProperty(tag)) {
+        tempBadges.push('<span class="register-tag rt-subject">' + tag + '</span>');
+      } else {
+        allValid = false;
+        break;
+      }
+    }
+    
+    if (allValid && tempBadges.length > 0) {
+      return tempBadges.join("") + " " + remainingText;
+    } else {
+      return defText;
+    }
+  }
+
+  // 1. Render POS chips in top-bar
+  var rawPos = getRawText("raw-pos-back");
+  var posContainer = document.getElementById("top-bar-pos-back");
+  if (posContainer && rawPos) {
+    var parts = rawPos.split(/[,/]/);
+    var cleanParts = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = trim(parts[i]);
+      if (p) cleanParts.push(p);
+    }
+    if (cleanParts.length > 1) {
+      var html = "";
+      for (var j = 0; j < cleanParts.length; j++) {
+        html += '<span class="pos-chip"><span class="pos-chip-num">' + (j + 1) + '</span>' + cleanParts[j] + '</span>';
+      }
+      posContainer.innerHTML = html;
+    }
+  }
+
+  // 2. Render Corpus Badges in top-bar-left
+  var rawTags = getRawText("raw-tags-back");
+  var topBarLeft = posContainer ? posContainer.parentNode : null;
+  if (topBarLeft && rawTags) {
+    var tags = rawTags.split(/\s+/);
+    for (var k = 0; k < tags.length; k++) {
+      var tag = trim(tags[k]);
+      if (!tag) continue;
+      
+      var badge = null;
+      if (tag === "Oxford_3000") {
+        badge = ["corpus-badge corpus-oxf", "Oxford 3000"];
+      } else if (tag === "Oxford_5000") {
+        badge = ["corpus-badge corpus-oxf", "Oxford 5000"];
+      } else if (tag === "OPAL_W") {
+        badge = ["corpus-badge corpus-opal", "OPAL W"];
+      } else if (tag === "OPAL_S") {
+        badge = ["corpus-badge corpus-opal", "OPAL S"];
+      } else if (tag === "AWL") {
+        badge = ["corpus-badge corpus-awl", "AWL"];
+      }
+      
+      if (badge) {
+        var span = document.createElement("span");
+        span.className = badge[0];
+        span.textContent = badge[1];
+        topBarLeft.appendChild(span);
+      }
+    }
+  }
+
+  // 3. Parse and render Definition + Example (handles multi-definition)
+  var rawDef = getRawText("raw-definition-back");
+  var rawEx  = getRawText("raw-example-back");
+
+  var defParts = rawDef.split("|");
+  var defs = [];
+  for (var m = 0; m < defParts.length; m++) {
+    var d = trim(defParts[m]);
+    if (d) defs.push(d);
+  }
+
+  var exParts = rawEx.split("|");
+  var exs = [];
+  for (var l = 0; l < exParts.length; l++) {
+    var e = trim(exParts[l]);
+    exs.push(e);
+  }
+
+  var defContainer = document.getElementById("definition-container");
+  if (defContainer) {
+    if (defs.length > 1) {
+      var defHtml = "";
+      for (var m = 0; m < defs.length; m++) {
+        defHtml += '<div class="def-item"><span class="def-num">' + (m + 1) + '.</span> ' + parseDefinitionText(defs[m]) + '</div>';
+      }
+      defContainer.innerHTML = defHtml;
+    } else if (defs.length === 1) {
+      defContainer.innerHTML = parseDefinitionText(defs[0]);
+    } else {
+      defContainer.innerHTML = "";
+    }
+  }
+
+  var exContainer = document.getElementById("example-container");
+  if (exContainer && exs.length > 0) {
+    var hasNonEmptyEx = false;
+    for (var n = 0; n < exs.length; n++) {
+      if (trim(exs[n])) {
+        hasNonEmptyEx = true;
+        break;
+      }
+    }
+    if (hasNonEmptyEx) {
+      if (defs.length <= 1) {
+        var firstEx = "";
+        for (var o = 0; o < exs.length; o++) {
+          if (trim(exs[o])) {
+            firstEx = trim(exs[o]);
+            break;
+          }
+        }
+        exContainer.innerHTML = '"' + firstEx + '"';
+      } else {
+        var exHtml = "";
+        for (var p = 0; p < exs.length; p++) {
+          var curEx = trim(exs[p]);
+          if (curEx) {
+            exHtml += '<div class="example-item" data-num="' + (p + 1) + '">"' + curEx + '"</div>';
+          }
+        }
+        exContainer.innerHTML = exHtml;
+      }
+    }
+  }
+
+  // 4. Parse and show collocations if they contain '|'
+  var rawCol = getRawText("raw-collocations-back");
+  if (rawCol && rawCol.indexOf("|") !== -1) {
+    var colParts = rawCol.split("|");
+    var colContainer = document.getElementById("collocations-container");
+    if (colContainer) {
+      var colHtml = "";
+      for (var q = 0; q < colParts.length; q++) {
+        var cVal = trim(colParts[q]);
+        if (cVal) {
+          colHtml += '<span class="collocation-chip">' + cVal + '</span>';
+        }
+      }
+      colContainer.innerHTML = colHtml;
+    }
+  }
+
+  // 5. Show word family if it contains '\n'
+  var wf = getRawText("raw-word-family-back");
+  var wfContainer = document.getElementById("word-family-container");
+  if (wf && wfContainer && (wf.indexOf("\n") !== -1 || wf.indexOf("\\\\n") !== -1 || wf.indexOf("\\n") !== -1)) {
+    var lines = wf.split(/\\\\n|\\n|\n/);
+    var wfHtml = "";
+    for (var r = 0; r < lines.length; r++) {
+      var lineVal = trim(lines[r]);
+      if (lineVal) {
+        wfHtml += '<div>' + lineVal + '</div>';
+      }
+    }
+    wfContainer.innerHTML = wfHtml;
+  }
+
+  // 6. Render Usage restrictions & Feature tags in footer
+  var footerContainer = document.getElementById("footer-badges-container");
+  if (footerContainer && rawTags) {
+    var tags = rawTags.split(/\s+/);
+    for (var s = 0; s < tags.length; s++) {
+      var tag = trim(tags[s]);
+      if (!tag) continue;
+      
+      var footerBadge = null;
+      if (tag === "old_fashioned") {
+        footerBadge = ["footer-badge footer-badge-slate", "old-fashioned"];
+      } else if (tag === "old_use") {
+        footerBadge = ["footer-badge footer-badge-slate", "old use"];
+      } else if (tag === "dialect") {
+        footerBadge = ["footer-badge footer-badge-slate", "dialect"];
+      } else if (tag === "saying") {
+        footerBadge = ["footer-badge footer-badge-slate", "saying"];
+      } else if (tag === "trademark") {
+        footerBadge = ["footer-badge footer-badge-slate", "™ trademark"];
+      } else if (tag === "idioms") {
+        footerBadge = ["footer-badge footer-badge-feature", '<i class="ti ti-bookmarks" style="font-size:10px;"></i> idioms'];
+      } else if (tag === "phrasal_verbs") {
+        footerBadge = ["footer-badge footer-badge-feature", '<i class="ti ti-bookmarks" style="font-size:10px;"></i> phrasal verbs'];
+      }
+      
+      if (footerBadge) {
+        var span = document.createElement("span");
+        span.className = footerBadge[0];
+        span.innerHTML = footerBadge[1];
+        footerContainer.appendChild(span);
+      }
+    }
+  }
+})();
+</script>
