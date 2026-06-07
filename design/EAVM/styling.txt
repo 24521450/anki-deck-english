@@ -3,7 +3,7 @@
  * Drift enforced by tests/design/test_design_sync.py.
  * Selector class names are immutable contracts (don't rename).
  */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
 
@@ -20,7 +20,7 @@
 .anki-card-container {
   background: #141313;
   border-radius: 20px;
-  max-width: 540px;
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -143,7 +143,7 @@
 }
 
 .word-front {
-  font-size: 44px;
+  font-size: 52px;
   font-weight: 700;
   letter-spacing: -0.025em;
   color: #f1f5f9;
@@ -185,7 +185,7 @@
 }
 
 .word-back {
-  font-size: 34px;
+  font-size: 42px;
   font-weight: 700;
   letter-spacing: -0.015em;
   color: #f1f5f9;
@@ -201,8 +201,9 @@
 }
 
 .ipa-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
+  /* Sử dụng các font hệ thống và font chuyên dụng hỗ trợ chuẩn Unicode/IPA */
+  font-family: 'Charis SIL', 'Doulos SIL', 'Segoe UI', 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+  font-size: 24px;
   color: #94a3b8;
   letter-spacing: 0.02em;
   background: #1b1a1a;
@@ -231,14 +232,14 @@
 
 .audio-btn-wrapper {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: #94a3b8;
   background: #181717;
   border: 1px solid #333232;
   border-radius: 9999px;
-  padding: 6px 18px;
+  padding: 4px 14px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -273,7 +274,7 @@
 }
 
 .audio-btn-wrapper i {
-  font-size: 13px;
+  font-size: 10px;
 }
 
 .no-audio {
@@ -327,7 +328,7 @@
 }
 
 .sense-def {
-  font-size: 13.5px;
+  font-size: 15.5px;
   line-height: 1.8;
   color: #e2e8f0;
   padding-right: 14px;
@@ -335,7 +336,7 @@
 }
 
 .sense-ex {
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.7;
   color: #64748b;
   font-style: italic;
@@ -348,6 +349,7 @@
 }
 
 .sense-num {
+  display: none;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   font-weight: 700;
@@ -356,7 +358,6 @@
   border-radius: 3px;
   padding: 1px 5px;
   margin-right: 6px;
-  display: inline-block;
   vertical-align: middle;
   position: relative;
   top: -1px;

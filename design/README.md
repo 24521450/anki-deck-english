@@ -65,7 +65,8 @@ Giá trị dưới đây là **sau khi sync** (mirror vùng 2 của `index.html`
 ### Typography
 
 - **Sans** (body, word, definition, register-tag): `Hanken Grotesk`, fallback `-apple-system, sans-serif`
-- **Mono** (chip, label, IPA, badge, corpus, wf, audio btn, section title): `JetBrains Mono`, fallback `monospace`
+- **Mono** (chip, label, badge, corpus, wf, audio btn, section title): `JetBrains Mono`, fallback `monospace`
+- **IPA** (`.ipa-text` only): `Charis SIL`, `Doulos SIL`, `Segoe UI`, `Lucida Sans Unicode`, `Arial Unicode MS`, `sans-serif` — dùng cascade font hệ thống + font SIL chuyên IPA. Không embed base64; phụ thuộc font user đã cài (Charis/Doulos SIL nếu có, fallback Segoe UI/Lucida/Arial Unicode MS nếu không). Cross-platform an toàn, IPA glyphs (ɪ/ʃ/ˈ) render đúng ở hầu hết môi trường.
 - **Icons**: `Tabler Icons` (CDN)
 
 ### Spacing
