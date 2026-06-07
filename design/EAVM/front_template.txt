@@ -12,76 +12,81 @@
     </div>
   </div>
   <div class="card-content-front">
-    <div class="word-front">{{Word}}</div>
+    <div class="front-word-group">
+      <div class="word-front">{{Word}}</div>
+      <div class="sense-count" id="sense-count-front"></div>
+    </div>
   </div>
 </div>
 
-<!-- Hidden raw inputs for JavaScript -->
+<!-- Hidden raw data for JS -->
 <div style="display:none;">
   <div id="raw-pos-front">{{PartOfSpeech}}</div>
   <div id="raw-tags-front">{{Tags}}</div>
+  <div id="raw-definition-front">{{Definition}}</div>
 </div>
 
 <script>
 (function() {
-  function trim(str) {
-    if (!str) return "";
-    return str.replace(/^\s+|\s+$/g, '');
-  }
+  function trim(s) { return s ? s.replace(/^\s+|\s+$/g, '') : ''; }
+  function getRaw(id) { var e = document.getElementById(id); return e ? trim(e.textContent || e.innerText) : ''; }
 
-  function getRawText(id) {
-    var el = document.getElementById(id);
-    return el ? trim(el.textContent || el.innerText) : "";
-  }
-
-  // 1. Render POS chips in top-bar
-  var rawPos = getRawText("raw-pos-front");
-  var posContainer = document.getElementById("top-bar-pos-front");
-  if (posContainer && rawPos) {
-    var parts = rawPos.split(/[,/]/);
-    var cleanParts = [];
-    for (var i = 0; i < parts.length; i++) {
-      var p = trim(parts[i]);
-      if (p) cleanParts.push(p);
-    }
-    if (cleanParts.length > 1) {
-      var html = "";
-      for (var j = 0; j < cleanParts.length; j++) {
-        html += '<span class="pos-chip"><span class="pos-chip-num">' + (j + 1) + '</span>' + cleanParts[j] + '</span>';
-      }
-      posContainer.innerHTML = html;
+  // 1. POS chips
+  var rawPos = getRaw('raw-pos-front');
+  var posDiv = document.getElementById('top-bar-pos-front');
+  var topBarLeft = posDiv ? posDiv.parentNode : null;
+  if (posDiv && rawPos) {
+    var parts = rawPos.split(/[,\/]/), clean = [];
+    for (var i = 0; i < parts.length; i++) { var p = trim(parts[i]); if (p) clean.push(p); }
+    if (clean.length > 1) {
+      var h = '';
+      for (var j = 0; j < clean.length; j++)
+        h += '<span class="pos-chip"><span class="pos-chip-num">' + (j+1) + '</span>' + clean[j] + '</span>';
+      posDiv.innerHTML = h;
     }
   }
 
-  // 2. Render Corpus Badges in top-bar-left
-  var rawTags = getRawText("raw-tags-front");
-  var topBarLeft = posContainer ? posContainer.parentNode : null;
+  // 2. Corpus badges + separator
+  var rawTags = getRaw('raw-tags-front');
+  var corpusMap = {
+    'Oxford_3000':['corpus-badge corpus-oxf','Oxford 3000'],
+    'Oxford_5000':['corpus-badge corpus-oxf','Oxford 5000'],
+    'OPAL_W':     ['corpus-badge corpus-opal','OPAL W'],
+    'OPAL_S':     ['corpus-badge corpus-opal','OPAL S'],
+    'AWL':        ['corpus-badge corpus-awl','AWL']
+  };
+  var addedSep = false;
   if (topBarLeft && rawTags) {
-    var tags = rawTags.split(/\s+/);
-    for (var k = 0; k < tags.length; k++) {
-      var tag = trim(tags[k]);
-      if (!tag) continue;
-      
-      var badge = null;
-      if (tag === "Oxford_3000") {
-        badge = ["corpus-badge corpus-oxf", "Oxford 3000"];
-      } else if (tag === "Oxford_5000") {
-        badge = ["corpus-badge corpus-oxf", "Oxford 5000"];
-      } else if (tag === "OPAL_W") {
-        badge = ["corpus-badge corpus-opal", "OPAL W"];
-      } else if (tag === "OPAL_S") {
-        badge = ["corpus-badge corpus-opal", "OPAL S"];
-      } else if (tag === "AWL") {
-        badge = ["corpus-badge corpus-awl", "AWL"];
-      }
-      
-      if (badge) {
-        var span = document.createElement("span");
-        span.className = badge[0];
-        span.textContent = badge[1];
-        topBarLeft.appendChild(span);
+    var tList = rawTags.split(/\s+/);
+    for (var k = 0; k < tList.length; k++) {
+      var ct = trim(tList[k]);
+      if (corpusMap[ct]) {
+        if (!addedSep) {
+          var sep = document.createElement('span');
+          sep.className = 'top-bar-sep';
+          topBarLeft.appendChild(sep);
+          addedSep = true;
+        }
+        var cs = document.createElement('span');
+        cs.className = corpusMap[ct][0];
+        cs.textContent = corpusMap[ct][1];
+        topBarLeft.appendChild(cs);
       }
     }
   }
+
+  // 3. Sense count dots (only if multi-sense)
+  var rawDef = getRaw('raw-definition-front');
+  var dotsEl = document.getElementById('sense-count-front');
+  if (rawDef && dotsEl) {
+    var parts2 = rawDef.split('|'), count = 0;
+    for (var d = 0; d < parts2.length; d++) { if (trim(parts2[d])) count++; }
+    if (count > 1) {
+      var dots = '';
+      for (var n = 0; n < count; n++) dots += '<span class="sense-count-dot"></span>';
+      dotsEl.innerHTML = dots;
+    }
+  }
+
 })();
 </script>

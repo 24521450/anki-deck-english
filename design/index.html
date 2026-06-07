@@ -518,6 +518,48 @@
       font-size: 11px;
     }
     footer a { color: #7dd3fc; text-decoration: none; }
+
+    /* ══ v2 UPGRADES ══ */
+    @keyframes fadeSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    .anki-card-container { animation: fadeSlideIn 0.24s cubic-bezier(0.16,1,0.3,1); }
+    .card-content-back { gap: 20px; padding: 28px 20px; }
+    .pos-chip-num { background: #2d2850; border-radius: 3px; padding: 0 4px; line-height: 1.6; }
+    .ipa-text { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #94a3b8; background: #1b1a1a; padding: 2px 10px; border-radius: 6px; border: 1px solid #272626; }
+    .audio-btn-wrapper { cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s; user-select: none; }
+    .audio-btn-wrapper:hover { background: #232222; color: #e5e2e1; }
+    .audio-btn-uk { border-color: #1e3a5f; }
+    .audio-btn-uk:hover { border-color: #3b82f6; }
+    .audio-btn-us { border-color: #450a0a; }
+    .audio-btn-us:hover { border-color: #ef4444; }
+    .section-box { padding: 14px 18px; }
+    .card .section-title { font-size: 10px; font-weight: 700; color: #4b5563; margin-bottom: 10px; }
+    .card .section-title i { font-size: 13px; color: #374151; }
+    .register-tag { font-size: 10px; padding: 1px 7px; margin-right: 4px; }
+    .top-bar-sep { width: 1px; height: 14px; background: #2a2929; flex-shrink: 0; align-self: center; margin: 0 2px; }
+    .usage-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: #64748b; border: 1px solid #1e293b; background: #0f172a; padding: 2px 9px; border-radius: 9999px; }
+    .word-highlight { color: #f1f5f9; font-weight: 700; font-style: normal; text-decoration: underline; text-decoration-color: rgba(167,139,250,0.45); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+    .word-family-content { display: flex; flex-wrap: wrap; gap: 6px; font-size: unset; line-height: unset; color: unset; }
+    .wf-chip { display: inline-flex; align-items: center; border-radius: 9999px; overflow: hidden; border: 1px solid #3b2f6b; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .wf-chip-word { background: #1c1a2e; color: #c4b5fd; padding: 4px 10px 4px 12px; font-weight: 500; }
+    .wf-chip-pos { padding: 4px 9px 4px 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .wf-pos-n   { background: #0f2e2e; color: #5eead4; border-left: 1px solid #0f766e; }
+    .wf-pos-v   { background: #0c1f40; color: #93c5fd; border-left: 1px solid #1d4ed8; }
+    .wf-pos-adj { background: #1c1a2e; color: #a78bfa; border-left: 1px solid #6d28d9; }
+    .wf-pos-adv { background: #2d1a00; color: #fbbf24; border-left: 1px solid #78350f; }
+    .word-family-box .section-title { color: #6d28d9; }
+    .word-family-box .section-title i { color: #6d28d9; }
+    .senses-box { padding: 0; overflow: hidden; }
+    .sense-row { display: grid; grid-template-columns: 55fr 45fr; align-items: start; padding: 14px 18px; }
+    .sense-row + .sense-row { border-top: 1px solid #1e1d1d; }
+    .sense-def { font-size: 13.5px; line-height: 1.8; color: #e2e8f0; padding-right: 14px; hyphens: auto; }
+    .sense-ex { font-size: 13px; line-height: 1.8; color: #64748b; font-style: italic; border-left: 1px solid #1e1d1d; padding-left: 14px; }
+    .sense-ex:empty { border-left: none; }
+    .sense-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #a78bfa; background: #2d2850; border-radius: 3px; padding: 1px 5px; margin-right: 6px; display: inline-block; vertical-align: middle; position: relative; top: -1px; }
+    .feature-row { display: flex; gap: 8px; justify-content: center; }
+    .feature-tag { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 700; color: #86efac; border: 1px solid #166534; background: #031a0e; padding: 6px 16px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 6px; }
+    .front-word-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .sense-count { display: flex; gap: 6px; justify-content: center; }
+    .sense-count-dot { width: 5px; height: 5px; border-radius: 50%; background: #2e2d2d; border: 1px solid #3a3939; }
   </style>
 </head>
 <body>
@@ -534,6 +576,7 @@
       <a href="#corpus">Corpus</a>
       <a href="#cefr">CEFR</a>
       <a href="#footer">Footer</a>
+      <a href="#oxford-samples">Oxford samples</a>
     </nav>
   </header>
 
@@ -560,18 +603,21 @@
             </div>
           </div>
           <div class="card-content-front">
-            <div class="word-front">ignorant</div>
+            <div class="front-word-group">
+              <div class="word-front">ignorant</div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="card-wrapper">
-        <div class="card-label">Multi POS + corpus</div>
+        <div class="card-label">Multi POS + corpus + dots</div>
         <div class="card anki-card-container">
           <div class="top-bar">
             <div class="top-bar-left">
               <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
               <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+              <span class="top-bar-sep"></span>
               <span class="corpus-badge corpus-awl">AWL</span>
               <span class="corpus-badge corpus-oxf">Oxford 5000</span>
             </div>
@@ -580,7 +626,13 @@
             </div>
           </div>
           <div class="card-content-front">
-            <div class="word-front">yield</div>
+            <div class="front-word-group">
+              <div class="word-front">yield</div>
+              <div class="sense-count">
+                <span class="sense-count-dot"></span>
+                <span class="sense-count-dot"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -597,7 +649,9 @@
             </div>
           </div>
           <div class="card-content-front">
-            <div class="word-front">methinks</div>
+            <div class="front-word-group">
+              <div class="word-front">methinks</div>
+            </div>
           </div>
         </div>
       </div>
@@ -611,8 +665,162 @@
     <div class="section-head">
       <span class="section-num">02</span>
       <h2 class="section-title">Back — Mặt sau</h2>
-      <p class="section-note">Layout dọc: header → audio → definition → example → collocations → word family → footer.</p>
+      <p class="section-note">L3 grid: def trái · ex phải · ①②③ badge · WF → Collocations · feature-row.</p>
     </div>
+
+    <div class="card-row">
+
+      <!-- Single sense -->
+      <div class="card-wrapper">
+        <div class="card-label">Single sense</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left"><span class="pos-chip">adjective</span></div>
+            <div class="top-bar-right"><span class="top-badge cefr-badge-B2">B2</span></div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">ignorant</div>
+              <hr class="divider divider-B2">
+              <div class="meta-row">
+                <span class="ipa-text">/ˈɪɡ.nər.ənt/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper audio-btn-uk"><i class="ti ti-volume"></i> UK</span>
+              <span class="audio-btn-wrapper audio-btn-us"><i class="ti ti-volume"></i> US</span>
+            </div>
+            <div class="section-box senses-box">
+              <div class="sense-row">
+                <div class="sense-def">Not having knowledge or information about something.</div>
+                <div class="sense-ex">“The cell, <span class="word-highlight">ignorant</span> of what’s happening, executes the new instructions.”</div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word Family</div>
+              <div class="word-family-content">
+                <span class="wf-chip"><span class="wf-chip-word">ignorance</span><span class="wf-chip-pos wf-pos-n">n</span></span>
+                <span class="wf-chip"><span class="wf-chip-word">ignore</span><span class="wf-chip-pos wf-pos-v">v</span></span>
+                <span class="wf-chip"><span class="wf-chip-word">ignorantly</span><span class="wf-chip-pos wf-pos-adv">adv</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 senses, corpus separator -->
+      <div class="card-wrapper">
+        <div class="card-label">2 senses · corpus sep</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+              <span class="top-bar-sep"></span>
+              <span class="corpus-badge corpus-awl">AWL</span>
+            </div>
+            <div class="top-bar-right"><span class="top-badge cefr-badge-C1">C1</span></div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">yield</div>
+              <hr class="divider divider-C1">
+              <div class="meta-row">
+                <span class="ipa-text">/jiːld/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper audio-btn-uk"><i class="ti ti-volume"></i> UK</span>
+              <span class="audio-btn-wrapper audio-btn-us"><i class="ti ti-volume"></i> US</span>
+            </div>
+            <div class="section-box senses-box">
+              <div class="sense-row">
+                <div class="sense-def"><span class="sense-num">①</span><span class="register-tag rt-subject">economics</span>The profit made on an investment, usually expressed as a percentage.</div>
+                <div class="sense-ex">“The bond <span class="word-highlight">yield</span> rose to 4.5% after the rate decision.”</div>
+              </div>
+              <div class="sense-row">
+                <div class="sense-def"><span class="sense-num">②</span>To produce or provide a result, profit, or crop.</div>
+                <div class="sense-ex">“The revised parameters <span class="word-highlight">yielded</span> a 15% performance gain.”</div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word Family</div>
+              <div class="word-family-content">
+                <span class="wf-chip"><span class="wf-chip-word">yield</span><span class="wf-chip-pos wf-pos-n">n</span></span>
+                <span class="wf-chip"><span class="wf-chip-word">yield</span><span class="wf-chip-pos wf-pos-v">v</span></span>
+                <span class="wf-chip"><span class="wf-chip-word">yielding</span><span class="wf-chip-pos wf-pos-adj">adj</span></span>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-link"></i> Collocations</div>
+              <div class="collocations-list">
+                <span class="collocation-chip">crop yield</span>
+                <span class="collocation-chip">yield to pressure</span>
+                <span class="collocation-chip">high-yield</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 senses, usage-tag, feature-row -->
+      <div class="card-wrapper">
+        <div class="card-label">Full · usage-tag + feature-row</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+              <span class="top-bar-sep"></span>
+              <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+              <span class="corpus-badge corpus-opal">OPAL W</span>
+            </div>
+            <div class="top-bar-right"><span class="top-badge cefr-badge-C1">C1</span></div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">crack</div>
+              <hr class="divider divider-C1">
+              <div class="meta-row">
+                <span class="ipa-text">/kræk/</span>
+                <span class="usage-tag">old-fashioned</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper audio-btn-uk"><i class="ti ti-volume"></i> UK</span>
+              <span class="audio-btn-wrapper audio-btn-us"><i class="ti ti-volume"></i> US</span>
+            </div>
+            <div class="section-box senses-box">
+              <div class="sense-row">
+                <div class="sense-def"><span class="sense-num">①</span>A line on the surface of something where it has broken but not split.</div>
+                <div class="sense-ex"></div>
+              </div>
+              <div class="sense-row">
+                <div class="sense-def"><span class="sense-num">②</span><span class="register-tag rt-amber">informal</span>To find the solution to a problem; to break a code.</div>
+                <div class="sense-ex">“They finally <span class="word-highlight">cracked</span> the encryption after three days.”</div>
+              </div>
+              <div class="sense-row">
+                <div class="sense-def"><span class="sense-num">③</span><span class="register-tag rt-subject">computing</span><span class="register-tag rt-amber">informal</span>To illegally break into a secured system or software.</div>
+                <div class="sense-ex">“The team <span class="word-highlight">cracked</span> the legacy DRM system in under an hour.”</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-link"></i> Collocations</div>
+              <div class="collocations-list">
+                <span class="collocation-chip">crack a code</span>
+                <span class="collocation-chip">crack down on</span>
+              </div>
+            </div>
+            <div class="feature-row">
+              <span class="feature-tag"><i class="ti ti-bookmarks"></i> idioms</span>
+              <span class="feature-tag"><i class="ti ti-bookmarks"></i> phrasal verbs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
     <div class="card-row">
 
@@ -859,17 +1067,31 @@
         </div>
       </div>
       <div class="palette-cell">
-        <div class="palette-cell-label">Subject — Purple (OLDAE only)</div>
+        <div class="palette-cell-label">Subject — Purple (OLDAE only, 23 từ Oxford)</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="register-tag rt-subject">anatomy</span>
+          <span class="register-tag rt-subject">biochemistry</span>
           <span class="register-tag rt-subject">biology</span>
+          <span class="register-tag rt-subject">business</span>
+          <span class="register-tag rt-subject">chemistry</span>
           <span class="register-tag rt-subject">computing</span>
+          <span class="register-tag rt-subject">earth science</span>
+          <span class="register-tag rt-subject">ecology</span>
           <span class="register-tag rt-subject">economics</span>
+          <span class="register-tag rt-subject">engineering</span>
+          <span class="register-tag rt-subject">finance</span>
+          <span class="register-tag rt-subject">geometry</span>
+          <span class="register-tag rt-subject">grammar</span>
           <span class="register-tag rt-subject">law</span>
           <span class="register-tag rt-subject">linguistics</span>
           <span class="register-tag rt-subject">mathematics</span>
           <span class="register-tag rt-subject">medical</span>
+          <span class="register-tag rt-subject">philosophy</span>
+          <span class="register-tag rt-subject">phonetics</span>
           <span class="register-tag rt-subject">physics</span>
+          <span class="register-tag rt-subject">politics</span>
           <span class="register-tag rt-subject">psychology</span>
+          <span class="register-tag rt-subject">statistics</span>
         </div>
       </div>
     </div>
@@ -994,6 +1216,285 @@
           <span class="footer-badge footer-badge-feature"><i class="ti ti-bookmarks"></i> phrasal verbs</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       7. REAL OXFORD EXAMPLES — cards render real data scraped từ
+       data/oxford_samples.json. Class names khớp 100% EAVM/styling.txt
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="oxford-samples">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Real Oxford Examples</h2>
+      <p class="section-note">Data scrape từ Oxford Learner's, ngày <code>2026-06-07</code>. 5 word thật: rigorous, yield, aggregate, sick, paradigm.</p>
+    </div>
+
+    <div class="card-row">
+
+      <!-- 7.1 rigorous — clean single-sense (multi-sense thật nhưng không có register) -->
+      <div class="card-wrapper">
+        <div class="card-label">rigorous · C1 · Oxford 5000</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">adjective</span>
+              <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-C1">C1</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">rigorous</div>
+              <hr class="divider divider-C1">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /ˈrɪɡ.ər.əs/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span>Done carefully and with a lot of attention to detail.</div>
+                <div class="def-item"><span class="def-num">2.</span>Demanding that particular rules, processes, etc. are strictly followed.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"Few people have gone into the topic in such rigorous detail."</span></div>
+                <div class="def-item"><span class="def-num">2.</span><span class="section-content-ex">"They may benefit from the rigorous application of competition policy."</span></div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word family</div>
+              <div class="word-family-content">rigor (n.) · rigorously (adv.) · rigorousness (n.)</div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.2 yield — multi-sense + subject economics (Money/Farming/Business) -->
+      <div class="card-wrapper">
+        <div class="card-label">yield · C1 · Oxford 5000 · OPAL written</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+              <span class="corpus-badge corpus-opal">OPAL W</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-C1">C1</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">yield</div>
+              <hr class="divider divider-C1">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /jiːld/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="register-tag rt-subject">business</span><span class="register-tag rt-subject">finance</span>The total amount of crops, profits, etc. that are produced.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"This will give a yield of 10% on your investment."</span></div>
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"a high crop yield"</span></div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word family</div>
+              <div class="word-family-content">yield (v.) · yielding (adj.) · yield (n.)</div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+              <span class="footer-badge">OPAL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.3 aggregate — multi-POS + AWL + register tags -->
+      <div class="card-wrapper">
+        <div class="card-label">aggregate · C2 · AWL · specialist</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+              <span class="pos-chip"><span class="pos-chip-num">3</span>adj</span>
+              <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+              <span class="corpus-badge corpus-awl">AWL</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-C2">C2</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">aggregate</div>
+              <hr class="divider divider-C2">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /ˈæɡ.rɪ.ɡət/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="register-tag rt-warm">specialist</span><span class="register-tag rt-amber">formal</span>A total number or amount made up of smaller amounts that are collected together.</div>
+                <div class="def-item"><span class="def-num">2.</span><span class="register-tag rt-warm">specialist</span>Sand or broken stone that is used to make concrete or for building roads, etc.</div>
+                <div class="def-item"><span class="def-num">3.</span>Added together as a total or single amount.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"The three smaller parties gained an aggregate of 25 per cent of the vote."</span></div>
+                <div class="def-item"><span class="def-num">3.</span><span class="section-content-ex">"Businesses are, in the aggregate, deeper in debt than ever before."</span></div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word family</div>
+              <div class="word-family-content">aggregate (n.) · aggregate (v.) · aggregate (adj.) · aggregation (n.) · aggregated (adj.) · aggregator (n.)</div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+              <span class="footer-badge">AWL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 2: sick + paradigm -->
+    <div class="card-row" style="margin-top: 32px;">
+
+      <!-- 7.4 sick — register tag informal ở sense 7 (A1, Oxford 3000) -->
+      <div class="card-wrapper">
+        <div class="card-label">sick · A1 · Oxford 3000 · informal</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">adjective</span>
+              <span class="corpus-badge corpus-oxf">Oxford 3000</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-A1">A1</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">sick</div>
+              <hr class="divider divider-A1">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /sɪk/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span>Physically or mentally ill.</div>
+                <div class="def-item"><span class="def-num">2.</span>Feeling that you want to vomit.</div>
+                <div class="def-item"><span class="def-num">7.</span><span class="register-tag rt-amber">informal</span><span class="register-tag rt-warm">slang</span>Very good, a lot of fun, etc.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"Her mother's very sick."</span></div>
+                <div class="def-item"><span class="def-num">7.</span><span class="section-content-ex">"I love that song—it's sick!"</span></div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word family</div>
+              <div class="word-family-content">sick (adj.) · sick (n.) · sicken (v.) · sickening (adj.) · sickly (adj.) · sickness (n.)</div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.5 paradigm — AWL + subject grammar/linguistics, specialist -->
+      <div class="card-wrapper">
+        <div class="card-label">paradigm · UNCLASSIFIED · AWL · specialist</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">noun</span>
+              <span class="corpus-badge corpus-awl">AWL</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-UNCLASSIFIED">—</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">paradigm</div>
+              <hr class="divider divider-UNCLASSIFIED">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /ˈpær.ə.daɪm/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="register-tag rt-warm">specialist</span>A typical example or pattern of something.</div>
+                <div class="def-item"><span class="def-num">2.</span><span class="register-tag rt-subject">grammar</span><span class="register-tag rt-subject">linguistics</span>A set of all the different forms of a word.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"The war was a paradigm of the destructive side of human nature."</span></div>
+                <div class="def-item"><span class="def-num">2.</span><span class="section-content-ex">"verb paradigms"</span></div>
+              </div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word family</div>
+              <div class="word-family-content">paradigm (n.) · paradigmatic (adj.) · paradigmatically (adv.)</div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+              <span class="footer-badge">AWL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

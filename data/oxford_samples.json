@@ -1,0 +1,361 @@
+{
+  "fetched_at": "2026-06-07T03:15:41+00:00",
+  "samples": [
+    {
+      "word": "rigorous",
+      "source_url": "https://www.oxfordlearnersdictionaries.com/definition/english/rigorous",
+      "cefr": "C1",
+      "pos": [
+        "adjective"
+      ],
+      "register_tags": [],
+      "subject_labels": [],
+      "oxford_lists": [
+        "Oxford 5000"
+      ],
+      "opal": null,
+      "awl": null,
+      "definitions": [
+        {
+          "n": 1,
+          "text": "done carefully and with a lot of attention to detail",
+          "examples": [
+            "a rigorous analysis",
+            "Few people have gone into the topic in such rigorous detail.",
+            "The second team adopted a much more rigorous approach to the problem."
+          ],
+          "sensenum_local": 1
+        },
+        {
+          "n": 2,
+          "text": "demanding that particular rules, processes, etc. are strictly followed",
+          "examples": [
+            "The work failed to meet their rigorous standards .",
+            "They may benefit from the rigorous application of competition policy."
+          ],
+          "sensenum_local": 2
+        }
+      ],
+      "word_family": [
+        "rigor (n.)",
+        "rigorously (adv.)",
+        "rigorousness (n.)"
+      ]
+    },
+    {
+      "word": "yield",
+      "source_url": "https://www.oxfordlearnersdictionaries.com/definition/english/yield",
+      "cefr": "C1",
+      "pos": [
+        "noun"
+      ],
+      "register_tags": [],
+      "subject_labels": [
+        "Business",
+        "Farming",
+        "Money"
+      ],
+      "oxford_lists": [
+        "Oxford 5000"
+      ],
+      "opal": "OPAL written",
+      "awl": null,
+      "definitions": [
+        {
+          "n": 1,
+          "text": "the total amount of crops, profits, etc. that are produced",
+          "examples": [
+            "a high crop yield",
+            "a reduction in milk yield",
+            "This will give a yield of 10% on your investment."
+          ]
+        }
+      ],
+      "word_family": [
+        "yield (v.)",
+        "yielding (adj.)",
+        "yield (n.)"
+      ]
+    },
+    {
+      "word": "aggregate",
+      "source_url": "https://www.oxfordlearnersdictionaries.com/definition/english/aggregate",
+      "cefr": "C2",
+      "pos": [
+        "noun"
+      ],
+      "register_tags": [
+        "specialist",
+        "formal",
+        "British English",
+        "sport"
+      ],
+      "subject_labels": [
+        "Money"
+      ],
+      "oxford_lists": [
+        "Oxford 5000"
+      ],
+      "opal": null,
+      "awl": "AWL",
+      "definitions": [
+        {
+          "n": 1,
+          "text": "a total number or amount made up of smaller amounts that are collected together",
+          "examples": [
+            "a record aggregate of 285 points",
+            "The three smaller parties gained an aggregate of 25 per cent of the vote."
+          ],
+          "sensenum_local": 1
+        },
+        {
+          "n": 2,
+          "text": "sand or broken stone that is used to make concrete or for building roads, etc.",
+          "examples": [],
+          "sensenum_local": 2
+        },
+        {
+          "n": 3,
+          "text": "added together as a total or single amount",
+          "examples": [
+            "Businesses are, in the aggregate, deeper in debt than ever before."
+          ]
+        },
+        {
+          "n": 4,
+          "text": "when the scores of a number of games are added together",
+          "examples": [
+            "They won 4–2 on aggregate."
+          ]
+        }
+      ],
+      "word_family": [
+        "aggregate (n.)",
+        "aggregate (v.)",
+        "aggregate (adj.)",
+        "aggregation (n.)",
+        "aggregated (adj.)",
+        "aggregator (n.)"
+      ]
+    },
+    {
+      "word": "sick",
+      "source_url": "https://www.oxfordlearnersdictionaries.com/definition/english/sick",
+      "cefr": "A1",
+      "pos": [
+        "adjective"
+      ],
+      "register_tags": [
+        "British English",
+        "North American English",
+        "informal",
+        "slang",
+        "especially British English",
+        "formal",
+        "humorous"
+      ],
+      "subject_labels": [
+        "Health problems",
+        "Transport by air",
+        "Feelings"
+      ],
+      "oxford_lists": [
+        "Oxford 3000"
+      ],
+      "opal": null,
+      "awl": null,
+      "definitions": [
+        {
+          "n": 1,
+          "text": "physically or mentally ill",
+          "examples": [
+            "a sick child",
+            "a sick relative/patient",
+            "Her mother's very sick.",
+            "Peter has been off sick (= away from work because he is ill) for two weeks.",
+            "Emma has just called in sick (= phoned to say she will not be coming to work because she is ill) .",
+            "Britain's workers went sick (= did not go to work because they were ill) for a record number of days last year.",
+            "I can't afford to get sick (= become ill) .",
+            "They became sick after eating contaminated food.",
+            "I have been sick in bed since you left.",
+            "She was sick with the flu.",
+            "Many people were sick from diseases caused by pollution."
+          ],
+          "sensenum_local": 1
+        },
+        {
+          "n": 2,
+          "text": "feeling that you want to vomit",
+          "examples": [
+            "Mum, I feel sick !",
+            "If you eat any more cake you'll make yourself sick .",
+            "a sick feeling in your stomach"
+          ],
+          "sensenum_local": 2
+        },
+        {
+          "n": 3,
+          "text": "feeling sick as a result of travelling on a ship, plane, etc.",
+          "examples": [
+            "seasick",
+            "airsick",
+            "carsick",
+            "travel-sick"
+          ],
+          "sensenum_local": 3
+        },
+        {
+          "n": 4,
+          "text": "bored with or annoyed about something that has been happening for a long time, and wanting it to stop",
+          "examples": [
+            "I'm sick of the way you've treated me.",
+            "I'm sick and tired of your moaning.",
+            "I'm sick to death of all of you!",
+            "We are getting heartily sick of your attitude.",
+            "We're sick of waiting around like this.",
+            "I am sick of hearing about them and their wedding.",
+            "I'm so sick of him whining about how hard his job is."
+          ],
+          "sensenum_local": 4
+        },
+        {
+          "n": 5,
+          "text": "dealing with physical or mental pain, disease or death in a cruel way that some people think is offensive",
+          "examples": [
+            "a sick joke",
+            "That's really sick."
+          ],
+          "sensenum_local": 5
+        },
+        {
+          "n": 6,
+          "text": "getting pleasure from doing strange or cruel things",
+          "examples": [
+            "a sick mind",
+            "People think I'm sick for having a rat as a pet.",
+            "We live in a sick society."
+          ],
+          "sensenum_local": 6
+        },
+        {
+          "n": 7,
+          "text": "very good, a lot of fun, etc.",
+          "examples": [
+            "I love that song—it’s sick!"
+          ],
+          "sensenum_local": 7
+        },
+        {
+          "n": 8,
+          "text": "to bring food from your stomach back out through your mouth",
+          "examples": [
+            "I was sick three times in the night.",
+            "She had been violently sick ."
+          ]
+        },
+        {
+          "n": 9,
+          "text": "to be extremely worried",
+          "examples": [
+            "Where have you been? I've been worried sick about you.",
+            "She was worrying herself sick about the exams."
+          ]
+        },
+        {
+          "n": 10,
+          "text": "to become sick",
+          "examples": [
+            "A week later he fell sick and died.",
+            "He fell sick with yellow fever."
+          ]
+        },
+        {
+          "n": 11,
+          "text": "to make somebody angry or full of horror",
+          "examples": [
+            "His hypocrisy makes me sick.",
+            "Her attitude makes me sick."
+          ]
+        },
+        {
+          "n": 12,
+          "text": "feeling very sick; vomiting a lot",
+          "examples": []
+        },
+        {
+          "n": 13,
+          "text": "very disappointed",
+          "examples": []
+        },
+        {
+          "n": 14,
+          "text": "very unhappy or disappointed",
+          "examples": []
+        },
+        {
+          "n": 15,
+          "text": "feeling very angry or worried",
+          "examples": [
+            "Nora turned sick to her stomach on hearing this news.",
+            "It makes me sick to my stomach to hear such stupid attitudes."
+          ],
+          "sensenum_local": 1
+        },
+        {
+          "n": 16,
+          "text": "feeling that you want to vomit",
+          "examples": [],
+          "sensenum_local": 2
+        }
+      ],
+      "word_family": [
+        "sick (adj.)",
+        "sick (n.)",
+        "sicken (v.)",
+        "sickening (adj.)",
+        "sickly (adj.)",
+        "sickness (n.)"
+      ]
+    },
+    {
+      "word": "paradigm",
+      "source_url": "https://www.oxfordlearnersdictionaries.com/definition/english/paradigm",
+      "cefr": null,
+      "pos": [
+        "noun"
+      ],
+      "register_tags": [
+        "specialist or formal",
+        "grammar"
+      ],
+      "subject_labels": [],
+      "oxford_lists": [],
+      "opal": null,
+      "awl": "AWL",
+      "definitions": [
+        {
+          "n": 1,
+          "text": "a typical example or pattern of something",
+          "examples": [
+            "a paradigm for students to copy",
+            "The war was a paradigm of the destructive side of human nature."
+          ],
+          "sensenum_local": 1
+        },
+        {
+          "n": 2,
+          "text": "a set of all the different forms of a word",
+          "examples": [
+            "verb paradigms"
+          ],
+          "sensenum_local": 2
+        }
+      ],
+      "word_family": [
+        "paradigm (n.)",
+        "paradigmatic (adj.)",
+        "paradigmatically (adv.)"
+      ]
+    }
+  ]
+}
