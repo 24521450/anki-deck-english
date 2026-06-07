@@ -37,7 +37,8 @@ CREATE TABLE words (
   oxford_lists TEXT,
   fetched_at TEXT,
   n_defs INTEGER,
-  source_url TEXT
+  source_url TEXT,
+  source TEXT
 );
 
 CREATE TABLE definitions (
@@ -96,7 +97,7 @@ def build():
                 continue  # skip failed fetches
             w = rec["word"]
             con.execute(
-                "INSERT INTO words (word, cefr, opal, awl, oxford_lists, fetched_at, n_defs, source_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO words (word, cefr, opal, awl, oxford_lists, fetched_at, n_defs, source_url, source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     w,
                     rec.get("cefr"),
@@ -106,6 +107,7 @@ def build():
                     rec.get("fetched_at"),
                     len(rec.get("definitions") or []),
                     rec.get("source_url"),
+                    rec.get("source"),
                 ),
             )
             for p in rec.get("pos") or []:
