@@ -72,6 +72,25 @@ def parse_oxford_html(text: str, word: str) -> dict:
     definitions: list[dict] = []
 
     for n, li in enumerate(sense_lis, start=1):
+        # Detect idiom: walk up to see if any ancestor is <div class="idioms">
+        is_idiom = False
+        idm_phrase = None
+        cur = li
+        for _ in range(8):
+            cur = cur.parent
+            if not cur:
+                break
+            if cur.name == "div" and "idioms" in (cur.get("class") or []):
+                is_idiom = True
+                # Extract the italicized phrase: <span class="idm">text</span>
+                # It's a sibling/ancestor of the sense within idm-g
+                idm_span = li.find_parent("span", class_="idm-g")
+                if idm_span:
+                    ph = idm_span.find("span", class_="idm")
+                    if ph:
+                        idm_phrase = ph.get_text(" ", strip=True)
+                break
+
         for attr in ("cefr", "fkcefr"):
             v = (li.get(attr) or "").upper()
             if v and v not in cefr_levels:
@@ -94,9 +113,15 @@ def parse_oxford_html(text: str, word: str) -> dict:
         def_span = li.find("span", class_="def")
         def_text = def_span.get_text(" ", strip=True) if def_span else ""
         examples = [ex.get_text(" ", strip=True) for ex in li.find_all("span", class_="x") if ex.get_text(strip=True)]
-        # also preserve raw sensenum for diagnostic
         sensenum_local = li.get("sensenum")
-        definitions.append({"n": n, "sensenum_local": sensenum_local, "text": def_text, "examples": examples})
+        definitions.append({
+            "n": n,
+            "sensenum_local": sensenum_local,
+            "is_idiom": is_idiom,
+            "idm_phrase": idm_phrase,  # NEW: the actual idiom phrase like "at sb's discretion"
+            "text": def_text,
+            "examples": examples,
+        })
 
     cefr_order = {"A1": 1, "A2": 2, "B1": 3, "B2": 4, "C1": 5, "C2": 6}
     head_cefr = min(cefr_levels, key=lambda c: cefr_order.get(c, 99)) if cefr_levels else None
