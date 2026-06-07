@@ -24,7 +24,7 @@ Kịch bản đóng gói bộ thẻ [update_anki_deck.py](file:///c:/Users/admin
 * `styling.txt` -> Đưa vào làm CSS Styling cho Note Types.
 
 > [!TIP]
-> Việc sửa đổi giao diện thẻ từ nay về sau nên được thực hiện trực tiếp trên các tệp `.txt` trong thư mục này thay vì sửa trong mã nguồn Python. Chạy kịch bản `update_anki_deck.py` sẽ tự động đóng gói các thay đổi mới vào tệp `.apkg`.
+> **Mọi thay đổi design bắt đầu từ `../index.html` (vùng 2).** Các tệp `.txt` trong thư mục này derive từ đó. Sau khi sửa `index.html`, sync tương ứng vào `styling.txt` rồi chạy `python -m tools.check_design_sync` để verify.
 
 ---
 
