@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Anki Card — Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ──────────────────────────────────────────────────────────────
+       PAGE CHROME — chỉ dành cho preview, KHÔNG nằm trong card
+    ────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background: #0a0b0f;
+      color: #cbd5e1;
+      min-height: 100vh;
+      padding: 56px 20px 80px;
+      line-height: 1.5;
+    }
+
+    .wrap { max-width: 1280px; margin: 0 auto; }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .page-header .kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #e2e8f0;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      color: #64748b;
+      font-size: 13px;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .quick-nav {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 24px 0 0;
+    }
+    .quick-nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      background: #1c1b1b;
+      border: 1px solid #2a2929;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      text-decoration: none;
+    }
+    .quick-nav a:hover { color: #e5e2e1; border-color: #444748; }
+
+    /* ── Section blocks ── */
+    .section {
+      margin-bottom: 72px;
+      scroll-margin-top: 32px;
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1e1d1d;
+    }
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: #475569;
+      letter-spacing: 0.1em;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #e2e8f0;
+      letter-spacing: -0.01em;
+    }
+    .section-note {
+      margin-left: auto;
+      font-size: 11.5px;
+      color: #475569;
+      font-style: italic;
+      max-width: 360px;
+      text-align: right;
+    }
+    .section-note code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: #7dd3fc;
+      background: #0c2536;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    /* ── Card row ── */
+    .card-row {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      color: #475569;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .card-case {
+      font-size: 11px;
+      color: #64748b;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    /* ── Palette grid ── */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .palette-cell {
+      background: #141313;
+      border: 1px solid #2a2929;
+      border-radius: 12px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .palette-cell-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #475569;
+    }
+
+    /* ── Data annotation ── */
+    .data-box {
+      background: #0f172a;
+      border: 1px dashed #1e3a5f;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+    .data-box code {
+      font-family: 'JetBrains Mono', monospace;
+      color: #7dd3fc;
+      font-size: 10.5px;
+    }
+    .data-box .hl { color: #94a3b8; }
+
+    /* ══════════════════════════════════════════════════════════════
+       ANKI CARD — class names phải khớp 100% với EAVM/styling.txt
+       và EAVM/back_template.txt / front_template.txt
+    ══════════════════════════════════════════════════════════════ */
+    .card {
+      font-family: 'Hanken Grotesk', -apple-system, sans-serif;
+      background-color: #141313;
+      color: #e5e2e1;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+    .anki-card-container {
+      background: #141313;
+      border-radius: 20px;
+      max-width: 540px;
+      width: 360px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid #2a2929;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* ── Top bar ── */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      border-bottom: 1px solid #242323;
+      gap: 8px;
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex: 1;
+      min-width: 0;
+    }
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .top-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #8e9192;
+      letter-spacing: 0.04em;
+    }
+    .top-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* ── CEFR badges ── */
+    .cefr-badge-A1         { color: #5eead4; border: 1px solid #0f766e; background: #0f766e18; }
+    .cefr-badge-A2         { color: #67e8f9; border: 1px solid #0e7490; background: #0e749018; }
+    .cefr-badge-B1         { color: #93c5fd; border: 1px solid #1d4ed8; background: #1d4ed818; }
+    .cefr-badge-B2         { color: #c4b5fd; border: 1px solid #6d28d9; background: #6d28d918; }
+    .cefr-badge-C1         { color: #fcd34d; border: 1px solid #b45309; background: #b4530918; }
+    .cefr-badge-C2         { color: #fda4af; border: 1px solid #9f1239; background: #9f123918; }
+    .cefr-badge-UNCLASSIFIED { color: #c4c7c7; border: 1px solid #444748; background: #2b2a2a18; }
+
+    /* ── POS chips ── */
+    .pos-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #c4c7c7;
+      background: #2b2a2a;
+      border: 1px solid #444748;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pos-chip-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: #a78bfa;
+      letter-spacing: 0;
+    }
+
+    /* ── Front card ── */
+    .card-content-front {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      padding: 40px;
+    }
+    .word-front {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #e5e2e1;
+      text-align: center;
+    }
+
+    /* ── Back card ── */
+    .card-content-back {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .word-header-back {
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .word-back {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #e5e2e1;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .ipa-text {
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #8e9192;
+    }
+
+    /* ── Dividers ── */
+    .divider { border: none; border-top: 1px solid #2e2d2d; margin: 14px 0; }
+    .divider-A1 { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #5eead4, transparent); margin: 14px 0; }
+    .divider-A2 { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #67e8f9, transparent); margin: 14px 0; }
+    .divider-B1 { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #93c5fd, transparent); margin: 14px 0; }
+    .divider-B2 { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #c4b5fd, transparent); margin: 14px 0; }
+    .divider-C1 { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #fcd34d, transparent); margin: 14px 0; }
+    .divider-C2 { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #fda4af, transparent); margin: 14px 0; }
+    .divider-UNCLASSIFIED { border: none; height: 1.5px; background: linear-gradient(90deg, transparent, #c4c7c7, transparent); margin: 14px 0; }
+
+    /* ── Audio buttons ── */
+    .audio-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 4px 0 8px;
+    }
+    .audio-btn-wrapper {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #c4c7c7;
+      background: #1c1b1b;
+      border: 1px solid #444748;
+      border-radius: 9999px;
+      padding: 5px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Section boxes ── */
+    .section-box {
+      background: #1c1b1b;
+      border: 1px solid #282727;
+      border-radius: 16px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #8e9192;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .section-content-def {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #e5e2e1;
+    }
+    .section-content-ex {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #c4c7c7;
+      font-style: italic;
+    }
+
+    /* ── Multiple definitions ── */
+    .def-item { margin-bottom: 8px; }
+    .def-item:last-child { margin-bottom: 0; }
+    .def-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: #a78bfa;
+      margin-right: 6px;
+    }
+    .example-item { margin-bottom: 8px; }
+    .example-item:last-child { margin-bottom: 0; }
+    .example-item[data-num]::before {
+      content: attr(data-num) ". ";
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: #a78bfa;
+      margin-right: 6px;
+    }
+
+    /* ── Collocations ── */
+    .collocations-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .collocation-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #c4c7c7;
+      background: #252424;
+      border: 1px solid #444748;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    /* ── Word family (purple theme) ── */
+    .word-family-content {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #c4b5fd;
+      line-height: 1.9;
+    }
+    .word-family-box {
+      background: #1c1a2e;
+      border-color: #3b2f6b;
+    }
+    .word-family-box .section-title { color: #a78bfa; }
+
+    /* ── Footer badges ── */
+    .footer-badges { display: flex; gap: 8px; justify-content: center; padding: 4px 0; flex-wrap: wrap; }
+    .footer-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      color: #8e9192;
+      border: 1px solid #2e2d2d;
+      background: #191818;
+    }
+
+    /* ── Corpus / OPAL badges (top-bar) ── */
+    .corpus-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .corpus-opal  { color: #e0f2fe; background: #0c4a6e; border: 1px solid #0369a1; }
+    .corpus-oxf   { color: #d1fae5; background: #022c22; border: 1px solid #065f46; }
+    .corpus-awl   { color: #fef3c7; background: #1c1200; border: 1px solid #78350f; }
+
+    /* ── REGISTER TAGS — inline in def ── */
+    .register-tag {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      font-style: italic;
+      padding: 2px 9px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      margin-right: 6px;
+      vertical-align: middle;
+      line-height: 1;
+      position: relative;
+      top: -1px;
+    }
+    .rt-amber   { color: #fb923c; background: #431407; border: 1px solid #7c2d12; }
+    .rt-warm    { color: #fbbf24; background: #2d1a00; border: 1px solid #78350f; }
+    .rt-red     { color: #fca5a5; background: #450a0a; border: 1px solid #7f1d1d; }
+    .rt-subject { color: #c4b5fd; background: #1e1b4b; border: 1px solid #4338ca; }
+
+    .footer-badge-slate {
+      color: #94a3b8;
+      border: 1px solid #334155;
+      background: #1e293b;
+    }
+    .footer-badge-feature {
+      color: #86efac;
+      border: 1px solid #166534;
+      background: #052e16;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .footer-badge-feature i { font-style: normal; }
+
+    /* ── Layout helpers ── */
+    .row-with-anno {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .row-with-anno .card-wrapper { align-self: flex-start; }
+    .row-with-anno .data-box { align-self: center; max-width: 280px; }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid #1e1d1d;
+      color: #475569;
+      font-size: 11px;
+    }
+    footer a { color: #7dd3fc; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-header">
+    <div class="kicker">IELTS Anki Deck</div>
+    <h1>Card Design System</h1>
+    <p>Tổng quan toàn bộ design tokens, components và layout rules. Mọi class ở đây khớp 1:1 với file <code style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7dd3fc;background:#0c2536;padding:1px 5px;border-radius:4px">design/EAVM/styling.txt</code> — file này chính là source of truth được bake vào <code style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7dd3fc;background:#0c2536;padding:1px 5px;border-radius:4px">.apkg</code>.</p>
+    <nav class="quick-nav">
+      <a href="#front">Front</a>
+      <a href="#back">Back</a>
+      <a href="#labels">Labels</a>
+      <a href="#corpus">Corpus</a>
+      <a href="#cefr">CEFR</a>
+      <a href="#footer">Footer</a>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. FRONT
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="front">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Front — Mặt trước</h2>
+      <p class="section-note">Chỉ hiện từ, POS chip và CEFR. Corpus badges ở đây nếu có.</p>
+    </div>
+
+    <div class="card-row">
+      <div class="card-wrapper">
+        <div class="card-label">Single POS</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">adjective</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-B2">B2</span>
+            </div>
+          </div>
+          <div class="card-content-front">
+            <div class="word-front">ignorant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wrapper">
+        <div class="card-label">Multi POS + corpus</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+              <span class="corpus-badge corpus-awl">AWL</span>
+              <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-C1">C1</span>
+            </div>
+          </div>
+          <div class="card-content-front">
+            <div class="word-front">yield</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wrapper">
+        <div class="card-label">Unclassified</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">verb</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-UNCLASSIFIED">—</span>
+            </div>
+          </div>
+          <div class="card-content-front">
+            <div class="word-front">methinks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. BACK
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="back">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Back — Mặt sau</h2>
+      <p class="section-note">Layout dọc: header → audio → definition → example → collocations → word family → footer.</p>
+    </div>
+
+    <div class="card-row">
+
+      <!-- Variant: single definition, no register -->
+      <div class="card-wrapper">
+        <div class="card-label">Single sense</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">adjective</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-B2">B2</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">ignorant</div>
+              <hr class="divider divider-B2">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /ˈɪɡ.nɚ.ənt/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">Not having knowledge or information about something.</div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-ex">"The cell, ignorant of what's happening, executes the new instructions."</div>
+            </div>
+            <div class="section-box word-family-box">
+              <div class="section-title"><i class="ti ti-git-branch"></i> Word family</div>
+              <div class="word-family-content">ignorance (n)</div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+              <span class="footer-badge">Cambridge</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variant: multi-sense with register tag -->
+      <div class="card-wrapper">
+        <div class="card-label">Multi-sense + register</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-C1">C1</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">yield</div>
+              <hr class="divider divider-C1">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /jiːld/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="register-tag rt-subject">economics</span>The profit made on an investment, usually expressed as a percentage.</div>
+                <div class="def-item"><span class="def-num">2.</span>To produce or provide a result, profit, or crop.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span><span class="section-content-ex">"The bond yield rose to 4.5% after the rate decision."</span></div>
+                <div class="def-item"><span class="def-num">2.</span><span class="section-content-ex">"The revised parameters yielded a 15% performance gain."</span></div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-link"></i> Collocations</div>
+              <div class="collocations-list">
+                <span class="collocation-chip">crop yield</span>
+                <span class="collocation-chip">yield to pressure</span>
+                <span class="collocation-chip">high-yield</span>
+              </div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+              <span class="footer-badge">Cambridge</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variant: kitchen sink -->
+      <div class="card-wrapper">
+        <div class="card-label">Kitchen sink</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip"><span class="pos-chip-num">1</span>noun</span>
+              <span class="pos-chip"><span class="pos-chip-num">2</span>verb</span>
+              <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+              <span class="corpus-badge corpus-opal">OPAL W</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-C1">C1</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">crack</div>
+              <hr class="divider divider-C1">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /kræk/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span>A line on the surface of something where it has broken but not split into pieces.</div>
+                <div class="def-item"><span class="def-num">2.</span><span class="register-tag rt-amber">informal</span>To find the solution to a problem; to break a code.</div>
+                <div class="def-item"><span class="def-num">3.</span><span class="register-tag rt-subject">computing</span><span class="register-tag rt-amber">informal</span>To illegally break into a secured system or software.</div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-message"></i> Example</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">2.</span><span class="section-content-ex">"They finally cracked the encryption after three days."</span></div>
+                <div class="def-item"><span class="def-num">3.</span><span class="section-content-ex">"The team cracked the legacy DRM system in under an hour."</span></div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-link"></i> Collocations</div>
+              <div class="collocations-list">
+                <span class="collocation-chip">crack a code</span>
+                <span class="collocation-chip">crack down on</span>
+              </div>
+            </div>
+            <div class="footer-badges">
+              <span class="footer-badge">Oxford</span>
+              <span class="footer-badge-feature footer-badge"><i class="ti ti-bookmarks"></i> idioms</span>
+              <span class="footer-badge-feature footer-badge"><i class="ti ti-bookmarks"></i> phrasal verbs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3. LABEL SYSTEM (register + subject)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="labels">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Label system — register &amp; subject</h2>
+      <p class="section-note">Inline trong <code>Definition</code>. Parser nhận <code>[tag, tag] text</code>.</p>
+    </div>
+
+    <div class="row-with-anno">
+
+      <div class="card-wrapper">
+        <div class="card-label">sick · B2 · sense-2 là informal</div>
+        <div class="card anki-card-container">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <span class="pos-chip">adjective</span>
+            </div>
+            <div class="top-bar-right">
+              <span class="top-badge cefr-badge-B2">B2</span>
+            </div>
+          </div>
+          <div class="card-content-back">
+            <div class="word-header-back">
+              <div class="word-back">sick</div>
+              <hr class="divider divider-B2">
+              <div class="meta-row">
+                <span class="ipa-text">IPA: /sɪk/</span>
+              </div>
+            </div>
+            <div class="audio-row">
+              <span class="audio-btn-wrapper">🔊 UK</span>
+              <span class="audio-btn-wrapper">🔊 US</span>
+            </div>
+            <div class="section-box">
+              <div class="section-title"><i class="ti ti-book"></i> Definition</div>
+              <div class="section-content-def">
+                <div class="def-item"><span class="def-num">1.</span>Affected by illness; not well.</div>
+                <div class="def-item"><span class="def-num">2.</span><span class="register-tag rt-amber">informal</span>Very good or impressive.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-box">
+        Data field:<br>
+        <code>"Affected by illness; not well.|[informal] Very good or impressive."</code><br><br>
+        <span class="hl">Mỗi sense cách nhau bằng <code>|</code>. Sense có prefix <code>[tag]</code> → parser inject register tag trước text.</span>
+      </div>
+    </div>
+
+    <!-- Whitelist summary -->
+    <div class="palette-grid" style="margin-top: 32px;">
+      <div class="palette-cell">
+        <div class="palette-cell-label">Register — Amber</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="register-tag rt-amber">informal</span>
+          <span class="register-tag rt-amber">formal</span>
+          <span class="register-tag rt-amber">literary</span>
+          <span class="register-tag rt-amber">humorous</span>
+          <span class="register-tag rt-amber">ironic</span>
+          <span class="register-tag rt-amber">figurative</span>
+          <span class="register-tag rt-amber">approving</span>
+          <span class="register-tag rt-amber">disapproving</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">Register — Warm (slang/specialist)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="register-tag rt-warm">slang</span>
+          <span class="register-tag rt-warm">specialist</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">Register — Red (warning)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="register-tag rt-red">offensive</span>
+          <span class="register-tag rt-red">taboo</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">Subject — Purple (OLDAE only)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="register-tag rt-subject">biology</span>
+          <span class="register-tag rt-subject">computing</span>
+          <span class="register-tag rt-subject">economics</span>
+          <span class="register-tag rt-subject">law</span>
+          <span class="register-tag rt-subject">linguistics</span>
+          <span class="register-tag rt-subject">mathematics</span>
+          <span class="register-tag rt-subject">medical</span>
+          <span class="register-tag rt-subject">physics</span>
+          <span class="register-tag rt-subject">psychology</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       4. CORPUS BADGES
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="corpus">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Corpus symbols — top-bar</h2>
+      <p class="section-note">Word-level (không phải sense-level). Cùng dòng với POS chip.</p>
+    </div>
+
+    <div class="palette-grid">
+      <div class="palette-cell">
+        <div class="palette-cell-label">Oxford lists</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="corpus-badge corpus-oxf">Oxford 3000</span>
+          <span class="corpus-badge corpus-oxf">Oxford 5000</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">OPAL (口语/书面)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="corpus-badge corpus-opal">OPAL W</span>
+          <span class="corpus-badge corpus-opal">OPAL S</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">AWL</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="corpus-badge corpus-awl">AWL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       5. CEFR BADGES
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="cefr">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">CEFR palette</h2>
+      <p class="section-note">Mapping token → badge class → divider class → gradient border class.</p>
+    </div>
+
+    <div class="palette-grid">
+      <div class="palette-cell">
+        <div class="palette-cell-label">A1</div>
+        <span class="top-badge cefr-badge-A1">A1</span>
+        <hr class="divider divider-A1" style="margin:0;">
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">A2</div>
+        <span class="top-badge cefr-badge-A2">A2</span>
+        <hr class="divider divider-A2" style="margin:0;">
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">B1</div>
+        <span class="top-badge cefr-badge-B1">B1</span>
+        <hr class="divider divider-B1" style="margin:0;">
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">B2</div>
+        <span class="top-badge cefr-badge-B2">B2</span>
+        <hr class="divider divider-B2" style="margin:0;">
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">C1</div>
+        <span class="top-badge cefr-badge-C1">C1</span>
+        <hr class="divider divider-C1" style="margin:0;">
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">C2</div>
+        <span class="top-badge cefr-badge-C2">C2</span>
+        <hr class="divider divider-C2" style="margin:0;">
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">UNCLASSIFIED</div>
+        <span class="top-badge cefr-badge-UNCLASSIFIED">—</span>
+        <hr class="divider divider-UNCLASSIFIED" style="margin:0;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       6. FOOTER BADGES
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="footer">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Footer — source &amp; meta</h2>
+      <p class="section-note">Source (Oxford/Cambridge) + usage restrictions (slate) + feature tags (green).</p>
+    </div>
+
+    <div class="palette-grid">
+      <div class="palette-cell">
+        <div class="palette-cell-label">Source — neutral</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="footer-badge">Oxford</span>
+          <span class="footer-badge">Cambridge</span>
+          <span class="footer-badge">AWL</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">Usage restriction — slate</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="footer-badge footer-badge-slate">old-fashioned</span>
+          <span class="footer-badge footer-badge-slate">old use</span>
+          <span class="footer-badge footer-badge-slate">dialect</span>
+          <span class="footer-badge footer-badge-slate">saying</span>
+          <span class="footer-badge footer-badge-slate">™ trademark</span>
+        </div>
+      </div>
+      <div class="palette-cell">
+        <div class="palette-cell-label">Feature tag — green</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="footer-badge footer-badge-feature"><i class="ti ti-bookmarks"></i> idioms</span>
+          <span class="footer-badge footer-badge-feature"><i class="ti ti-bookmarks"></i> phrasal verbs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      File này là <strong style="color:#94a3b8">single source of visual truth</strong>. Nếu thay đổi design, sửa file
+      <a href="EAVM/styling.txt">EAVM/styling.txt</a> trước, rồi sync lại đây.<br>
+      Xem thêm: <a href="card_design.html">card_design.html</a> · <a href="label_demo.html">label_demo.html</a> · <a href="oxford_labels_full_taxonomy.html">oxford_labels_full_taxonomy.html</a> · <a href="EAVM/README.md">EAVM/README.md</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

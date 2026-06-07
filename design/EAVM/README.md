@@ -1,5 +1,8 @@
 # Tài Liệu Cấu Hình Mẫu Thẻ (Card Type Configuration) - EAVM
 
+> **Xem trước**: [`../index.html`](../index.html) cho trang tổng quan design system (khuyến nghị bắt đầu ở đây).  
+> **Tài liệu design cấp cao**: [`../README.md`](../README.md).
+
 Thư mục này lưu trữ các tệp cấu hình thiết kế giao diện (mặt trước, mặt sau và kiểu dáng CSS) của loại thẻ **English Academic Vocabulary Model (EAVM)** trong bộ thẻ IELTS Anki.
 
 Các tệp ở đây đã được sửa lỗi và phản ánh chính xác 100% thiết kế chuẩn hiển thị dạng thẻ hiện đại có tích hợp chips (cho Part of Speech, CEFR Level, Collocations) và phân tách đa định nghĩa.
