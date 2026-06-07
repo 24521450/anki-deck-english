@@ -34,9 +34,11 @@ minitest/
 # Runtime / IDE cache (tooling artefacts that should never be committed)
 .mavis/
 .opencode/
+.understand-anything/
 
 # Data directory — caches, scratch databases, and backup snapshots
 data/.cache_html/
+data/.synonym_partitions/
 data/anki_vocab.db
 data/missing_audio.json
 data/*.bak
