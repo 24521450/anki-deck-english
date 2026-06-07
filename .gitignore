@@ -27,7 +27,7 @@ Thumbs.db
 scratch/
 temp_extracted/
 tmp_extracted/
-
+minitest/
 # Anki package output (binary, 22MB — rebuilt from sources)
 *.apkg
 
@@ -41,3 +41,4 @@ data/anki_vocab.db
 data/missing_audio.json
 data/*.bak
 data/card_synonyms.json.bak
+ 
