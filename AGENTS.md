@@ -23,6 +23,14 @@ IELTS / Academic English Anki deck builder — notes DB + scraper pipeline (Oxfo
 - `vocab_list/` — source word lists (Oxford 3000/5000 markdown, AWL json/yml)
 - `update_anki_deck.py` — top-level entry point that runs the full pipeline (referenced by `design/EAVM/README.md`; not yet committed — owned by `developer` rein)
 
+## Architecture context
+
+For non-trivial tasks, read `.understand-anything/knowledge-graph.json` for the structural map (files, layers, tour).
+
+If the file is missing or stale, run `/understand --full` to (re)build it.
+
+Refresh with `/understand --full` after major refactors.
+
 ## Code style
 
 - Python 3.10+ (async-friendly: `edge-tts`, `aiohttp`)
