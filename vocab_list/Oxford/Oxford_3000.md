@@ -2087,7 +2087,7 @@ The Oxford 3000 is the list of the 3000 most important words to learn in English
 | **outer** | adj. | B2 | Oxford 3000 |  |
 | **outline** | n., v. | B2 | Oxford 3000 |  |
 | **outside** | adv. | A1 | Oxford 3000 |  |
-| **outside** | prep., n., adj. | A2 | Oxford 3000 |  |
+| **outside** | prep., noun., adj. | A2 | Oxford 3000 |  |
 | **oven** | n. | A2 | Oxford 3000 |  |
 | **over** | prep., adv. | A1 | Oxford 3000 |  |
 | **overall** | adj., adv. | B2 | Oxford 3000 |  |
@@ -2722,7 +2722,6 @@ The Oxford 3000 is the list of the 3000 most important words to learn in English
 | **sight** | n. | B1 | Oxford 3000 |  |
 | **sign** | n., v. | A2 | Oxford 3000 |  |
 | **signal** | n., v. | B1 | Oxford 3000 |  |
-| **significance** | n. | B2 | Oxford 3000 |  |
 | **significant** | adj. | B2 | Oxford 3000 |  |
 | **significantly** | adv. | B2 | Oxford 3000 |  |
 | **silence** | n. | B2 | Oxford 3000 |  |
@@ -2996,6 +2995,7 @@ The Oxford 3000 is the list of the 3000 most important words to learn in English
 | **teaching** | n. | A2 | Oxford 3000 |  |
 | **team** | n. | A1 | Oxford 3000 |  |
 | **tear** | v., n. | B2 | Oxford 3000 |  |
+| **tear** | n. | B2 | Oxford 3000 |  |
 | **technical** | adj. | B1 | Oxford 3000 |  |
 | **technique** | n. | B1 | Oxford 3000 |  |
 | **technology** | n. | A2 | Oxford 3000 |  |
@@ -3131,7 +3131,7 @@ The Oxford 3000 is the list of the 3000 most important words to learn in English
 | **trip** | v. | B2 | Oxford 3000 |  |
 | **tropical** | adj. | B2 | Oxford 3000 |  |
 | **trouble** | n. | A2 | Oxford 3000 |  |
-| **trouble** | n. | B2 | Oxford 3000 |  |
+| **trouble** | v. | B2 | Oxford 3000 |  |
 | **trousers** | n. | A1 | Oxford 3000 |  |
 | **truck** | n. | A2 | Oxford 3000 |  |
 | **true** | adj. | A1 | Oxford 3000 |  |

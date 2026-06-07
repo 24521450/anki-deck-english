@@ -701,8 +701,8 @@ The Oxford 5000 is an expanded core word list for advanced learners of English. 
 | **equivalent** | n., adj. | B2 | Oxford 5000 |  |
 | **era** | n. | B2 | Oxford 5000 |  |
 | **erect** | v. | C1 | Oxford 5000 |  |
-| **escalate** | v. | C1 | Oxford 5000 |  |
 | **erupt** | v. | B2 | Oxford 5000 |  |
+| **escalate** | v. | C1 | Oxford 5000 |  |
 | **essence** | n. | C1 | Oxford 5000 |  |
 | **essentially** | adv. | B2 | Oxford 5000 |  |
 | **establishment** | n. | C1 | Oxford 5000 |  |
@@ -1646,7 +1646,7 @@ The Oxford 5000 is an expanded core word list for advanced learners of English. 
 | **rob** | v. | B2 | Oxford 5000 |  |
 | **robbery** | n. | B2 | Oxford 5000 |  |
 | **robust** | adj. | C1 | Oxford 5000 |  |
-| **rocky** | adj. | C1 | Oxford 5000 |  |
+| **rock** | v. | C1 | Oxford 5000 |  |
 | **rocket** | n. | B2 | Oxford 5000 |  |
 | **rod** | n. | C1 | Oxford 5000 |  |
 | **romance** | n. | B2 | Oxford 5000 |  |
@@ -2078,7 +2078,7 @@ The Oxford 5000 is an expanded core word list for advanced learners of English. 
 | **weird** | adj. | B2 | Oxford 5000 |  |
 | **welfare** | n. | B2 | Oxford 5000 |  |
 | **well** | n. | C1 | Oxford 5000 |  |
-| **wellbeing** | n. | C1 | Oxford 5000 |  |
+| **well-being** | n. | C1 | Oxford 5000 |  |
 | **whatsoever** | adv. | C1 | Oxford 5000 |  |
 | **wheat** | n. | B2 | Oxford 5000 |  |
 | **whereby** | adv. | C1 | Oxford 5000 |  |
