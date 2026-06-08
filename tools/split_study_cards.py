@@ -256,6 +256,8 @@ for word_lower, cols in deduped_rows:
         ex_parts = []
         for _, d in top3:
             txt = d.get('text', '').strip()
+            if d.get('is_idiom'):
+                txt = f"[idiom] {txt}"
             if not txt:
                 continue
             def_parts.append(txt)
