@@ -171,10 +171,16 @@ for word_lower, cols in deduped_rows:
         # Update only the CEFR field (col 14), keep everything else as original
         new_row = list(cols[:16])
         new_row[14] = primary_cefr
-        # Add to tags if not present
+        # Strip ALL old CEFR::X tags from existing tags (replace, not append)
         existing_tags = new_row[15] or ''
-        if primary_cefr and f'CEFR::{primary_cefr}' not in existing_tags:
-            new_row[15] = (existing_tags + ' ' if existing_tags else '') + f'CEFR::{primary_cefr}'
+        cleaned_tags = ' '.join(t for t in existing_tags.split() if not t.startswith('CEFR::'))
+        # Add the new CEFR tag
+        if primary_cefr and primary_cefr != 'UNCLASSIFIED':
+            if cleaned_tags:
+                cleaned_tags = cleaned_tags + ' CEFR::' + primary_cefr
+            else:
+                cleaned_tags = 'CEFR::' + primary_cefr
+        new_row[15] = cleaned_tags
         out_rows.append(new_row)
         stats['a1_a2_b1_cefr_updated'] += 1
         continue
@@ -229,10 +235,14 @@ for word_lower, cols in deduped_rows:
         else:
             new_guid = str(uuid.uuid4().int)[:10] + ''.join(chr((i % 26) + 65) for i in range(2))
 
-        # Tags: keep original + add per-card CEFR
-        new_tags = tags
-        if group_cefr and group_cefr not in tags:
-            new_tags = (tags + ' ' if tags else '') + f'CEFR::{group_cefr}'
+        # Tags: strip ALL old CEFR::X tags, then add the per-card CEFR (replace, not append)
+        cleaned_tags = ' '.join(t for t in tags.split() if not t.startswith('CEFR::'))
+        if group_cefr and group_cefr != 'UNCLASSIFIED':
+            if cleaned_tags:
+                cleaned_tags = cleaned_tags + ' CEFR::' + group_cefr
+            else:
+                cleaned_tags = 'CEFR::' + group_cefr
+        new_tags = cleaned_tags
 
         # Build row
         # cols: 0=GUID, 1=NoteType, 2=Deck, 3=Word, 4=POS, 5=IPA,
