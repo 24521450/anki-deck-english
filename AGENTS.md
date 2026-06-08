@@ -22,6 +22,7 @@ IELTS / Academic English Anki deck builder — notes DB + scraper pipeline (Oxfo
 - `design/` — Anki card visual design system. **`design/index.html` (vùng 2 card CSS) is the source of truth** — `EAVM/styling.txt` derives from it and is baked into `.apkg`. `tools/check_design_sync.py` enforces the sync.
 - `vocab_list/` — source word lists (Oxford 3000/5000 markdown, AWL json/yml)
 - `update_anki_deck.py` — top-level entry point that runs the full pipeline (referenced by `design/EAVM/README.md`; not yet committed — owned by `developer` rein)
+- `src/pipeline.py` — production-stage orchestrator: scrape → build → split → deck. Run with `python -m src.pipeline`. Supports `--from=<stage>`, `--to=<stage>`, `--dry-run`, single-stage (`python -m src.pipeline build`). One-shot fixers (`_cleanup_oxford_pollution`, `_add_def_cefr`, `_rescrape_missing`, `_cambridge_*`) are NOT wrapped — invoke manually when data needs repair.
 
 ## Architecture context
 
