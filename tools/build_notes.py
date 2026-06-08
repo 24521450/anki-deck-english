@@ -41,13 +41,6 @@ VOCAB_DIR = PR / 'vocab_list' / 'Oxford'
 # Use --cefr to override (e.g. --cefr "A1,A2,B1,B2,C1,C2" for full deck).
 DEFAULT_CEFR_FILTER = ['B2', 'C1', 'C2']
 
-# Audio file prefixes (we have 3 sources: oxford, cambridge, tts)
-AUDIO_PREFIX = {
-    'oxford': 'oxford_{accent}_{word}.mp3',
-    'cambridge': 'cambridge_{accent}_{word}.mp3',
-    'tts': '{accent}_{word}.mp3',  # raw tts has no source prefix
-}
-
 
 def split_definitions(rec: dict) -> tuple[list[dict], list[dict]]:
     """Split definitions into (senses, idioms) using is_idiom flag from parser."""
@@ -87,26 +80,11 @@ def format_idioms(idioms: list[dict]) -> str:
 def find_audio(word: str) -> tuple[str, str]:
     """Return (audioUK, audioUS) Anki field values. Empty string if not found.
 
-    Looks in audio/ for {source}_{accent}_{word}.mp3 across all 3 source prefixes.
-    Returns '[sound:filename.mp3]' if found, '' otherwise.
+    Wraps src.scraper.audio.find_audio with the default FilesystemSource
+    set bound to AUDIO/. Chain order: cambridge > oxford > tts.
     """
-    audio_uk, audio_us = '', ''
-    for src in ('oxford', 'cambridge', 'tts'):
-        if not audio_uk:
-            for accent in ('uk',):
-                fn = AUDIO_PREFIX[src].format(accent=accent, word=word)
-                if (AUDIO / fn).exists():
-                    audio_uk = f'[sound:{fn}]'
-                    break
-        if not audio_us:
-            for accent in ('us',):
-                fn = AUDIO_PREFIX[src].format(accent=accent, word=word)
-                if (AUDIO / fn).exists():
-                    audio_us = f'[sound:{fn}]'
-                    break
-        if audio_uk and audio_us:
-            break
-    return audio_uk, audio_us
+    from src.scraper.audio import default_sources, find_audio as _find_audio
+    return _find_audio(word, default_sources(AUDIO))
 
 
 def load_synonyms() -> dict[str, list[str]]:
