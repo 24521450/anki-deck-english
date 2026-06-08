@@ -53,15 +53,7 @@
     </div>
     {{/Collocations}}
 
-    <!-- Idioms (Oxford-style: phrase + explanation + examples) -->
-    {{#Idioms}}
-    <div class="section-box idiom-box" id="idiom-section">
-      <div class="section-title"><i class="ti ti-bookmarks"></i> Idioms</div>
-      <div class="idiom-list" id="idiom-container">{{Idioms}}</div>
-    </div>
-    {{/Idioms}}
-
-    <!-- Feature tags (phrasal verbs only — idioms have their own section above) -->
+    <!-- Feature tags (idioms / phrasal verbs) — injected by JS -->
     <div class="feature-row" id="feature-row-container" style="display:none;"></div>
   </div>
 </div>
@@ -75,7 +67,6 @@
   <div id="raw-word-family-back">{{WordFamily}}</div>
   <div id="raw-tags-back">{{Tags}}</div>
   <div id="raw-word-back">{{Word}}</div>
-  <div id="raw-idioms-back">{{Idioms}}</div>
 </div>
 
 <script>
@@ -235,53 +226,17 @@
     colEl.innerHTML = cHtml;
   }
 
-  // 7. Feature tags → feature-row (phrasal verbs only — idioms have their own section)
+  // 7. Feature tags → feature-row
   var featureEl = document.getElementById('feature-row-container');
   if (featureEl && rawTags) {
     var fHtml = '';
     var fList = rawTags.split(/\s+/);
     for (var f = 0; f < fList.length; f++) {
       var ft = trim(fList[f]);
-      if (ft === 'phrasal_verbs') fHtml += '<span class="feature-tag"><i class="ti ti-bookmarks"></i> phrasal verbs</span>';
+      if (ft === 'idioms')         fHtml += '<span class="feature-tag"><i class="ti ti-bookmarks"></i> idioms</span>';
+      else if (ft === 'phrasal_verbs') fHtml += '<span class="feature-tag"><i class="ti ti-bookmarks"></i> phrasal verbs</span>';
     }
     if (fHtml) { featureEl.innerHTML = fHtml; featureEl.style.display = 'flex'; }
-  }
-
-  // 8. Idioms → idiom-list (Oxford-style: phrase : explanation ; example1 ; example2 | next)
-  var rawIdioms = getRaw('raw-idioms-back');
-  var idiomEl = document.getElementById('idiom-container');
-  if (rawIdioms && idiomEl) {
-    var idmParts = rawIdioms.split('|');
-    var idmHtml = '';
-    for (var i = 0; i < idmParts.length; i++) {
-      var entry = trim(idmParts[i]);
-      if (!entry) continue;
-      // Format: "PHRASE : explanation ; example1 ; example2"
-      // PHRASE is optional; if no ':', the whole entry is the explanation
-      var phrase = '', rest = entry;
-      var colonIdx = entry.indexOf(':');
-      if (colonIdx > 0) {
-        phrase = trim(entry.substring(0, colonIdx));
-        rest = trim(entry.substring(colonIdx + 1));
-      }
-      // Split rest on ' ; ' to get explanation + examples
-      var pieces = rest.split(/\s*;\s*/);
-      var explanation = pieces[0] || '';
-      var examples = pieces.slice(1).filter(function(p) { return p.length > 0; });
-      var rowHtml = '<div class="idiom-row">';
-      if (phrase) rowHtml += '<div class="idiom-phrase">' + phrase + '</div>';
-      if (explanation) rowHtml += '<div class="idiom-explanation">' + explanation + '</div>';
-      if (examples.length > 0) {
-        rowHtml += '<div class="idiom-examples">';
-        for (var ex = 0; ex < examples.length; ex++) {
-          rowHtml += '<div class="idiom-example">\u201c' + examples[ex] + '\u201d</div>';
-        }
-        rowHtml += '</div>';
-      }
-      rowHtml += '</div>';
-      idmHtml += rowHtml;
-    }
-    idiomEl.innerHTML = idmHtml;
   }
 
 })();
