@@ -47,19 +47,35 @@ OUT = DATA / 'study_split.tsv'
 CEFR_RANK = {'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6,
              'UNCLASSIFIED': 99, '': 99, None: 99}
 
+def clean_pos(p: str) -> str:
+    p = p.strip().lower().rstrip('.')
+    mapping = {
+        "adjective": "adj",
+        "adverb": "adv",
+        "noun": "n",
+        "verb": "v",
+        "preposition": "prep",
+        "pronoun": "pron",
+        "conjunction": "conj",
+        "determiner": "det",
+    }
+    return mapping.get(p, p)
+
 # Load vocab_list → word → pos → CEFR map (per-POS)
 vocab_cefr = {}  # word -> {pos: cefr}
 for md in VOCAB.glob('Oxford/*.md'):
     text = md.read_text(encoding='utf-8', errors='replace')
     for m in re.finditer(r'\|\s*\*\*([^*]+)\*\*\s*\|\s*([^|]+)\|\s*([ABC][12])\s*\|', text):
         w = m.group(1).strip().lower()
-        pos = m.group(2).strip()
+        pos_raw = m.group(2).strip()
         lvl = m.group(3)
         if w not in vocab_cefr:
             vocab_cefr[w] = {}
         # If multiple POS entries for same word, prefer the first (or override if missing)
-        if pos not in vocab_cefr[w]:
-            vocab_cefr[w][pos] = lvl
+        for p in pos_raw.split(','):
+            cleaned_p = clean_pos(p)
+            if cleaned_p and cleaned_p not in vocab_cefr[w]:
+                vocab_cefr[w][cleaned_p] = lvl
 # For backward compat, also build vocab_cefr_word = word -> cefr (lowest across POS)
 vocab_cefr_word = {}
 for w, pos_map in vocab_cefr.items():
@@ -127,6 +143,25 @@ for word_lower, cols in deduped_rows:
         stats['no_defs'] += 1
         continue
 
+    has_pos_fields = any('pos' in d for d in defs)
+
+    # Filter definitions by POS
+    card_pos_set = {clean_pos(p) for p in pos.split(',') if p.strip()}
+    filtered_defs = []
+    for d in defs:
+        d_pos = d.get('pos', '')
+        if d_pos:
+            if clean_pos(d_pos) in card_pos_set:
+                filtered_defs.append(d)
+        else:
+            rec_pos = rec.get('pos', [])
+            if any(clean_pos(p) in card_pos_set for p in rec_pos) or not rec_pos:
+                filtered_defs.append(d)
+
+    if not filtered_defs:
+        filtered_defs = defs
+    defs = filtered_defs
+
     # Resolve CEFR for each def
     word_head_cefr = rec.get('cefr', '')
     word_source = rec.get('source', 'oxford')
@@ -141,8 +176,11 @@ for word_lower, cols in deduped_rows:
         if d.get('def_cefr'):
             cefr_resolved = d['def_cefr']
         # Step 2: vocab_cefr[word][def.pos] (per-POS)
-        elif def_pos and def_pos in word_pos_map:
-            cefr_resolved = word_pos_map[def_pos]
+        elif def_pos and clean_pos(def_pos) in word_pos_map:
+            cefr_resolved = word_pos_map[clean_pos(def_pos)]
+        elif (not def_pos) and any(clean_pos(p) in word_pos_map for p in card_pos_set):
+            matched_pos = next(clean_pos(p) for p in card_pos_set if clean_pos(p) in word_pos_map)
+            cefr_resolved = word_pos_map[matched_pos]
         # Step 3: vocab_cefr[word] (per-word fallback — lowest CEFR across all POSes)
         elif word_pos_map:
             # Pick the LOWEST CEFR across all known POSes
@@ -174,8 +212,9 @@ for word_lower, cols in deduped_rows:
     # Sort groups by CEFR rank (lowest first)
     sorted_cefrs = sorted(by_cefr.keys(), key=lambda c: (CEFR_RANK.get(c, 99), c))
 
-    # For A1/A2/B1 cards: keep 1 card, but update CEFR field with chain-resolved value
-    if cefr_norm not in ('B2', 'C1', 'C2'):
+    # For A1/A2/B1 cards, or if the database record lacks POS-specific definitions:
+    # keep 1 card, but update CEFR field with chain-resolved value
+    if cefr_norm not in ('B2', 'C1', 'C2') or not has_pos_fields:
         # Pick primary CEFR (lowest in CEFR_RANK among def_cefrs, skip UNCLASSIFIED)
         primary_cefr = ''
         for dc in def_cefrs:

@@ -35,6 +35,7 @@ SYNONYMS = DATA / 'card_synonyms.cleaned.json'
 NOTES_JSON = DATA / 'notes.json'
 NOTES_TSV = DATA / 'notes.tsv'
 MISSING_AUDIO = DATA / 'missing_audio.json'
+VOCAB_DIR = PR / 'vocab_list' / 'Oxford'
 
 # Default filter: B2/C1/C2 only (per user instruction 2026-06-08).
 # Use --cefr to override (e.g. --cefr "A1,A2,B1,B2,C1,C2" for full deck).
@@ -120,8 +121,13 @@ def load_synonyms() -> dict[str, list[str]]:
     return dict(out)
 
 
-def build_tags(rec: dict) -> str:
-    """Build Tags field: corpus memberships + register tags + subject labels + idiom flag."""
+def build_tags(rec: dict, cefr_source: str = 'oxford') -> str:
+    """Build Tags field: corpus memberships + register tags + subject labels + idiom flag.
+
+    `cefr_source` is the source of the chain-resolved CEFR (e.g. 'oxford' for
+    def_cefr/vocab/head_cefr, 'cambridge' for cambridge_cefr). Used to add
+    the `cefr::<source>` tag so user can tell where the CEFR came from.
+    """
     tags = []
     # Corpus
     if rec.get('oxford_lists'):
@@ -137,9 +143,17 @@ def build_tags(rec: dict) -> str:
     if rec.get('awl'):
         if 'AWL' not in tags:
             tags.append('AWL')
-    # Source
+    # Source (record-level scrape source)
     if rec.get('source') == 'cambridge':
         tags.append('cambridge_fallback')
+    # CEFR provenance tag — the chain told us this level came from <source>.
+    # Tag name: `cefr::oxford` (def_cefr / vocab / head) or `cefr::cambridge`
+    # (cambridge_cefr). This replaces the old "derive tag from level value"
+    # approach that silently mis-tagged polluted records.
+    if cefr_source in ('oxford', 'cambridge'):
+        tag = f'cefr::{cefr_source}'
+        if tag not in tags:
+            tags.append(tag)
     # Register + subject
     for t in rec.get('register_tags', []):
         slug = t.replace(' ', '_')
@@ -152,7 +166,7 @@ def build_tags(rec: dict) -> str:
     return ' '.join(tags)
 
 
-def build_note(rec: dict, syn_map: dict) -> dict:
+def build_note(rec: dict, syn_map: dict, vocab_cefr: dict) -> dict:
     """Build one Anki note dict from one JSONL record."""
     word = rec['word']
     senses, idioms = split_definitions(rec)
@@ -173,12 +187,16 @@ def build_note(rec: dict, syn_map: dict) -> dict:
     # Filter out "idiom" and "phrasal verb" from POS chips — they're not lexical POS
     lexical_pos = [p for p in pos if p.lower() not in ('idiom', 'phrasal verb', 'phrase')]
 
+    # CEFR — chain-resolved (so Cambridge-only words get the right level
+    # and the right source tag, not the empty/oxford value from flat read).
+    cefr_level, cefr_source = resolve_record_cefr(rec, vocab_cefr)
+
     return {
         'Word': word,
         'IPA': '',  # TODO: extract from cached HTML
         'PartOfSpeech': ', '.join(lexical_pos) if lexical_pos else ', '.join(pos),
-        'CEFRLevel': rec.get('cefr', '') or '',
-        'Tags': build_tags(rec),
+        'CEFRLevel': cefr_level,
+        'Tags': build_tags(rec, cefr_source=cefr_source),
         'Definition': definitions_text,
         'Example': examples_text,
         'Idioms': idioms_text,
@@ -191,11 +209,35 @@ def build_note(rec: dict, syn_map: dict) -> dict:
         '_meta': {
             'source': rec.get('source'),
             'cefr': rec.get('cefr'),
+            'cefr_resolved': cefr_level,
+            'cefr_source': cefr_source,
             'n_senses': len(senses),
             'n_idioms': len(idioms),
             'oxford_lists': rec.get('oxford_lists', []),
         },
     }
+
+
+# CEFR resolution chain — extracted to src/scraper/cefr_chain.py (A in
+# architecture review). Per-def chain gives (level, source); we pick the
+# primary (lowest non-UNCLASSIFIED) for the card-level CEFRLevel field.
+def resolve_record_cefr(rec: dict, vocab_cefr: dict) -> tuple[str, str]:
+    """Resolve one record's primary CEFR via the chain. Returns (level, source)."""
+    from src.scraper.cefr_chain import CefrContext, resolve_def
+    ctx = CefrContext(
+        word=rec['word'],
+        head_cefr=rec.get('cefr', '') or '',
+        cambridge_cefr=rec.get('cambridge_cefr', '') or '',
+        vocab_cefr=vocab_cefr,
+    )
+    defs = rec.get('definitions', []) or [{}]
+    resolved = [resolve_def(d, ctx) for d in defs]
+    valid = [(lvl, src) for lvl, src in resolved
+             if lvl and lvl != 'UNCLASSIFIED']
+    if valid:
+        from src.scraper.cefr_chain import CEFR_RANK
+        return min(valid, key=lambda x: CEFR_RANK.get(x[0], 99))
+    return ('UNCLASSIFIED', 'unclassified')
 
 
 def main():
@@ -212,10 +254,22 @@ def main():
     recs = [json.loads(l) for l in open(JSONL, encoding='utf-8')]
     print(f'Loaded {len(recs)} records from {JSONL}')
 
-    # CEFR filter
+    # Load vocab_cefr (used by resolve_record_cefr below)
+    from src.scraper.cefr_chain import load_vocab_cefr
+    vocab_cefr = load_vocab_cefr(VOCAB_DIR)
+    print(f'Loaded vocab_cefr for {len(vocab_cefr)} words')
+
+    # CEFR filter — uses the chain (not flat rec['cefr']) so Cambridge-only
+    # words with no Oxford head_cefr are still filterable by their chain-resolved
+    # level. build_note() also writes the chain-resolved CEFRLevel into each note.
     if cefr_filter:
         before = len(recs)
-        recs = [r for r in recs if (r.get('cefr') or '').upper() in cefr_filter]
+        kept = []
+        for r in recs:
+            level, _src = resolve_record_cefr(r, vocab_cefr)
+            if level.upper() in cefr_filter:
+                kept.append(r)
+        recs = kept
         print(f'CEFR filter {cefr_filter}: kept {len(recs)}/{before}')
 
     # Load synonyms
@@ -233,7 +287,7 @@ def main():
         'cambridge_fallback': 0,
     }
     for r in recs:
-        n = build_note(r, syn_map)
+        n = build_note(r, syn_map, vocab_cefr)
         notes.append(n)
         if n['Idioms']: stats['with_idioms'] += 1
         if n['AudioUK']: stats['with_audio_uk'] += 1

@@ -63,7 +63,8 @@ async def fetch_cambridge(session, word):
     if cache_path.exists():
         text = cache_path.read_text(encoding='utf-8', errors='replace')
         if 'dictionary.cambridge' in text.lower():
-            return await asyncio.to_thread(parse_cambridge_cefr, text)
+            res = await asyncio.to_thread(parse_cambridge_cefr, text)
+            return word, res
     async with SEM:
         url = CAMBRIDGE_URL.format(word=word)
         try:
@@ -72,11 +73,12 @@ async def fetch_cambridge(session, word):
                     text = await resp.text(errors='replace')
                     cache_path.write_text(text, encoding='utf-8')
                     await asyncio.sleep(THROTTLE)
-                    return await asyncio.to_thread(parse_cambridge_cefr, text)
+                    res = await asyncio.to_thread(parse_cambridge_cefr, text)
+                    return word, res
                 else:
-                    return {'cefr': None, 'per_def_cefr': {}, 'all_cefrs': [], 'error': f'HTTP {resp.status}'}
+                    return word, {'cefr': None, 'per_def_cefr': {}, 'all_cefrs': [], 'error': f'HTTP {resp.status}'}
         except Exception as e:
-            return {'cefr': None, 'per_def_cefr': {}, 'all_cefrs': [], 'error': str(e)}
+            return word, {'cefr': None, 'per_def_cefr': {}, 'all_cefrs': [], 'error': str(e)}
 
 
 async def main():
@@ -113,9 +115,7 @@ async def main():
     async with aiohttp.ClientSession(connector=connector, timeout=timeout) as session:
         tasks = [fetch_cambridge(session, w) for w in targets]
         for i, coro in enumerate(asyncio.as_completed(tasks), 1):
-            word = targets[i-1] if i-1 < len(targets) else '?'
-            # The as_completed doesn't preserve order, so we need to map differently
-            res = await coro
+            word, res = await coro
             results[word] = res
             if i % 5 == 0 or i == len(tasks):
                 print(f'  [{i}/{len(tasks)}] done in {time.time()-started:.0f}s', flush=True)
@@ -161,3 +161,24 @@ async def main():
         print(f'  {w:25} → CEFR={cefr} all={all_cefrs} {err}')
 
 asyncio.run(main())
+            for d in rec.get('definitions', []):
+                if not d.get('def_cefr'):
+                    d['def_cefr'] = info['cefr']
+
+    # Save
+    with open(JSONL, 'w', encoding='utf-8') as f:
+        for word in sorted(recs.keys()):
+            f.write(json.dumps(recs[word], ensure_ascii=False) + '\n')
+    print(f'Saved {JSONL}')
+
+    # Show details
+    print('\n=== Cambridge results ===')
+    for w in targets:
+        info = results.get(w, {})
+        cefr = info.get('cefr')
+        err = info.get('error', '')
+        all_cefrs = info.get('all_cefrs', [])
+        print(f'  {w:25} -> CEFR={cefr} all={all_cefrs} {err}')
+
+if __name__ == '__main__':
+    asyncio.run(main())
