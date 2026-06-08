@@ -24,30 +24,48 @@ rec_by_word = {r['word'].lower(): r for r in recs}
 from bs4 import BeautifulSoup
 
 def fetch_and_parse(word_lower: str) -> tuple[str, dict | None]:
-    """Return (word_lower, {n: cefr}) or (word_lower, None) if no Oxford cache."""
-    fp = CACHE / f'{word_lower}.html'
-    if not fp.exists():
-        return word_lower, None
-    try:
-        text = fp.read_text(encoding='utf-8', errors='replace')
-    except Exception:
-        return word_lower, None
-    if 'oxfordlearnersdictionaries' not in text.lower():
-        return word_lower, None
-    try:
-        soup = BeautifulSoup(text, 'lxml')
-    except Exception:
-        return word_lower, None
-    entry = soup.find(id='entryContent')
-    if not entry:
-        return word_lower, None
-    sense_lis = entry.find_all('li', class_='sense')
+    """Return (word_lower, (n_html, {n: cefr})) or (word_lower, None) if no Oxford cache.
+
+    Tries multiple naming conventions: {word}.html, {word}_({pos}).html, {word}_N_({pos}).html.
+    """
+    candidates = [
+        CACHE / f'{word_lower}.html',
+    ]
+    # Also try {word}_(pos).html and {word}_N_(pos).html patterns
+    for f in os.listdir(CACHE):
+        m = re.match(rf'^{re.escape(word_lower)}_(\d+)?_?\((\w+)\)\.html$', f)
+        if m:
+            candidates.append(CACHE / f)
+
+    n_html = 0
     cefr_by_idx = {}
-    for i, li in enumerate(sense_lis):
-        cefr_raw = li.get('fkcefr') or li.get('cefr')
-        if cefr_raw:
-            cefr_by_idx[i] = cefr_raw.upper()
-    return word_lower, (len(sense_lis), cefr_by_idx)
+    for fp in candidates:
+        if not fp.exists():
+            continue
+        try:
+            text = fp.read_text(encoding='utf-8', errors='replace')
+        except Exception:
+            continue
+        if 'oxfordlearnersdictionaries' not in text.lower():
+            continue
+        try:
+            soup = BeautifulSoup(text, 'lxml')
+        except Exception:
+            continue
+        entry = soup.find(id='entryContent')
+        if not entry:
+            continue
+        sense_lis = entry.find_all('li', class_='sense')
+        n_html = len(sense_lis)
+        for i, li in enumerate(sense_lis):
+            cefr_raw = li.get('fkcefr') or li.get('cefr')
+            if cefr_raw and i not in cefr_by_idx:
+                cefr_by_idx[i] = cefr_raw.upper()
+        # Use the first matching cache (primary POS, no disambig)
+        break
+    if n_html == 0:
+        return word_lower, None
+    return word_lower, (n_html, cefr_by_idx)
 
 
 t0 = time.time()

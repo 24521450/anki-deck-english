@@ -47,14 +47,24 @@ OUT = DATA / 'study_split.tsv'
 CEFR_RANK = {'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6,
              'UNCLASSIFIED': 99, '': 99, None: 99}
 
-# Load vocab_list → word → CEFR map (per-word fallback)
-vocab_cefr = {}
+# Load vocab_list → word → pos → CEFR map (per-POS)
+vocab_cefr = {}  # word -> {pos: cefr}
 for md in VOCAB.glob('Oxford/*.md'):
     text = md.read_text(encoding='utf-8', errors='replace')
-    for m in re.finditer(r'\|\s*\*\*([^*]+)\*\*\s*\|\s*\S+\s*\|\s*([ABC][12])\s*\|', text):
+    for m in re.finditer(r'\|\s*\*\*([^*]+)\*\*\s*\|\s*([^|]+)\|\s*([ABC][12])\s*\|', text):
         w = m.group(1).strip().lower()
-        lvl = m.group(2)
-        vocab_cefr[w] = lvl
+        pos = m.group(2).strip()
+        lvl = m.group(3)
+        if w not in vocab_cefr:
+            vocab_cefr[w] = {}
+        # If multiple POS entries for same word, prefer the first (or override if missing)
+        if pos not in vocab_cefr[w]:
+            vocab_cefr[w][pos] = lvl
+# For backward compat, also build vocab_cefr_word = word -> cefr (lowest across POS)
+vocab_cefr_word = {}
+for w, pos_map in vocab_cefr.items():
+    if pos_map:
+        vocab_cefr_word[w] = min(pos_map.values(), key=lambda c: CEFR_RANK.get(c, 99))
 
 # Load JSONL
 print('Loading JSONL...', flush=True)
@@ -121,23 +131,29 @@ for word_lower, cols in deduped_rows:
     word_head_cefr = rec.get('cefr', '')
     word_source = rec.get('source', 'oxford')
     word_cambridge_cefr = rec.get('cambridge_cefr', '')
-    # Build per-def CEFR using chain: def_cefr -> vocab_cefr -> head_cefr -> cambridge_cefr -> UNCLASSIFIED
+    word_pos_map = vocab_cefr.get(word_lower, {})  # per-POS from vocab_cefr
+    # Build per-def CEFR using chain: def_cefr -> vocab_cefr[word][def.pos] -> vocab_cefr[word] -> head_cefr -> cambridge_cefr -> UNCLASSIFIED
     def_cefrs = []
     for d in defs:
         cefr_resolved = ''
+        def_pos = d.get('pos', '')
         # Step 1: def_cefr from fkcefr attribute (per-def, most accurate)
         if d.get('def_cefr'):
             cefr_resolved = d['def_cefr']
-        # Step 2: vocab_list (oxford.md / AWL) — per-word user tag
-        elif word_lower in vocab_cefr:
-            cefr_resolved = vocab_cefr[word_lower]
-        # Step 3: oxford web head_cefr — per-word Oxford scrape
+        # Step 2: vocab_cefr[word][def.pos] (per-POS)
+        elif def_pos and def_pos in word_pos_map:
+            cefr_resolved = word_pos_map[def_pos]
+        # Step 3: vocab_cefr[word] (per-word fallback — lowest CEFR across all POSes)
+        elif word_pos_map:
+            # Pick the LOWEST CEFR across all known POSes
+            cefr_resolved = min(word_pos_map.values(), key=lambda c: CEFR_RANK.get(c, 99))
+        # Step 4: oxford web head_cefr
         elif word_head_cefr:
             cefr_resolved = word_head_cefr
-        # Step 4: cambridge web — per-word Cambridge scrape (from cambridge_cefr field)
+        # Step 5: cambridge web
         elif word_cambridge_cefr:
             cefr_resolved = word_cambridge_cefr
-        # Step 5: unclassified
+        # Step 6: unclassified
         else:
             cefr_resolved = 'UNCLASSIFIED'
         def_cefrs.append(cefr_resolved)
