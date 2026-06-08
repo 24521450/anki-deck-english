@@ -13,8 +13,13 @@ Idiom handling:
   - `Definition`: pipe-separated regular senses
   - `Example`: pipe-separated examples, indexed to defs
   - `Idioms`: pipe-separated idioms, each with optional `; example` suffix
+
+CEFR filter (default B2/C1/C2 only — per user instruction 2026-06-08):
+  - Cards with A1/A2/B1 CEFR are SKIPPED.
+  - Override with --cefr "A1,A2,B1,B2,C1,C2" to include all.
 """
 from __future__ import annotations
+import argparse
 import json
 import re
 import sqlite3
@@ -30,6 +35,10 @@ SYNONYMS = DATA / 'card_synonyms.cleaned.json'
 NOTES_JSON = DATA / 'notes.json'
 NOTES_TSV = DATA / 'notes.tsv'
 MISSING_AUDIO = DATA / 'missing_audio.json'
+
+# Default filter: B2/C1/C2 only (per user instruction 2026-06-08).
+# Use --cefr to override (e.g. --cefr "A1,A2,B1,B2,C1,C2" for full deck).
+DEFAULT_CEFR_FILTER = ['B2', 'C1', 'C2']
 
 # Audio file prefixes (we have 3 sources: oxford, cambridge, tts)
 AUDIO_PREFIX = {
@@ -190,9 +199,24 @@ def build_note(rec: dict, syn_map: dict) -> dict:
 
 
 def main():
+    # Parse args
+    p = argparse.ArgumentParser()
+    p.add_argument('--cefr', default=','.join(DEFAULT_CEFR_FILTER),
+                   help=f'Comma-separated CEFR levels to include (default: {",".join(DEFAULT_CEFR_FILTER)})')
+    p.add_argument('--notes', default=str(NOTES_JSON), help='Output notes.json path')
+    p.add_argument('--tsv', default=str(NOTES_TSV), help='Output notes.tsv path')
+    args = p.parse_args()
+    cefr_filter = [c.strip().upper() for c in args.cefr.split(',') if c.strip()]
+
     # Load JSONL
     recs = [json.loads(l) for l in open(JSONL, encoding='utf-8')]
     print(f'Loaded {len(recs)} records from {JSONL}')
+
+    # CEFR filter
+    if cefr_filter:
+        before = len(recs)
+        recs = [r for r in recs if (r.get('cefr') or '').upper() in cefr_filter]
+        print(f'CEFR filter {cefr_filter}: kept {len(recs)}/{before}')
 
     # Load synonyms
     syn_map = load_synonyms()
@@ -219,15 +243,17 @@ def main():
         if r.get('source') == 'cambridge': stats['cambridge_fallback'] += 1
 
     # Write JSON
-    with open(NOTES_JSON, 'w', encoding='utf-8') as f:
+    out_json = Path(args.notes)
+    with open(out_json, 'w', encoding='utf-8') as f:
         json.dump(notes, f, ensure_ascii=False, indent=2)
-    print(f'Wrote {len(notes)} notes → {NOTES_JSON}')
+    print(f'Wrote {len(notes)} notes → {out_json}')
 
     # Write TSV (Anki import format: 13 fields, tab-separated)
+    out_tsv = Path(args.tsv)
     fields = ['Word', 'IPA', 'PartOfSpeech', 'CEFRLevel', 'Tags',
               'Definition', 'Example', 'Idioms', 'Collocations', 'WordFamily',
               'Synonym', 'AudioUK', 'AudioUS']
-    with open(NOTES_TSV, 'w', encoding='utf-8', newline='') as f:
+    with open(out_tsv, 'w', encoding='utf-8', newline='') as f:
         f.write('#separator:tab\n#html:true\n')
         # Column headers as comment for Anki
         for n in notes:
@@ -235,7 +261,7 @@ def main():
             # Anki TSV: replace newlines within field with <br>
             row = [r.replace('\r', '').replace('\n', '<br>').replace('\t', ' ') for r in row]
             f.write('\t'.join(row) + '\n')
-    print(f'Wrote {NOTES_TSV}')
+    print(f'Wrote {out_tsv}')
 
     # Stats
     print()

@@ -103,16 +103,9 @@ for word_lower, cols in deduped_rows:
     guid, notetype, deck, word, pos, ipa, defn, ex, _, _, auk, aus, src, _, cefr, tags = cols[:16]
     cefr_norm = cefr.strip()
 
-    # A1/A2/B1 → keep as-is
-    if cefr_norm not in ('B2', 'C1', 'C2'):
-        out_rows.append(cols[:16])
-        stats['kept_unchanged'] += 1
-        continue
-
-    # B2/C1/C2 → split
     rec = recs.get(word_lower)
     if not rec:
-        # No JSONL record — keep original
+        # No JSONL record — keep original (no chain possible)
         out_rows.append(cols[:16])
         stats['no_jsonl'] += 1
         continue
@@ -127,22 +120,23 @@ for word_lower, cols in deduped_rows:
     # Resolve CEFR for each def
     word_head_cefr = rec.get('cefr', '')
     word_source = rec.get('source', 'oxford')
-    # Build per-def CEFR
+    word_cambridge_cefr = rec.get('cambridge_cefr', '')
+    # Build per-def CEFR using chain: def_cefr -> vocab_cefr -> head_cefr -> cambridge_cefr -> UNCLASSIFIED
     def_cefrs = []
     for d in defs:
         cefr_resolved = ''
-        # Step 1: def_cefr from fkcefr attribute
+        # Step 1: def_cefr from fkcefr attribute (per-def, most accurate)
         if d.get('def_cefr'):
             cefr_resolved = d['def_cefr']
-        # Step 2: vocab_list (oxford.md)
+        # Step 2: vocab_list (oxford.md / AWL) — per-word user tag
         elif word_lower in vocab_cefr:
             cefr_resolved = vocab_cefr[word_lower]
-        # Step 3: oxford web (head_cefr)
-        elif word_source == 'oxford' and word_head_cefr:
+        # Step 3: oxford web head_cefr — per-word Oxford scrape
+        elif word_head_cefr:
             cefr_resolved = word_head_cefr
-        # Step 4: cambridge
-        elif word_source == 'cambridge' and word_head_cefr:
-            cefr_resolved = word_head_cefr
+        # Step 4: cambridge web — per-word Cambridge scrape (from cambridge_cefr field)
+        elif word_cambridge_cefr:
+            cefr_resolved = word_cambridge_cefr
         # Step 5: unclassified
         else:
             cefr_resolved = 'UNCLASSIFIED'
@@ -163,6 +157,27 @@ for word_lower, cols in deduped_rows:
 
     # Sort groups by CEFR rank (lowest first)
     sorted_cefrs = sorted(by_cefr.keys(), key=lambda c: (CEFR_RANK.get(c, 99), c))
+
+    # For A1/A2/B1 cards: keep 1 card, but update CEFR field with chain-resolved value
+    if cefr_norm not in ('B2', 'C1', 'C2'):
+        # Pick primary CEFR (lowest in CEFR_RANK among def_cefrs, skip UNCLASSIFIED)
+        primary_cefr = ''
+        for dc in def_cefrs:
+            if dc and dc != 'UNCLASSIFIED':
+                if not primary_cefr or CEFR_RANK.get(dc, 99) < CEFR_RANK.get(primary_cefr, 99):
+                    primary_cefr = dc
+        if not primary_cefr:
+            primary_cefr = 'UNCLASSIFIED'
+        # Update only the CEFR field (col 14), keep everything else as original
+        new_row = list(cols[:16])
+        new_row[14] = primary_cefr
+        # Add to tags if not present
+        existing_tags = new_row[15] or ''
+        if primary_cefr and f'CEFR::{primary_cefr}' not in existing_tags:
+            new_row[15] = (existing_tags + ' ' if existing_tags else '') + f'CEFR::{primary_cefr}'
+        out_rows.append(new_row)
+        stats['a1_a2_b1_cefr_updated'] += 1
+        continue
 
     first_card = True
     for group_cefr in sorted_cefrs:
