@@ -36,6 +36,14 @@ HEADERS = {
 SEM = asyncio.Semaphore(4)
 THROTTLE = 0.25
 
+# Fetcher seam (B in architecture review, proof of concept). The script
+# keeps its aiohttp event loop + parallel as_completed driver, but the
+# actual HTTP/cache/throttle mechanics are delegated to the new module
+# via asyncio.to_thread(). Migrating other 5 call sites deferred.
+from src.scraper.fetch import oxford_cached, cambridge_cached
+OXFORD_FETCHER = oxford_cached(cache_dir=CACHE, throttle=THROTTLE)
+CAMBRIDGE_FETCHER = cambridge_cached(cache_dir=CACHE, throttle=THROTTLE)
+
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -209,68 +217,50 @@ def parse_cambridge_html(text: str, word: str) -> dict:
 
 # ── Fetch logic ─────────────────────────────────────────────────────────
 async def fetch_one(session: aiohttp.ClientSession, word: str, out_fh) -> dict | None:
-    """Try Oxford first, then Cambridge. Write to JSONL on success."""
+    """Try Oxford first, then Cambridge. Write to JSONL on success.
+
+    Migrated to the Fetcher seam (B in architecture review, PoC):
+    the actual HTTP/cache/throttle mechanics live in
+    src.scraper.fetch. We keep the script's aiohttp event loop and
+    parallel as_completed driver, delegating sync fetcher calls via
+    asyncio.to_thread(). The function's external contract is unchanged.
+    """
     rec = None
 
-    # 1. Try Oxford
-    ox_cache = CACHE / f"{word}.html"
-    if ox_cache.exists():
-        text = ox_cache.read_text(encoding="utf-8", errors="replace")
+    # 1. Try Oxford (cache or network)
+    ox_result = await asyncio.to_thread(OXFORD_FETCHER.fetch, word)
+    if ox_result.ok and ox_result.text:
         # quick check it's actually Oxford, not a stray Cambridge page
-        if "oxfordlearnersdictionaries" in text.lower():
+        if "oxfordlearnersdictionaries" in ox_result.text.lower():
             try:
-                rec = parse_oxford_html(text, word)
+                rec = parse_oxford_html(ox_result.text, word)
                 if "error" not in rec:
                     out_fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
                     out_fh.flush()
                     return rec
             except Exception as e:
                 rec = {"word": word, "source": "oxford", "error": f"parse: {e}"}
+        else:
+            rec = {"word": word, "source": "oxford", "error": "cache contains non-Oxford content"}
+    else:
+        # error string from Fetcher (network/HTTP)
+        rec = {"word": word, "source": "oxford", "error": ox_result.error or "unknown"}
 
-    if rec is None or "error" in rec:
-        # 2. Try Oxford network
-        try:
-            async with SEM:
-                async with session.get(OXFORD_URL.format(word=word), headers=HEADERS, timeout=aiohttp.ClientTimeout(total=30)) as resp:
-                    if resp.status == 200:
-                        text = await resp.text(errors="replace")
-                        CACHE.mkdir(parents=True, exist_ok=True)
-                        ox_cache.write_text(text, encoding="utf-8")
-                        await asyncio.sleep(THROTTLE)
-                        try:
-                            rec = parse_oxford_html(text, word)
-                            if "error" not in rec:
-                                out_fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
-                                out_fh.flush()
-                                return rec
-                        except Exception as e:
-                            rec = {"word": word, "source": "oxford", "error": f"parse: {e}"}
-                    else:
-                        rec = {"word": word, "source": "oxford", "error": f"HTTP {resp.status}"}
-        except (aiohttp.ClientError, asyncio.TimeoutError) as e:
-            rec = {"word": word, "source": "oxford", "error": str(e)}
-
-    # 3. Cambridge fallback
+    # 2. Cambridge fallback
+    cam_result = await asyncio.to_thread(CAMBRIDGE_FETCHER.fetch, word)
+    if not cam_result.ok or not cam_result.text:
+        return {"word": word, "source": "cambridge",
+                "error": cam_result.error or "unknown"}
     try:
-        async with SEM:
-            async with session.get(CAMBRIDGE_URL.format(word=word), headers=HEADERS, timeout=aiohttp.ClientTimeout(total=30)) as resp:
-                if resp.status == 200:
-                    text = await resp.text(errors="replace")
-                    await asyncio.sleep(THROTTLE)
-                    try:
-                        rec = parse_cambridge_html(text, word)
-                        if "error" not in rec and rec.get("definitions"):
-                            out_fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
-                            out_fh.flush()
-                            return rec
-                        else:
-                            return {"word": word, "source": "cambridge", "error": rec.get("error", "no definitions")}
-                    except Exception as e:
-                        return {"word": word, "source": "cambridge", "error": f"parse: {e}"}
-                else:
-                    return {"word": word, "source": "cambridge", "error": f"HTTP {resp.status}"}
-    except (aiohttp.ClientError, asyncio.TimeoutError) as e:
-        return {"word": word, "source": "cambridge", "error": str(e)}
+        rec = parse_cambridge_html(cam_result.text, word)
+        if "error" not in rec and rec.get("definitions"):
+            out_fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
+            out_fh.flush()
+            return rec
+        return {"word": word, "source": "cambridge",
+                "error": rec.get("error", "no definitions")}
+    except Exception as e:
+        return {"word": word, "source": "cambridge", "error": f"parse: {e}"}
 
 
 def load_vocab() -> set[str]:
